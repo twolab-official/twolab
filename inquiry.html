@@ -42,7 +42,7 @@
     }font-size: 10px !important; font-weight: 700 !important; }
     .lang-btn { display: flex; align-items: center; gap: 2px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; margin-left: 12px; }
     .lang-btn span { padding: 6px 10px; cursor: pointer; color: rgba(196,206,202,0.6); border: 0.5px solid rgba(42,58,52,0.2); border-radius: 2px; transition: all 0.2s; }
-    .lang-btn span:hover { color: var(--gm-xlight); border-color: rgba(42,58,52,0.5); }
+    .lang-btn span:hover { color: var(--gm-xlight); border-color: rgba(196,206,202,0.55); }
     .lang-btn span.active { color: var(--gm-xdark); background: var(--gm); border-color: var(--gm); }
     .lang-btn .divider { color: rgba(42,58,52,0.2); font-size: 10px; border: none; padding: 0 2px; cursor: default; }
     .lang-btn .divider:hover { color: rgba(42,58,52,0.2); border-color: transparent; background: transparent; }
@@ -59,8 +59,8 @@
     .page-desc { font-size: 14px; color: rgba(196,206,202,0.65); font-weight: 300; line-height: 1.8; }
 
     /* SECTION TABS */
-    .sec-tabs { background: var(--gm-xdark2); border-bottom: 0.5px solid rgba(42,58,52,0.12); padding: 0 64px; display: flex; gap: 0; position: sticky; top: 72px; z-index: 90; }
-    .sec-tab { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; color: rgba(42,58,52,0.5); padding: 20px 24px; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; text-decoration: none; display: block; white-space: nowrap; }
+    .sec-tabs { background: var(--gm-xdark2); border-bottom: 0.5px solid rgba(196,206,202,0.12); padding: 0 64px; display: flex; gap: 0; position: sticky; top: 72px; z-index: 90; }
+    .sec-tab { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; color: rgba(196,206,202,0.55); padding: 20px 24px; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; text-decoration: none; display: block; white-space: nowrap; }
     .sec-tab:hover { color: var(--gm); }
     .sec-tab.active { color: var(--gm-xlight); border-bottom-color: var(--gm); }
 
@@ -274,38 +274,16 @@
         <span class="sec-num">01</span>
         <span class="sec-name" data-i18n="tab_qna">Q&A</span>
       </div>
-      <div class="form-grid">
-        <div class="form-group">
-          <label class="form-label" data-i18n="form_name">이름</label>
-          <input type="text" class="form-input" data-i18n-placeholder="form_name_ph" placeholder="홍길동" />
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-i18n="form_email">이메일</label>
-          <input type="email" class="form-input" placeholder="example@email.com" />
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-i18n="form_category">문의 유형</label>
-          <select class="form-select">
-            <option data-i18n="cat_product">제품 문의</option>
-            <option data-i18n="cat_order">주문 / 배송</option>
-            <option data-i18n="cat_return">교환 / 환불</option>
-            <option data-i18n="cat_other">기타</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-i18n="form_order">주문번호 (선택)</label>
-          <input type="text" class="form-input" data-i18n-placeholder="form_order_ph" placeholder="주문번호를 입력해주세요" />
-        </div>
-        <div class="form-group full">
-          <label class="form-label" data-i18n="form_content">문의 내용</label>
-          <textarea class="form-textarea" data-i18n-placeholder="form_content_ph" placeholder="문의하실 내용을 자세히 작성해주세요."></textarea>
-        </div>
+      <div style="background:white;border:0.5px solid #d4c9b0;border-radius:2px;padding:32px;text-align:center;">
+        <p style="font-size:14px;color:var(--text-muted);line-height:2;margin-bottom:28px;" data-i18n="qna_desc">궁금한 사항이나 필요한 지원을 문의해 주세요.<br>영업일 기준 1~2일 내 답변드리겠습니다.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSezXGIt4TyK2z3qvNenQxEAcgyJ5CYM23t-B8fXYN0rRpNACg/viewform" target="_blank" rel="noopener"
+          style="display:inline-flex;align-items:center;gap:12px;background:var(--gm);color:var(--gm-xdark);font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;padding:14px 36px;border-radius:2px;text-decoration:none;transition:background 0.2s;"
+          onmouseover="this.style.background='#c4ceca'" onmouseout="this.style.background='#8A9992'"
+          data-i18n="form_submit">문의 작성하기 →</a>
+        <p style="font-size:11px;color:var(--text-muted);margin-top:20px;" data-i18n="form_notice">영업일 기준 1~2일 내 이메일로 답변드립니다. · support@twolablog.com</p>
       </div>
-      <button class="form-submit" data-i18n="form_submit">문의 보내기 →</button>
-      <p class="form-notice" data-i18n="form_notice">영업일 기준 1~2일 내 이메일로 답변드립니다. · support@twolablog.com</p>
     </section>
 
-    <!-- FAQ -->
     <section class="inq-section" id="faq">
       <div class="sec-header">
         <span class="sec-num">02</span>
@@ -372,26 +350,16 @@
         <span class="sec-num">03</span>
         <span class="sec-name" data-i18n="tab_wholesale">Wholesale</span>
       </div>
-      <div class="wholesale-grid">
+      <div class="wholesale-grid" style="grid-template-columns:1fr 1fr;">
         <div class="ws-card">
           <div class="ws-card-icon">🏪</div>
-          <div class="ws-card-title" data-i18n="ws_t1">도매 공급</div>
+          <div class="ws-card-title" data-i18n="ws_t1">온·오프라인 리테일러</div>
           <p class="ws-card-desc" data-i18n="ws_d1">펫샵, 아웃도어샵 등 오프라인 리테일러를 위한 도매 공급을 진행합니다. 최소 주문 수량 및 조건은 별도 협의합니다.</p>
         </div>
         <div class="ws-card">
-          <div class="ws-card-icon">🌐</div>
-          <div class="ws-card-title" data-i18n="ws_t2">온라인 리셀러</div>
-          <p class="ws-card-desc" data-i18n="ws_d2">온라인 스토어 운영자를 위한 리셀러 프로그램을 준비 중입니다. 파트너십 문의는 이메일로 연락 주세요.</p>
-        </div>
-        <div class="ws-card">
           <div class="ws-card-icon">🤝</div>
-          <div class="ws-card-title" data-i18n="ws_t3">브랜드 협업</div>
-          <p class="ws-card-desc" data-i18n="ws_d3">아웃도어, 반려동물 관련 브랜드와의 컬래버레이션을 환영합니다. 구체적인 제안은 이메일로 보내주세요.</p>
-        </div>
-        <div class="ws-card">
-          <div class="ws-card-icon">📦</div>
-          <div class="ws-card-title" data-i18n="ws_t4">OEM / ODM</div>
-          <p class="ws-card-desc" data-i18n="ws_d4">자체 브랜드 제작을 위한 OEM/ODM 서비스도 검토 가능합니다. 상세 문의는 이메일로 연락 주세요.</p>
+          <div class="ws-card-title" data-i18n="ws_t2">브랜드 협업</div>
+          <p class="ws-card-desc" data-i18n="ws_d2">아웃도어, 반려동물 관련 브랜드와의 컬래버레이션을 환영합니다. 구체적인 제안은 이메일로 보내주세요.</p>
         </div>
       </div>
       <div class="ws-email-box">
@@ -472,7 +440,7 @@
         nav_brand: "브랜드", nav_products: "제품", nav_store: "스토어", nav_inquiry: "문의",
         page_title: "무엇이든 물어보세요",
         page_desc: "Q&A, 자주 묻는 질문, 도매 문의까지 — TWOLAB이 답변드립니다.",
-        tab_qna: "Q&A", tab_faq: "FAQ", tab_wholesale: "Wholesale",
+        tab_qna: "Q&A", tab_faq: "FAQ", qna_desc: "궁금한 사항이나 필요한 지원을 문의해 주세요.<br>영업일 기준 1~2일 내 답변드리겠습니다.", form_submit: "문의 작성하기 →", form_notice: "영업일 기준 1~2일 내 이메일로 답변드립니다. · support@twolablog.com",, tab_wholesale: "Wholesale",
         form_name: "이름", form_email: "이메일", form_category: "문의 유형",
         form_order: "주문번호 (선택)", form_content: "문의 내용",
         form_submit: "문의 보내기 →",
@@ -508,7 +476,7 @@
       nav_brand: "Brand", nav_products: "Products", nav_store: "Store", nav_inquiry: "Contact",
       page_title: "We are here to help",
       page_desc: "Q&A, frequently asked questions, and wholesale inquiries — TWOLAB is happy to assist.",
-      tab_qna: "Q&A", tab_faq: "FAQ", tab_wholesale: "Wholesale",
+      tab_qna: "Q&A", tab_faq: "FAQ", qna_desc: "궁금한 사항이나 필요한 지원을 문의해 주세요.<br>영업일 기준 1~2일 내 답변드리겠습니다.", form_submit: "문의 작성하기 →", form_notice: "영업일 기준 1~2일 내 이메일로 답변드립니다. · support@twolablog.com",, tab_wholesale: "Wholesale",
       form_name: "Full Name", form_email: "Email Address", form_category: "Inquiry Type",
       form_order: "Order Number (Optional)", form_content: "Your Message",
       form_submit: "Send Message",
@@ -524,10 +492,8 @@
       faq_a4: "Orders are shipped within 1–3 business days after confirmation. Remote areas may require additional time.",
       faq_q5: "Are there any differences between the colour variants?",
       faq_a5: "All specs — materials, sizing, and features — are identical across colours. Available in Green Milieu, Simply Taupe, and Charcoal.",
-      ws_t1: "Wholesale Supply", ws_d1: "We supply wholesale to offline retailers including pet shops and outdoor stores. Minimum order quantities and terms are negotiable.",
-      ws_t2: "Online Reseller", ws_d2: "A reseller programme for online store operators is currently in development. Please reach out for partnership inquiries.",
-      ws_t3: "Brand Collaboration", ws_d3: "We welcome collaborations with outdoor and pet-related brands. Send your proposal to our email and we will be in touch.",
-      ws_t4: "OEM / ODM", ws_d4: "OEM/ODM services for private label manufacturing are available upon review. Please contact us for details.",
+      ws_t1: "On & Offline Retailers", ws_d1: "We offer wholesale to pet shops, outdoor retailers, and online store operators. Minimum order quantities and pricing are available upon request.",
+      ws_t2: "Brand Collaboration", ws_d2: "We are open to collaborations with outdoor and pet lifestyle brands. Send us your proposal and we will get back to you.",
       ws_email_label: "Wholesale Inquiry", ws_email_btn: "Get in Touch →",
       ft_customer: "Customer Service",
       ft_hours: "Weekdays 11:00 AM – 6:00 PM<br>(Lunch Break: 1:00 PM – 2:00 PM)",
