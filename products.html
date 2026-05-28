@@ -16,6 +16,8 @@
       --gm-dark:#4e5f58; --gm-xdark:#2a3a34; --gm-xdark2:#1e2c27;
       --cream:#f4f0ea; --warm:#e6e0d4; --text-dark:#1e2a26; --text-muted:#6b7870;
     }
+
+    /* NAV */
     nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(42,58,52,0.96); backdrop-filter:blur(12px); border-bottom:0.5px solid rgba(138,153,146,0.15); padding:0 48px; height:72px; display:flex; align-items:center; justify-content:space-between; }
     .nav-logo { font-family:'Montserrat',sans-serif; font-weight:800; font-size:30px; letter-spacing:6px; color:var(--gm-xlight); text-decoration:none; }
     .nav-logo sup { font-size:11px; font-weight:400; opacity:0.6; vertical-align:super; }
@@ -30,6 +32,8 @@
     .lang-btn .divider { color:rgba(138,153,146,0.2); font-size:10px; border:none; padding:0 2px; cursor:default; }
     .nav-toggle { display:none; flex-direction:column; gap:5px; cursor:pointer; }
     .nav-toggle span { display:block; width:24px; height:1.5px; background:var(--gm-light); }
+
+    /* PAGE HEADER */
     .page-header { background:var(--gm-xdark); padding:120px 64px 64px; position:relative; overflow:hidden; }
     .page-header::after { content:'PRODUCTS'; position:absolute; right:48px; bottom:-20px; font-family:'Montserrat',sans-serif; font-weight:800; font-size:120px; color:rgba(138,153,146,0.04); letter-spacing:-4px; line-height:1; }
     .page-eyebrow { display:flex; align-items:center; gap:14px; margin-bottom:16px; }
@@ -37,42 +41,73 @@
     .page-tag { font-family:'Montserrat',sans-serif; font-size:11px; font-weight:600; letter-spacing:3px; color:var(--gm); }
     .page-title { font-family:'Noto Sans KR',sans-serif; font-weight:700; font-size:clamp(28px,4vw,48px); color:var(--gm-xlight); letter-spacing:-1px; line-height:1.2; margin-bottom:12px; }
     .page-desc { font-size:14px; color:rgba(196,206,202,0.65); font-weight:300; line-height:1.8; }
-    .cat-tabs { background:var(--gm-xdark2); border-bottom:0.5px solid rgba(138,153,146,0.12); padding:0 64px; display:flex; position:sticky; top:72px; z-index:90; }
-    .cat-tab { font-family:'Montserrat',sans-serif; font-size:11px; font-weight:600; letter-spacing:2px; color:rgba(138,153,146,0.5); padding:20px 24px; cursor:pointer; border-bottom:2px solid transparent; transition:all 0.2s; text-decoration:none; display:block; white-space:nowrap; }
-    .cat-tab:hover { color:var(--gm); }
-    .cat-tab.active { color:var(--gm-xlight); border-bottom-color:var(--gm); }
-    .main { padding:64px; }
-    .cat-section { margin-bottom:80px; scroll-margin-top:140px; }
-    .cat-header { margin-bottom:36px; padding-bottom:20px; border-bottom:0.5px solid #d4c9b0; display:flex; align-items:flex-end; justify-content:space-between; }
-    .cat-num { font-family:'Montserrat',sans-serif; font-size:40px; font-weight:800; color:rgba(138,153,146,0.15); line-height:1; }
-    .cat-name { font-family:'Noto Sans KR',sans-serif; font-size:22px; font-weight:700; color:var(--text-dark); letter-spacing:-0.5px; }
-    .cat-count { font-family:'Montserrat',sans-serif; font-size:11px; color:var(--gm); letter-spacing:1px; }
-    .prod-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-    .prod-grid.two-col { grid-template-columns:repeat(2,1fr); max-width:720px; }
-    .prod-card { background:var(--cream); border:0.5px solid #d4c9b0; border-radius:2px; overflow:hidden; cursor:pointer; transition:transform 0.2s; position:relative; }
-    .prod-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--gm); transform:scaleX(0); transition:transform 0.3s; transform-origin:left; }
-    .prod-card:hover { transform:translateY(-4px); }
-    .prod-card:hover::after { transform:scaleX(1); }
-    .prod-img { width:100%; aspect-ratio:4/3; background:var(--warm); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; border-bottom:0.5px solid #d4c9b0; position:relative; }
-    .img-icon { font-size:36px; opacity:0.25; }
-    .img-label { font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:2px; color:rgba(138,153,146,0.4); }
-    .color-dot { position:absolute; top:12px; right:12px; width:20px; height:20px; border-radius:50%; border:2px solid rgba(255,255,255,0.6); box-shadow:0 2px 6px rgba(0,0,0,0.15); }
-    .prod-body { padding:20px; }
-    .prod-color-name { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:600; letter-spacing:2px; color:var(--gm); margin-bottom:6px; }
-    .prod-name { font-family:'Montserrat',sans-serif; font-size:15px; font-weight:700; color:var(--text-dark); margin-bottom:10px; }
-    .prod-desc { font-size:13px; color:var(--text-muted); line-height:1.8; font-weight:300; margin-bottom:20px; }
-    .prod-footer { display:flex; align-items:center; justify-content:space-between; }
-    .prod-soon { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:2px; color:var(--gm-dark); background:var(--gm-xlight); padding:4px 10px; border-radius:10px; }
-    .prod-arrow { font-size:16px; color:var(--gm); opacity:0; transition:opacity 0.2s; }
-    .prod-card:hover .prod-arrow { opacity:1; }
-    .cta-strip { background:var(--gm-xdark); border-radius:2px; padding:48px 56px; display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap; }
-    .cta-title { font-family:'Noto Sans KR',sans-serif; font-weight:700; font-size:22px; color:var(--gm-xlight); letter-spacing:-0.5px; margin-bottom:8px; }
-    .cta-desc-text { font-size:13px; color:rgba(196,206,202,0.6); font-weight:300; line-height:1.8; }
-    .cta-btns { display:flex; gap:12px; flex-wrap:wrap; }
-    .btn-fill { display:inline-block; background:var(--gm); color:var(--gm-xdark); font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; padding:13px 24px; border-radius:2px; text-decoration:none; transition:background 0.2s; }
-    .btn-fill:hover { background:var(--gm-light); }
-    .btn-outline-dark { display:inline-block; border:0.5px solid rgba(138,153,146,0.4); color:var(--gm-light); font-family:'Montserrat',sans-serif; font-size:11px; font-weight:600; letter-spacing:2px; padding:13px 24px; border-radius:2px; text-decoration:none; transition:background 0.2s; }
-    .btn-outline-dark:hover { background:rgba(138,153,146,0.08); }
+
+    /* MAIN */
+    .main { padding:56px 64px; }
+
+    /* STEP LABEL */
+    .step-label { display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+    .step-num { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; letter-spacing:2px; color:var(--gm); }
+    .step-text { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:600; letter-spacing:2px; color:var(--text-muted); }
+    .step-line { flex:1; height:0.5px; background:#d4c9b0; }
+
+    /* 공통 카드 그리드 */
+    .card-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:8px; }
+
+    /* 공통 카드 */
+    .item-card {
+      background:white; border:1px solid #d4c9b0; border-radius:4px;
+      overflow:hidden; cursor:pointer;
+      transition:border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+    .item-card:hover { border-color:var(--gm); background:#edf0ee; transform:translateY(-2px); }
+    .item-card.active { border-color:var(--gm); background:#edf0ee; }
+    .item-card.disabled { opacity:0.4; border-style:dashed; cursor:default; pointer-events:none; }
+
+    /* 이미지 영역 */
+    .item-img {
+      height:140px;
+      background-color:var(--warm);
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:6px;
+      transition:background-color 0.2s;
+      position:relative;
+    }
+    .item-card:hover .item-img,
+    .item-card.active .item-img { background-color:#d0ddd6; }
+    .img-cat-label { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:2.5px; color:#4e5f58; }
+    .img-badge { background:rgba(138,153,146,0.2); border-radius:10px; padding:3px 10px; font-family:'Montserrat',sans-serif; font-size:7px; font-weight:700; letter-spacing:2px; color:#4e5f58; }
+    .color-swatch { width:24px; height:24px; border-radius:50%; border:2px solid rgba(255,255,255,0.6); box-shadow:0 2px 6px rgba(0,0,0,0.12); }
+
+    /* 바디 */
+    .item-body { padding:14px; }
+    .item-sub { font-family:'Montserrat',sans-serif; font-size:8px; font-weight:600; letter-spacing:1.5px; color:var(--gm); margin-bottom:4px; }
+    .item-name { font-family:'Noto Sans KR',sans-serif; font-size:13px; font-weight:700; color:var(--text-dark); margin-bottom:4px; }
+    .item-desc { font-size:11px; color:var(--text-muted); line-height:1.6; font-weight:300; }
+    .item-count { font-family:'Montserrat',sans-serif; font-size:9px; color:var(--gm); letter-spacing:1px; margin-top:4px; }
+    .item-soon { display:inline-block; font-family:'Montserrat',sans-serif; font-size:8px; font-weight:700; letter-spacing:2px; background:var(--gm-xlight); color:var(--gm-dark); padding:3px 9px; border-radius:10px; margin-top:6px; }
+
+    /* 섹션 구분 */
+    .section-divider { display:flex; align-items:center; gap:12px; margin:28px 0 20px; }
+    .divider-line { flex:1; height:0.5px; background:#d4c9b0; }
+    .divider-arrow { font-size:18px; color:var(--gm); opacity:0.5; }
+    .divider-label { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:600; letter-spacing:2px; color:var(--text-muted); }
+
+    /* 브레드크럼 */
+    .breadcrumb { display:flex; align-items:center; gap:8px; margin-bottom:16px; }
+    .bc-item { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:600; letter-spacing:1px; color:var(--gm); cursor:pointer; }
+    .bc-item:hover { color:var(--gm-dark); }
+    .bc-sep { font-size:10px; color:var(--gm-light); }
+    .bc-current { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:600; letter-spacing:1px; color:var(--text-dark); }
+
+    /* 숨김/표시 */
+    .level { display:none; }
+    .level.visible { display:block; }
+
+    /* FOOTER */
     footer { background:var(--gm-xdark); border-top:0.5px solid rgba(196,206,202,0.15); padding:56px 64px 48px; }
     .footer-inner { display:grid; grid-template-columns:1fr 200px; gap:48px; align-items:start; }
     .footer-right-cols { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
@@ -83,17 +118,18 @@
     .footer-col p, .footer-col a { font-size:12px; color:rgba(196,206,202,0.7); line-height:1.9; font-weight:300; text-decoration:none; display:block; transition:color 0.2s; }
     .footer-col a:hover { color:var(--gm-light); }
     .footer-phone { font-family:'Montserrat',sans-serif; font-size:15px; font-weight:700; color:var(--gm-xlight); letter-spacing:1px; margin-bottom:6px; display:block; }
-    @media (max-width:900px) { .prod-grid { grid-template-columns:repeat(2,1fr); } }
+
+    @media (max-width:900px) { .card-grid { grid-template-columns:repeat(3,1fr); } }
     @media (max-width:768px) {
       nav { padding:0 24px; } .nav-links { display:none; }
       .nav-links.open { display:flex; flex-direction:column; position:fixed; top:72px; left:0; right:0; background:var(--gm-xdark2); padding:24px; gap:20px; }
       .nav-toggle { display:flex; }
       .page-header { padding:100px 24px 48px; } .page-header::after { display:none; }
-      .cat-tabs { padding:0 24px; overflow-x:auto; } .main { padding:36px 24px; }
+      .main { padding:36px 24px; }
+      .card-grid { grid-template-columns:repeat(2,1fr); }
       footer { padding:40px 24px 36px; } .footer-inner { grid-template-columns:1fr; gap:36px; }
-      .footer-right-cols { grid-template-columns:1fr 1fr; gap:24px; }
+      .footer-right-cols { grid-template-columns:1fr 1fr; }
     }
-    @media (max-width:480px) { .prod-grid { grid-template-columns:1fr; } .prod-grid.two-col { grid-template-columns:1fr; max-width:100%; } }
   </style>
 </head>
 <body>
@@ -119,98 +155,310 @@
   <div class="page-header">
     <div class="page-eyebrow"><div class="page-line"></div><span class="page-tag">TWOLAB® COLLECTION</span></div>
     <h1 class="page-title" data-i18n="page_title">함께하는<br>모든 순간을 위해</h1>
-    <p class="page-desc" data-i18n="page_desc">반려견과 함께하는 아웃도어 라이프를 위한 TWOLAB 첫 번째 컬렉션.<br>곧 만나보실 수 있습니다.</p>
-  </div>
-
-  <div class="cat-tabs">
-    <a href="#collar" class="cat-tab active" data-i18n="tab_collar">목줄 · 칼라</a>
-    <a href="#leash" class="cat-tab" data-i18n="tab_leash">리쉬</a>
-    <a href="#harness" class="cat-tab" data-i18n="tab_harness">하네스</a>
-    <a href="#raincoat" class="cat-tab" data-i18n="tab_raincoat">의류</a>
-    <a href="#accessory" class="cat-tab" data-i18n="tab_accessory">액세서리</a>
+    <p class="page-desc" data-i18n="page_desc">반려견과 함께하는 아웃도어 라이프를 위한 TWOLAB 첫 번째 컬렉션. 곧 만나보실 수 있습니다.</p>
   </div>
 
   <div class="main">
-    <section class="cat-section" id="collar">
-      <div class="cat-header"><div style="display:flex;align-items:center;gap:16px"><span class="cat-num">01</span><span class="cat-name" data-i18n="tab_collar">목줄</span></div><span class="cat-count">3 COLOURS</span></div>
-      <div class="prod-grid">
-        <div class="prod-card"><div class="prod-img" style="background-image:url('placeholder_collar.svg');background-size:cover;background-position:center;"><div class="color-dot" style="background:#8A9992"></div></div><div class="prod-body"><div class="prod-color-name">GREEN MILIEU</div><div class="prod-name" data-i18n="prod_collar">목줄 · 칼라</div><p class="prod-desc" data-i18n="desc_collar">트레일에서도 안심할 수 있는 견고한 소재와 안전한 버클 설계</p><div class="prod-footer"><span class="prod-soon" data-i18n="coming_soon">COMING SOON</span><span class="prod-arrow">→</span></div></div></div>
-        <div class="prod-card"><div class="prod-img" style="background-image:url('placeholder_collar.svg');background-size:cover;background-position:center;"><div class="color-dot" style="background:#b5a898"></div></div><div class="prod-body"><div class="prod-color-name">SIMPLY TAUPE</div><div class="prod-name" data-i18n="prod_collar">목줄 · 칼라</div><p class="prod-desc" data-i18n="desc_collar">트레일에서도 안심할 수 있는 견고한 소재와 안전한 버클 설계</p><div class="prod-footer"><span class="prod-soon" data-i18n="coming_soon">COMING SOON</span><span class="prod-arrow">→</span></div></div></div>
-        <div class="prod-card"><div class="prod-img" style="background-image:url('placeholder_collar.svg');background-size:cover;background-position:center;"><div class="color-dot" style="background:#3a3a3a"></div></div><div class="prod-body"><div class="prod-color-name">CHARCOAL</div><div class="prod-name" data-i18n="prod_collar">목줄 · 칼라</div><p class="prod-desc" data-i18n="desc_collar">트레일에서도 안심할 수 있는 견고한 소재와 안전한 버클 설계</p><div class="prod-footer"><span class="prod-soon" data-i18n="coming_soon">COMING SOON</span><span class="prod-arrow">→</span></div></div></div>
+
+    <!-- 브레드크럼 -->
+    <div class="breadcrumb" id="breadcrumb">
+      <span class="bc-current" data-i18n="bc_all">전체 카테고리</span>
+    </div>
+
+    <!-- LEVEL 1: 카테고리 -->
+    <div id="level1" class="level visible">
+      <div class="step-label">
+        <span class="step-num">01</span>
+        <span class="step-text" data-i18n="step1">카테고리를 선택해주세요</span>
+        <div class="step-line"></div>
       </div>
-    </section>
-    <section class="cat-section" id="leash">
-      <div class="cat-header"><div style="display:flex;align-items:center;gap:16px"><span class="cat-num">02</span><span class="cat-name" data-i18n="tab_leash">리쉬</span></div><span class="cat-count">3 COLOURS</span></div>
-      <div class="prod-grid">
-        <div class="prod-card"><div class="prod-img" style="background-image:url('placeholder_leash.svg');background-size:cover;background-position:center;"><div class="color-dot" style="background:#8A9992"></div></div><div class="prod-body"><div class="prod-color-name">GREEN MILIEU</div><div class="prod-name" data-i18n="prod_leash">리쉬</div><p class="prod-desc" data-i18n="desc_leash">다양한 지형과 활동에 맞춘 강도와 길이, 편안한 핸들 그립감</p><div class="prod-footer"><span class="prod-soon" data-i18n="coming_soon">COMING SOON</span><span class="prod-arrow">→</span></div></div></div>
-        <div class="prod-card"><div class="prod-img" style="background-image:url('placeholder_leash.svg');background-size:cover;background-position:center;"><div class="color-dot" style="background:#b5a898"></div></div><div class="prod-body"><div class="prod-color-name">SIMPLY TAUPE</div><div class="prod-name" data-i18n="prod_leash">리쉬</div><p class="prod-desc" data-i18n="desc_leash">다양한 지형과 활동에 맞춘 강도와 길이, 편안한 핸들 그립감</p><div class="prod-footer"><span class="prod-soon" data-i18n="coming_soon">COMING SOON</span><span class="prod-arrow">→</span></div></div></div>
-        <div class="prod-card"><div class="prod-img" style="background-image:url('placeholder_leash.svg');background-size:cover;background-position:center;"><div class="color-dot" style="background:#3a3a3a"></div></div><div class="prod-body"><div class="prod-color-name">CHARCOAL</div><div class="prod-name" data-i18n="prod_leash">리쉬</div><p class="prod-desc" data-i18n="desc_leash">다양한 지형과 활동에 맞춘 강도와 길이, 편안한 핸들 그립감</p><div class="prod-footer"><span class="prod-soon" data-i18n="coming_soon">COMING SOON</span><span class="prod-arrow">→</span></div></div></div>
-      </div>
-    </section>
-    <section class="cat-section" id="harness">
-      <div class="cat-header"><div style="display:flex;align-items:center;gap:16px"><span class="cat-num">03</span><span class="cat-name" data-i18n="tab_harness">하네스</span></div><span class="cat-count">3 COLOURS</span></div>
-      <div class="prod-grid">
-        <div class="prod-card"><div class="prod-img" style="background-image:url('placeholder_harness.svg');background-size:cover;background-position:center;"><div class="color-dot" style="background:#8A9992"></div></div><div class="prod-body"><div class="prod-color-name">GREEN MILIEU</div><div class="prod-name" data-i18n="prod_harness">하네스</div><p class="prod-desc" data-i18n="desc_harness">장시간 착용에도 편안한 아웃도어 전용 하네스, 조절 가능한 핏</p><div class="prod-footer"><span class="prod-soon" data-i18n="coming_soon">COMING SOON</span><span class="prod-arrow">→</span></div></div></div>
-        <div class="prod-card"><div class="prod-img" style="background-image:url('placeholder_harness.svg');background-size:cover;background-position:center;"><div class="color-dot" style="background:#b5a898"></div></div><div class="prod-body"><div class="prod-color-name">SIMPLY TAUPE</div><div class="prod-name" data-i18n="prod_harness">하네스</div><p class="prod-desc" data-i18n="desc_harness">장시간 착용에도 편안한 아웃도어 전용 하네스, 조절 가능한 핏</p><div class="prod-footer"><span class="prod-soon" data-i18n="coming_soon">COMING SOON</span><span class="prod-arrow">→</span></div></div></div>
-        <div class="prod-card"><div class="prod-img" style="background-image:url('placeholder_harness.svg');background-size:cover;background-position:center;"><div class="color-dot" style="background:#3a3a3a"></div></div><div class="prod-body"><div class="prod-color-name">CHARCOAL</div><div class="prod-name" data-i18n="prod_harness">하네스</div><p class="prod-desc" data-i18n="desc_harness">장시간 착용에도 편안한 아웃도어 전용 하네스, 조절 가능한 핏</p><div class="prod-footer"><span class="prod-soon" data-i18n="coming_soon">COMING SOON</span><span class="prod-arrow">→</span></div></div></div>
-      </div>
-    </section>
-    <section class="cat-section" id="raincoat">
-      <div class="cat-header"><div style="display:flex;align-items:center;gap:16px"><span class="cat-num">04</span><span class="cat-name" data-i18n="tab_raincoat">의류</span></div><span class="cat-count">2 COLOURS</span></div>
-      <div class="prod-grid two-col">
-        <div class="prod-card"><div class="prod-img" style="background-image:url('placeholder_raincoat.svg');background-size:cover;background-position:center;"><div class="color-dot" style="background:#8A9992"></div></div><div class="prod-body"><div class="prod-color-name">GREEN MILIEU</div><div class="prod-name" data-i18n="prod_raincoat">의류</div><p class="prod-desc" data-i18n="desc_raincoat">어떤 날씨에도 함께할 수 있는 경량 방수 레인코트</p><div class="prod-footer"><span class="prod-soon" data-i18n="coming_soon">COMING SOON</span><span class="prod-arrow">→</span></div></div></div>
-        <div class="prod-card"><div class="prod-img" style="background-image:url('placeholder_raincoat.svg');background-size:cover;background-position:center;"><div class="color-dot" style="background:#b5a898"></div></div><div class="prod-body"><div class="prod-color-name">SIMPLY TAUPE</div><div class="prod-name" data-i18n="prod_raincoat">의류</div><p class="prod-desc" data-i18n="desc_raincoat">어떤 날씨에도 함께할 수 있는 경량 방수 레인코트</p><div class="prod-footer"><span class="prod-soon" data-i18n="coming_soon">COMING SOON</span><span class="prod-arrow">→</span></div></div></div>
-      </div>
-    </section>
-    <section class="cat-section" id="accessory">
-      <div class="cat-header"><div style="display:flex;align-items:center;gap:16px"><span class="cat-num">05</span><span class="cat-name" data-i18n="tab_accessory">액세서리</span></div><span class="cat-count">2 COLOURS</span></div>
-      <div class="prod-grid two-col">
-        <div class="prod-card"><div class="prod-img" style="background-image:url('placeholder_accessory.svg');background-size:cover;background-position:center;"><div class="color-dot" style="background:#8A9992"></div></div><div class="prod-body"><div class="prod-color-name">MISTY FOREST</div><div class="prod-name" data-i18n="prod_accessory">액세서리</div><p class="prod-desc" data-i18n="desc_accessory">산책 필수템을 깔끔하게 수납하는 Pocket LAB 파우치</p><div class="prod-footer"><span class="prod-soon" data-i18n="coming_soon">COMING SOON</span><span class="prod-arrow">→</span></div></div></div>
-        <div class="prod-card"><div class="prod-img" style="background-image:url('placeholder_accessory.svg');background-size:cover;background-position:center;"><div class="color-dot" style="background:#b5a898"></div></div><div class="prod-body"><div class="prod-color-name">DUST TAUPE</div><div class="prod-name" data-i18n="prod_accessory">액세서리</div><p class="prod-desc" data-i18n="desc_accessory">산책 필수템을 깔끔하게 수납하는 Pocket LAB 파우치</p><div class="prod-footer"><span class="prod-soon" data-i18n="coming_soon">COMING SOON</span><span class="prod-arrow">→</span></div></div></div>
-      </div>
-    </section>
-    <div class="cta-strip">
-      <div><div class="cta-title" data-i18n="cta_title">네이버 스마트스토어 오픈 준비 중</div><p class="cta-desc-text" data-i18n="cta_desc">인스타그램을 팔로우하고 오픈 소식을 가장 먼저 받아보세요.</p></div>
-      <div class="cta-btns">
-        <a href="index.html#store" class="btn-fill" data-i18n="cta_btn">STORE 오픈 예정</a>
-        <a href="https://instagram.com/twolab_official" target="_blank" class="btn-outline-dark">@twolab_official ↗</a>
+      <div class="card-grid">
+        <div class="item-card" onclick="showCollections('collar')">
+          <div class="item-img" style="background-image:url('placeholder_collar.svg');">
+            <div class="img-cat-label">COLLAR</div>
+            <div class="img-badge">COMING SOON</div>
+          </div>
+          <div class="item-body">
+            <div class="item-name" data-i18n="cat_collar">목줄</div>
+            <div class="item-count">1 Collection</div>
+          </div>
+        </div>
+        <div class="item-card" onclick="showCollections('leash')">
+          <div class="item-img" style="background-image:url('placeholder_leash.svg');">
+            <div class="img-cat-label">LEASH</div>
+            <div class="img-badge">COMING SOON</div>
+          </div>
+          <div class="item-body">
+            <div class="item-name" data-i18n="cat_leash">리쉬</div>
+            <div class="item-count">1 Collection</div>
+          </div>
+        </div>
+        <div class="item-card" onclick="showCollections('harness')">
+          <div class="item-img" style="background-image:url('placeholder_harness.svg');">
+            <div class="img-cat-label">HARNESS</div>
+            <div class="img-badge">COMING SOON</div>
+          </div>
+          <div class="item-body">
+            <div class="item-name" data-i18n="cat_harness">하네스</div>
+            <div class="item-count">1 Collection</div>
+          </div>
+        </div>
+        <div class="item-card" onclick="showCollections('apparel')">
+          <div class="item-img" style="background-image:url('placeholder_raincoat.svg');">
+            <div class="img-cat-label">APPAREL</div>
+            <div class="img-badge">COMING SOON</div>
+          </div>
+          <div class="item-body">
+            <div class="item-name" data-i18n="cat_apparel">의류</div>
+            <div class="item-count">1 Collection</div>
+          </div>
+        </div>
+        <div class="item-card" onclick="showCollections('accessory')">
+          <div class="item-img" style="background-image:url('placeholder_accessory.svg');">
+            <div class="img-cat-label">ACCESSORY</div>
+            <div class="img-badge">COMING SOON</div>
+          </div>
+          <div class="item-body">
+            <div class="item-name" data-i18n="cat_accessory">액세서리</div>
+            <div class="item-count">1 Collection</div>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- LEVEL 2: 컬렉션 -->
+    <div id="level2" class="level">
+      <div class="step-label">
+        <span class="step-num">02</span>
+        <span class="step-text" data-i18n="step2">컬렉션을 선택해주세요</span>
+        <div class="step-line"></div>
+      </div>
+      <div class="card-grid" id="collectionGrid"></div>
+    </div>
+
+    <!-- LEVEL 3: 색상/상세 -->
+    <div id="level3" class="level">
+      <div class="step-label">
+        <span class="step-num">03</span>
+        <span class="step-text" data-i18n="step3">색상을 선택해주세요</span>
+        <div class="step-line"></div>
+      </div>
+      <div class="card-grid" id="variantGrid"></div>
+    </div>
+
   </div>
 
   <footer>
     <div class="footer-inner">
       <div class="footer-right-cols">
-        <div class="footer-col"><span class="footer-col-title" data-i18n="ft_customer">Customer Service</span><span class="footer-phone">000-000-0000</span><p data-i18n="ft_hours">평일 AM 11:00 ~ PM 6:00<br>(점심시간 : PM 1:00 ~ 2:00)</p><p data-i18n="ft_closed">휴무 : 토,일요일 및 공휴일</p></div>
-        <div class="footer-col"><span class="footer-col-title" data-i18n="ft_company">Company Info</span><p data-i18n="ft_bizname">상호명 : 투랩 (TWOLAB)</p><p data-i18n="ft_ceo">대표 : 김효섭</p><p data-i18n="ft_addr">주소 : 인천광역시 서구 고산후로 35번길 32, 5층 1-7호 (당하동, 명진프라자)</p><p data-i18n="ft_biz">사업자등록번호 : 746-05-03753</p><p data-i18n="ft_ecom">통신판매업신고번호 : 2026-인천서구-2140</p><p>Email: support@twolablog.com</p></div>
-        <div class="footer-col"><span class="footer-col-title" data-i18n="ft_board">Support</span><a href="inquiry.html#qna" data-i18n="ft_qna">Q&amp;A</a><a href="inquiry.html#faq" data-i18n="ft_faq">FAQ</a><a href="inquiry.html#wholesale" data-i18n="ft_wholesale">Wholesale</a></div>
+        <div class="footer-col">
+          <span class="footer-col-title" data-i18n="ft_customer">Customer Service</span>
+          <span class="footer-phone">000-000-0000</span>
+          <p data-i18n="ft_hours">평일 AM 11:00 ~ PM 6:00<br>(점심시간 : PM 1:00 ~ 2:00)</p>
+          <p data-i18n="ft_closed">휴무 : 토,일요일 및 공휴일</p>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title" data-i18n="ft_company">Company Info</span>
+          <p data-i18n="ft_bizname">상호명 : 투랩 (TWOLAB)</p>
+          <p data-i18n="ft_ceo">대표 : 김효섭</p>
+          <p data-i18n="ft_addr">주소 : 인천광역시 서구 고산후로 35번길 32, 5층 1-7호 (당하동, 명진프라자)</p>
+          <p data-i18n="ft_biz">사업자등록번호 : 746-05-03753</p>
+          <p data-i18n="ft_ecom">통신판매업신고번호 : 2026-인천서구-2140</p>
+          <p>Email: support@twolablog.com</p>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title" data-i18n="ft_board">Support</span>
+          <a href="inquiry.html#qna" data-i18n="ft_qna">Q&amp;A</a>
+          <a href="inquiry.html#faq" data-i18n="ft_faq">FAQ</a>
+          <a href="inquiry.html#wholesale" data-i18n="ft_wholesale">Wholesale</a>
+        </div>
       </div>
-      <div class="footer-brand"><span class="footer-logo">TWOLAB®</span><span class="footer-copy">Copyright © TWOLAB.<br>All rights reserved.</span></div>
+      <div class="footer-brand">
+        <span class="footer-logo">TWOLAB®</span>
+        <span class="footer-copy">Copyright © TWOLAB.<br>All rights reserved.</span>
+      </div>
     </div>
   </footer>
 
   <script>
     function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
     document.addEventListener('click', function(e) { if (!e.target.closest('nav')) document.getElementById('navLinks').classList.remove('open'); });
-    var tabs = document.querySelectorAll('.cat-tab');
-    var sections = document.querySelectorAll('.cat-section');
-    window.addEventListener('scroll', function() {
-      var current = '';
-      sections.forEach(function(s) { if (window.scrollY >= s.offsetTop - 160) current = s.id; });
-      tabs.forEach(function(t) { t.classList.remove('active'); if (t.getAttribute('href') === '#' + current) t.classList.add('active'); });
-    });
-    var translations = {
-      ko: { nav_brand:"브랜드", nav_products:"제품", nav_store:"스토어", nav_inquiry:"문의", page_title:"함께하는<br>모든 순간을 위해", page_desc:"반려견과 함께하는 아웃도어 라이프를 위한 TWOLAB 첫 번째 컬렉션.<br>곧 만나보실 수 있습니다.", tab_collar:"목줄", tab_leash:"리쉬", tab_harness:"하네스", tab_raincoat:"의류", tab_accessory:"액세서리", prod_collar:"목줄", prod_leash:"리쉬", prod_harness:"하네스", prod_raincoat:"의류", prod_accessory:"액세서리", desc_collar:"트레일에서도 안심할 수 있는 견고한 소재와 안전한 버클 설계", desc_accessory:"산책 필수템을 깔끔하게 수납하는 Pocket LAB 파우치", desc_leash:"다양한 지형과 활동에 맞춘 강도와 길이, 편안한 핸들 그립감", desc_harness:"장시간 착용에도 편안한 아웃도어 전용 하네스, 조절 가능한 핏", desc_raincoat:"어떤 날씨에도 함께할 수 있는 경량 방수 레인코트", coming_soon:"COMING SOON", cta_title:"네이버 스마트스토어 오픈 준비 중", cta_desc:"인스타그램을 팔로우하고 오픈 소식을 가장 먼저 받아보세요.", cta_btn:"STORE 오픈 예정", ft_customer:"Customer Service", ft_hours:"평일 AM 11:00 ~ PM 6:00<br>(점심시간 : PM 1:00 ~ 2:00)", ft_closed:"휴무 : 토,일요일 및 공휴일", ft_company:"Company Info", ft_bizname:"상호명 : 투랩 (TWOLAB)", ft_ceo:"대표 : 김효섭", ft_addr:"주소 : 인천광역시 서구 고산후로 35번길 32, 5층 1-7호 (당하동, 명진프라자)", ft_biz:"사업자등록번호 : 746-05-03753", ft_ecom:"통신판매업신고번호 : 2026-인천서구-2140", ft_board:"Support", ft_qna:"Q&A", ft_faq:"FAQ", ft_wholesale:"Wholesale", ft_naver:"네이버 스토어" },
-      en: { nav_brand:"Brand", nav_products:"Products", nav_store:"Store", nav_inquiry:"Contact", page_title:"For every moment<br>spent together", page_desc:"TWOLAB first collection — designed for outdoor life with your dog.<br>Coming soon.", tab_collar:"Collar", tab_leash:"Leash", tab_harness:"Harness", tab_raincoat:"Apparel", tab_accessory:"Accessory", prod_collar:"Collar", prod_leash:"Leash", prod_harness:"Harness", prod_raincoat:"Apparel", prod_accessory:"Accessory", desc_collar:"Durable materials and a secure buckle built for the trail", desc_accessory:"A compact Pocket LAB pouch for your walk-day essentials", desc_leash:"Designed for all terrain — strong, flexible, and easy to grip", desc_harness:"All-day comfort with an adjustable fit for outdoor adventures", desc_raincoat:"A lightweight, waterproof rain jacket for any weather", coming_soon:"Coming Soon", cta_title:"Naver Smart Store Opening Soon", cta_desc:"Follow us on Instagram to be the first to hear about our launch.", cta_btn:"Store Opening Soon", ft_customer:"Customer Service", ft_hours:"Weekdays 11:00 AM – 6:00 PM<br>(Lunch Break: 1:00 PM – 2:00 PM)", ft_closed:"Closed: Weekends and Public Holidays", ft_company:"Company Info", ft_bizname:"Company: TWOLAB", ft_ceo:"CEO: John H. Kim", ft_addr:"Address: 32 Gosanhu-ro 35beon-gil, Seo-gu, Incheon, South Korea", ft_biz:"Business Registration No.: 746-05-03753", ft_ecom:"E-Commerce Registration No.: 2026-Incheon Seo-gu-2140", ft_board:"Support", ft_qna:"Q&A", ft_faq:"FAQ", ft_wholesale:"Wholesale", ft_naver:"Naver Store" }
+
+    var lang = 'ko';
+
+    var data = {
+      collar:    { ko:'목줄',   en:'Collar',    img:'placeholder_collar.svg',    collections:[{ id:'light-lab', ko:'Light LAB', en:'Light LAB', desc_ko:'경량 트레일 목줄 컬렉션', desc_en:'Lightweight trail collar collection', img:'placeholder_collar.svg' }] },
+      leash:     { ko:'리쉬',   en:'Leash',     img:'placeholder_leash.svg',     collections:[{ id:'light-lab', ko:'Light LAB', en:'Light LAB', desc_ko:'경량 트레일 리쉬 컬렉션', desc_en:'Lightweight trail leash collection', img:'placeholder_leash.svg' }] },
+      harness:   { ko:'하네스', en:'Harness',   img:'placeholder_harness.svg',   collections:[{ id:'air-lab',   ko:'Air LAB',   en:'Air LAB',   desc_ko:'초경량 에어 하네스 컬렉션', desc_en:'Ultra-light air harness collection', img:'placeholder_harness.svg' }] },
+      apparel:   { ko:'의류',   en:'Apparel',   img:'placeholder_raincoat.svg',  collections:[{ id:'rain-lab',  ko:'Rain LAB',  en:'Rain LAB',  desc_ko:'방수 아웃도어 의류 컬렉션', desc_en:'Waterproof outdoor apparel collection', img:'placeholder_raincoat.svg' }] },
+      accessory: { ko:'액세서리', en:'Accessory', img:'placeholder_accessory.svg', collections:[{ id:'pocket-lab', ko:'Pocket LAB', en:'Pocket LAB', desc_ko:'산책 필수템 파우치 컬렉션', desc_en:'Walk-day essentials pouch collection', img:'placeholder_accessory.svg' }] }
     };
-    function setLang(lang) {
-      localStorage.setItem("twolab_lang", lang);
-      var els = document.querySelectorAll("[data-i18n]");
-      for (var i = 0; i < els.length; i++) { var key = els[i].getAttribute("data-i18n"); if (translations[lang] && translations[lang][key] !== undefined) els[i].innerHTML = translations[lang][key]; }
-      document.getElementById("btn-ko").classList.toggle("active", lang === "ko");
-      document.getElementById("btn-en").classList.toggle("active", lang === "en");
+
+    var variants = {
+      'misty-forest': { ko:'미스티 포레스트', en:'Misty Forest', color:'#8A9992', bg:'#b8ccc4' },
+      'dust-taupe':   { ko:'더스트 토프',     en:'Dust Taupe',   color:'#b5a898', bg:'#c8bdb2' },
+      'volcanic-ash': { ko:'볼캐닉 애쉬',     en:'Volcanic Ash', color:'#3a3a3a', bg:'#707070' }
+    };
+
+    var variantsByCat = {
+      collar:    ['misty-forest','dust-taupe','volcanic-ash'],
+      leash:     ['misty-forest','dust-taupe','volcanic-ash'],
+      harness:   ['misty-forest','dust-taupe'],
+      apparel:   ['misty-forest'],
+      accessory: ['misty-forest','dust-taupe']
+    };
+
+    var currentCat = null;
+    var currentCol = null;
+
+    function showCollections(catId) {
+      currentCat = catId;
+      var cat = data[catId];
+      var grid = document.getElementById('collectionGrid');
+      grid.innerHTML = '';
+
+      cat.collections.forEach(function(col) {
+        var card = document.createElement('div');
+        card.className = 'item-card';
+        card.onclick = function() { showVariants(catId, col.id); };
+        card.innerHTML = '<div class="item-img" style="background-image:url(\'' + col.img + '\');">' +
+          '<div class="img-cat-label">' + col.en + '</div>' +
+          '<div class="img-badge">COMING SOON</div></div>' +
+          '<div class="item-body">' +
+          '<div class="item-sub">' + (lang === 'ko' ? cat.ko : cat.en) + '</div>' +
+          '<div class="item-name">' + (lang === 'ko' ? col.ko : col.en) + '</div>' +
+          '<div class="item-desc">' + (lang === 'ko' ? col.desc_ko : col.desc_en) + '</div>' +
+          '</div>';
+        grid.appendChild(card);
+      });
+
+      // 추가 예정 슬롯
+      var plus = document.createElement('div');
+      plus.className = 'item-card disabled';
+      plus.innerHTML = '<div class="item-img" style="background:#f4f0ea;justify-content:center;">' +
+        '<div style="font-size:24px;color:#d4c9b0;">+</div></div>' +
+        '<div class="item-body"><div class="item-name" style="color:#c0b8ac;">' +
+        (lang === 'ko' ? '추후 추가 예정' : 'Coming Soon') + '</div></div>';
+      grid.appendChild(plus);
+
+      document.getElementById('level1').classList.remove('visible');
+      document.getElementById('level2').classList.add('visible');
+      document.getElementById('level3').classList.remove('visible');
+      updateBreadcrumb(catId, null);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    document.addEventListener("DOMContentLoaded", function() { var saved = localStorage.getItem("twolab_lang") || "ko"; setLang(saved); });
+
+    function showVariants(catId, colId) {
+      currentCol = colId;
+      var cat = data[catId];
+      var col = cat.collections.find(function(c) { return c.id === colId; });
+      var grid = document.getElementById('variantGrid');
+      grid.innerHTML = '';
+
+      var vids = variantsByCat[catId] || [];
+      vids.forEach(function(vid) {
+        var v = variants[vid];
+        var card = document.createElement('div');
+        card.className = 'item-card';
+        card.innerHTML = '<div class="item-img" style="background-color:' + v.bg + ';">' +
+          '<div class="color-swatch" style="background:' + v.color + ';"></div></div>' +
+          '<div class="item-body">' +
+          '<div class="item-sub">' + (lang === 'ko' ? v.ko : v.en) + '</div>' +
+          '<div class="item-name">' + (lang === 'ko' ? cat.ko : cat.en) + '</div>' +
+          '<div class="item-desc">' + (lang === 'ko' ? col.ko : col.en) + '</div>' +
+          '<div class="item-soon">COMING SOON</div></div>';
+        grid.appendChild(card);
+      });
+
+      document.getElementById('level2').classList.remove('visible');
+      document.getElementById('level3').classList.add('visible');
+      updateBreadcrumb(catId, colId);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateBreadcrumb(catId, colId) {
+      var bc = document.getElementById('breadcrumb');
+      var allText = lang === 'ko' ? '전체 카테고리' : 'All Categories';
+      var html = '<span class="bc-item" onclick="goLevel1()">' + allText + '</span>';
+
+      if (catId) {
+        var cat = data[catId];
+        html += '<span class="bc-sep">›</span>';
+        if (colId) {
+          html += '<span class="bc-item" onclick="goLevel2(\'' + catId + '\')">' + (lang === 'ko' ? cat.ko : cat.en) + '</span>';
+          var col = cat.collections.find(function(c) { return c.id === colId; });
+          html += '<span class="bc-sep">›</span>';
+          html += '<span class="bc-current">' + (lang === 'ko' ? col.ko : col.en) + '</span>';
+        } else {
+          html += '<span class="bc-current">' + (lang === 'ko' ? cat.ko : cat.en) + '</span>';
+        }
+      } else {
+        html = '<span class="bc-current">' + allText + '</span>';
+      }
+      bc.innerHTML = html;
+    }
+
+    function goLevel1() {
+      document.getElementById('level1').classList.add('visible');
+      document.getElementById('level2').classList.remove('visible');
+      document.getElementById('level3').classList.remove('visible');
+      updateBreadcrumb(null, null);
+      currentCat = null; currentCol = null;
+    }
+
+    function goLevel2(catId) {
+      showCollections(catId);
+    }
+
+    var translations = {
+      ko: {
+        nav_brand:"브랜드", nav_products:"제품", nav_store:"스토어", nav_inquiry:"문의",
+        page_title:"함께하는<br>모든 순간을 위해",
+        page_desc:"반려견과 함께하는 아웃도어 라이프를 위한 TWOLAB 첫 번째 컬렉션. 곧 만나보실 수 있습니다.",
+        step1:"카테고리를 선택해주세요", step2:"컬렉션을 선택해주세요", step3:"색상을 선택해주세요",
+        bc_all:"전체 카테고리",
+        cat_collar:"목줄", cat_leash:"리쉬", cat_harness:"하네스", cat_apparel:"의류", cat_accessory:"액세서리",
+        ft_customer:"Customer Service", ft_hours:"평일 AM 11:00 ~ PM 6:00<br>(점심시간 : PM 1:00 ~ 2:00)",
+        ft_closed:"휴무 : 토,일요일 및 공휴일", ft_company:"Company Info",
+        ft_bizname:"상호명 : 투랩 (TWOLAB)", ft_ceo:"대표 : 김효섭",
+        ft_addr:"주소 : 인천광역시 서구 고산후로 35번길 32, 5층 1-7호 (당하동, 명진프라자)",
+        ft_biz:"사업자등록번호 : 746-05-03753", ft_ecom:"통신판매업신고번호 : 2026-인천서구-2140",
+        ft_board:"Support", ft_qna:"Q&A", ft_faq:"FAQ", ft_wholesale:"Wholesale"
+      },
+      en: {
+        nav_brand:"Brand", nav_products:"Products", nav_store:"Store", nav_inquiry:"Contact",
+        page_title:"For every moment<br>spent together",
+        page_desc:"TWOLAB first collection — designed for outdoor life with your dog. Coming soon.",
+        step1:"Select a category", step2:"Select a collection", step3:"Select a colour",
+        bc_all:"All Categories",
+        cat_collar:"Collar", cat_leash:"Leash", cat_harness:"Harness", cat_apparel:"Apparel", cat_accessory:"Accessory",
+        ft_customer:"Customer Service", ft_hours:"Weekdays 11:00 AM – 6:00 PM<br>(Lunch Break: 1:00 PM – 2:00 PM)",
+        ft_closed:"Closed: Weekends and Public Holidays", ft_company:"Company Info",
+        ft_bizname:"Company: TWOLAB", ft_ceo:"CEO: John H. Kim",
+        ft_addr:"Address: 32 Gosanhu-ro 35beon-gil, Seo-gu, Incheon, South Korea",
+        ft_biz:"Business Registration No.: 746-05-03753", ft_ecom:"E-Commerce Registration No.: 2026-Incheon Seo-gu-2140",
+        ft_board:"Support", ft_qna:"Q&A", ft_faq:"FAQ", ft_wholesale:"Wholesale"
+      }
+    };
+
+    function setLang(l) {
+      lang = l;
+      localStorage.setItem('twolab_lang', l);
+      var els = document.querySelectorAll('[data-i18n]');
+      for (var i = 0; i < els.length; i++) {
+        var key = els[i].getAttribute('data-i18n');
+        if (translations[l] && translations[l][key] !== undefined) els[i].innerHTML = translations[l][key];
+      }
+      document.getElementById('btn-ko').classList.toggle('active', l === 'ko');
+      document.getElementById('btn-en').classList.toggle('active', l === 'en');
+      if (currentCat) showCollections(currentCat);
+      updateBreadcrumb(currentCat, currentCol);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var saved = localStorage.getItem('twolab_lang') || 'ko';
+      setLang(saved);
+    });
   </script>
 </body>
 </html>
