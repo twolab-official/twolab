@@ -100,7 +100,7 @@
     .prod-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--gm); transform:scaleX(0); transition:transform 0.3s; transform-origin:left; }
     .prod-card:hover { transform:translateY(-4px); }
     .prod-card:hover::after { transform:scaleX(1); }
-    .prod-img { width:100%; height:140px; background:var(--warm); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; border-bottom:0.5px solid #d4c9b0; }
+    .prod-img { width:100%; aspect-ratio:1/1; background:var(--warm); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; border-bottom:0.5px solid #d4c9b0; }
     .prod-img.has-image .img-placeholder { display:none; }
     .img-icon { font-size:36px; opacity:0.25; }
     .img-label { font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:2px; color:rgba(138,153,146,0.4); }
