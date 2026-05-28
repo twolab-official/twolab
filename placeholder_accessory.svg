@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360">
+  <defs>
+    <pattern id="grid_05" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#8A9992" stroke-width="0.3" opacity="0.2"/>
+    </pattern>
+  </defs>
+  <rect width="480" height="360" fill="#e6e0d4"/>
+  <rect width="480" height="360" fill="url(#grid_05)"/>
+  <circle cx="240" cy="165" r="88" fill="none" stroke="#8A9992" stroke-width="0.8" opacity="0.3"/>
+  <circle cx="240" cy="165" r="72" fill="none" stroke="#8A9992" stroke-width="0.5" opacity="0.2"/>
+  <text x="36" y="54" font-family="Montserrat,sans-serif" font-size="52" font-weight="800" fill="#8A9992" opacity="0.12" letter-spacing="-2">05</text>
+  <text x="240" y="152" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="10" font-weight="600" fill="#4e5f58" letter-spacing="4" opacity="0.6">TWOLAB®</text>
+  <text x="240" y="178" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="13" font-weight="700" fill="#2a3a34" letter-spacing="3">ACCESSORY</text>
+  <rect x="180" y="196" width="120" height="22" rx="11" fill="#8A9992" opacity="0.18"/>
+  <text x="240" y="211" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="9" font-weight="700" fill="#4e5f58" letter-spacing="2.5">COMING SOON</text>
+  <line x1="200" y1="300" x2="280" y2="300" stroke="#8A9992" stroke-width="0.8" opacity="0.3"/>
+</svg>

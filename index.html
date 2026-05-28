@@ -91,23 +91,23 @@
     .badge-brand { font-family:'Montserrat',sans-serif; font-weight:800; font-size:14px; letter-spacing:4px; color:var(--gm-xlight); }
 
     /* PRODUCTS */
-    .products { background:var(--warm); padding:96px 64px; }
+    .products { background:var(--warm); padding:96px 48px; }
     .products-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:56px; gap:24px; }
     .products-heading { font-family:'Noto Sans KR',sans-serif; font-size:clamp(26px,3vw,38px); font-weight:700; letter-spacing:-0.5px; color:var(--text-dark); line-height:1.3; margin-top:12px; }
     .products-sub { font-size:13px; color:var(--text-muted); font-weight:300; line-height:1.8; max-width:280px; text-align:right; }
-    .prod-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
-    .prod-card { background:var(--cream); border:0.5px solid #d4c9b0; border-radius:2px; padding:0; transition:transform 0.2s; position:relative; overflow:hidden; cursor:pointer; }
+    .prod-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; width:100%; }
+    .prod-card { background:var(--cream); border:0.5px solid #d4c9b0; border-radius:2px; overflow:hidden; transition:transform 0.2s; position:relative; min-width:0; }
     .prod-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--gm); transform:scaleX(0); transition:transform 0.3s; transform-origin:left; }
     .prod-card:hover { transform:translateY(-4px); }
     .prod-card:hover::after { transform:scaleX(1); }
-    .prod-img { width:100%; height:220px; background:var(--warm); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; border-bottom:0.5px solid #d4c9b0; }
+    .prod-img { width:100%; height:140px; background:var(--warm); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; border-bottom:0.5px solid #d4c9b0; }
     .prod-img.has-image .img-placeholder { display:none; }
     .img-icon { font-size:36px; opacity:0.25; }
     .img-label { font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:2px; color:rgba(138,153,146,0.4); }
-    .prod-body { padding:24px; }
-    .prod-num { font-family:'Montserrat',sans-serif; font-size:32px; font-weight:800; color:rgba(138,153,146,0.18); line-height:1; margin-bottom:20px; }
-    .prod-name { font-family:'Montserrat',sans-serif; font-size:15px; font-weight:700; letter-spacing:0.5px; color:var(--text-dark); margin-bottom:10px; }
-    .prod-desc { font-size:13px; color:var(--text-muted); line-height:1.8; font-weight:300; margin-bottom:20px; }
+    .prod-body { padding:12px; }
+    .prod-num { display:none; }
+    .prod-name { font-family:'Montserrat',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.5px; color:var(--text-dark); margin-bottom:8px; }
+    .prod-desc { font-size:11px; color:var(--text-muted); line-height:1.5; font-weight:300; margin-bottom:10px; }
     .prod-soon { display:inline-block; font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:2px; color:var(--gm-dark); background:var(--gm-xlight); padding:4px 10px; border-radius:10px; }
 
     /* 전체 컬렉션 버튼 */
@@ -168,13 +168,13 @@
       .products { padding:64px 24px; }
       .products-header { flex-direction:column; align-items:flex-start; }
       .products-sub { text-align:left; }
-      .prod-grid { grid-template-columns:1fr 1fr; gap:12px; }
+      .prod-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; width:100%; }
       .cta { grid-template-columns:1fr; padding:64px 24px; gap:40px; }
       footer { padding:40px 24px 36px; }
       .footer-inner { grid-template-columns:1fr; gap:36px; }
       .footer-right-cols { grid-template-columns:1fr 1fr; gap:24px; }
     }
-    @media (max-width:480px) { .prod-grid { grid-template-columns:1fr; } }
+    @media (max-width:1024px) { .prod-grid { grid-template-columns:repeat(5,1fr); } } @media (max-width:768px) { .prod-grid { grid-template-columns:repeat(3,1fr); } } @media (max-width:500px) { .prod-grid { grid-template-columns:repeat(2,1fr); } } 
   </style>
 </head>
 <body>
@@ -265,18 +265,18 @@
     </div>
     <div class="prod-grid">
       <div class="prod-card">
-        <div class="prod-img" style="background-image:url('/images/prod1.png')">
+        <div class="prod-img" style="background-image:url('placeholder_collar.svg');background-size:cover;background-position:center;">
           <div class="img-placeholder"><span class="img-icon">📿</span><span class="img-label">PRODUCT IMAGE</span></div>
         </div>
         <div class="prod-body">
           <div class="prod-num">01</div>
-          <div class="prod-name" data-i18n="prod_collar">목줄 · 칼라</div>
+          <div class="prod-name" data-i18n="prod_collar">목줄</div>
           <p class="prod-desc" data-i18n="desc_collar">트레일에서도 안심할 수 있는 견고한 소재와 안전한 버클 설계</p>
           <span class="prod-soon" data-i18n="coming_soon">COMING SOON</span>
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img" style="background-image:url('/images/prod2.png')">
+        <div class="prod-img" style="background-image:url('placeholder_leash.svg');background-size:cover;background-position:center;">
           <div class="img-placeholder"><span class="img-icon">🔗</span><span class="img-label">PRODUCT IMAGE</span></div>
         </div>
         <div class="prod-body">
@@ -287,7 +287,7 @@
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img" style="background-image:url('/images/prod3.png')">
+        <div class="prod-img" style="background-image:url('placeholder_harness.svg');background-size:cover;background-position:center;">
           <div class="img-placeholder"><span class="img-icon">🦺</span><span class="img-label">PRODUCT IMAGE</span></div>
         </div>
         <div class="prod-body">
@@ -298,13 +298,24 @@
         </div>
       </div>
       <div class="prod-card">
-        <div class="prod-img" style="background-image:url('/images/prod4.png')">
+        <div class="prod-img" style="background-image:url('placeholder_raincoat.svg');background-size:cover;background-position:center;">
           <div class="img-placeholder"><span class="img-icon">🌧️</span><span class="img-label">PRODUCT IMAGE</span></div>
         </div>
         <div class="prod-body">
           <div class="prod-num">04</div>
-          <div class="prod-name" data-i18n="prod_raincoat">비옷</div>
+          <div class="prod-name" data-i18n="prod_raincoat">의류</div>
           <p class="prod-desc" data-i18n="desc_raincoat">어떤 날씨에도 함께할 수 있는 경량 방수 레인코트</p>
+          <span class="prod-soon" data-i18n="coming_soon">COMING SOON</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img" style="background-image:url('placeholder_accessory.svg');background-size:cover;background-position:center;">
+          <div class="img-placeholder"><span class="img-icon">🎒</span><span class="img-label">PRODUCT IMAGE</span></div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-num">05</div>
+          <div class="prod-name" data-i18n="prod_accessory">액세서리</div>
+          <p class="prod-desc" data-i18n="desc_accessory">산책 필수템을 깔끔하게 수납하는 Pocket LAB 파우치</p>
           <span class="prod-soon" data-i18n="coming_soon">COMING SOON</span>
         </div>
       </div>
@@ -399,8 +410,8 @@
         story_born:"TWOLAB — 그 지점에서 탄생했습니다",
         prod_heading:"함께하는<br>모든 순간을 위해",
         prod_sub:"반려견과 함께하는 모든 아웃도어 활동에 최적화된<br>TWOLAB의 첫 번째 컬렉션을 준비 중입니다.",
-        prod_collar:"목줄 · 칼라", prod_leash:"리쉬", prod_harness:"하네스", prod_raincoat:"비옷",
-        desc_collar:"트레일에서도 안심할 수 있는 견고한 소재와 안전한 버클 설계",
+        prod_collar:"목줄", prod_leash:"리쉬", prod_harness:"하네스", prod_raincoat:"의류", prod_accessory:"액세서리",
+        desc_collar:"트레일에서도 안심할 수 있는 견고한 소재와 안전한 버클 설계", desc_accessory:"산책 필수템을 깔끔하게 수납하는 Pocket LAB 파우치",
         desc_leash:"다양한 지형과 활동에 맞춘 강도와 길이, 핸들 그립감",
         desc_harness:"장시간 착용에도 편안한 아웃도어 전용 하네스",
         desc_raincoat:"어떤 날씨에도 함께할 수 있는 경량 방수 레인코트",
@@ -427,8 +438,8 @@
         story_born:"TWOLAB — Born from that moment",
         prod_heading:"For every moment<br>spent together",
         prod_sub:"Designed for every outdoor adventure with your dog.<br>Our first collection is on its way.",
-        prod_collar:"Collar", prod_leash:"Leash", prod_harness:"Harness", prod_raincoat:"Rain Jacket",
-        desc_collar:"Durable materials and a secure buckle built for the trail",
+        prod_collar:"Collar", prod_leash:"Leash", prod_harness:"Harness", prod_raincoat:"Apparel", prod_accessory:"Accessory",
+        desc_collar:"Durable materials and a secure buckle built for the trail", desc_accessory:"A compact Pocket LAB pouch for your walk-day essentials",
         desc_leash:"Designed for all terrain — strong, flexible, and easy to grip",
         desc_harness:"All-day comfort with an adjustable fit for outdoor adventures",
         desc_raincoat:"A lightweight, waterproof rain jacket for any weather",
