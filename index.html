@@ -72,7 +72,7 @@
 
     /* STORY */
     .story { display:grid; grid-template-columns:1fr 1fr; min-height:600px; }
-    .story-left { padding:80px 64px; background:var(--cream); display:flex; flex-direction:column; justify-content:center; }
+    .story-left { padding:56px 64px; background:var(--cream); display:flex; flex-direction:column; justify-content:center; }
     .section-label { display:flex; align-items:center; gap:14px; margin-bottom:20px; }
     .section-line { width:28px; height:1px; background:var(--gm); }
     .section-tag { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; color:var(--gm-dark); }
@@ -162,8 +162,12 @@
       .nav-links.open { display:flex; flex-direction:column; position:fixed; top:72px; left:0; right:0; background:var(--gm-xdark2); padding:24px; gap:20px; border-bottom:0.5px solid rgba(138,153,146,0.15); }
       .nav-toggle { display:flex; }
       .hero-content { padding:0 24px; }
+      .hero-tag { font-size:11px !important; letter-spacing:2px; }
+      .hero-subtitle { font-size:12px !important; letter-spacing:1.5px; }
+      .hero-desc { font-size:13px !important; line-height:1.9 !important; max-width:100% !important; }
+      .hero-title { font-size:clamp(28px,8vw,44px) !important; }
       .story { grid-template-columns:1fr; }
-      .story-left { padding:56px 24px; }
+      .story-left { padding:48px 24px; }
       .story-right { min-height:480px; }
       .story-img { min-height:480px; }
       .products { padding:64px 24px; }
@@ -206,7 +210,7 @@
     <div class="hero-content">
       <div class="hero-eyebrow fade-up">
         <div class="hero-line"></div>
-        <span class="hero-tag">URBAN NATURE DOG GEAR</span>
+        <span class="hero-tag" data-i18n="hero_tag">URBAN NATURE DOG GEAR</span>
       </div>
       <h1 class="hero-title fade-up delay-1" data-i18n="hero_title">함께 새겨나가는,<br><em>하나의 기록.</em></h1>
       <p class="hero-subtitle fade-up delay-1">TWOLAB — Earthy Tones for Urban Trails</p>
@@ -426,7 +430,7 @@
       },
       en: {
         nav_brand:"Brand", nav_products:"Products", nav_store:"Store", nav_inquiry:"Contact",
-        hero_title:"A Record We<br><em>Carve Together.</em>",
+        hero_tag:"URBAN NATURE DOG GEAR", hero_title:"A Record We<br><em>Carve Together.</em>",
         hero_desc:"From easy weekday walks through the city<br>to rugged weekend escapes into the wild.<br>Clean, minimal designs built to handle the elements.<br><br>Forest trails, rough terrain, and nights under the stars.<br>We believe in a lifestyle where nature, people,<br>and dogs live in harmony.<br>The journey between the city and the outdoors starts here.<br><br>Explore with TWOLAB.",
         hero_btn1:"Store Opening Soon", hero_btn2:"Our Story",
         story_heading:"Every great journey begins<br>with <em>two pairs of eyes</em><br>waiting at the front door.",
