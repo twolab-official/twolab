@@ -349,7 +349,7 @@
         </div>
         <span style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;color:var(--gm);white-space:nowrap;">COMING SOON</span>
       </div>
-      <a href="https://smartstore.naver.com/" target="_blank" class="store-card">
+      <a href="javascript:void(0)" onclick="goToNaver()" class="store-card">
         <div>
           <div class="store-label">NAVER SMART STORE</div>
           <div class="store-name" data-i18n="store_name">네이버 스마트스토어</div>
@@ -400,6 +400,12 @@
   </footer>
 
   <script>
+    function goToNaver() {
+      var url = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)
+        ? 'http://m.smartstore.naver.com/twolab'
+        : 'http://smartstore.naver.com/twolab';
+      window.open(url, '_blank');
+    }
     function toggleNav() {
       document.getElementById('navLinks').classList.toggle('open');
     }
