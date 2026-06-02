@@ -93,11 +93,11 @@
     .links { width:100%; display:flex; flex-direction:column; gap:10px; margin-bottom:32px; }
     .link-item {
       display:flex; align-items:center; gap:14px;
-      background:#F4F0EA;
-      border:1px solid rgba(244,240,234,0.6);
+      background:#8A9992;
+      border:1px solid rgba(138,153,146,0.6);
       border-radius:12px;
       padding:14px 18px;
-      text-decoration:none; color:var(--text);
+      text-decoration:none; color:#ffffff;
       transition:background 0.22s, border-color 0.22s, transform 0.18s;
       position:relative; overflow:hidden;
     }
@@ -106,16 +106,16 @@
       background:var(--hover-bg); opacity:0;
       transition:opacity 0.22s;
     }
-    .link-item:hover { border-color:rgba(138,153,146,0.5); transform:translateY(-1px); }
+    .link-item:hover { border-color:rgba(138,153,146,0.8); transform:translateY(-1px); }
     .link-item:hover::before { opacity:1; }
-    .link-item:hover .link-title { color:#1a1e1b; }
-    .link-item:hover .link-desc  { color:rgba(26,30,27,0.6); }
-    .link-item:hover .link-arrow { opacity:1; color:#1a1e1b; }
+    .link-item:hover .link-title { color:#ffffff; }
+    .link-item:hover .link-desc  { color:rgba(255,255,255,0.7); }
+    .link-item:hover .link-arrow { opacity:1; color:#ffffff; }
     .link-icon { font-size:1.15rem; position:relative; z-index:1; flex-shrink:0; width:28px; text-align:center; }
     .link-content { flex:1; position:relative; z-index:1; }
-    .link-title { font-family:'Montserrat',sans-serif; font-size:0.82rem; font-weight:600; letter-spacing:0.04em; color:#1a1e1b; transition:color 0.22s; }
-    .link-desc  { font-size:0.7rem; color:rgba(26,30,27,0.5); margin-top:2px; letter-spacing:0.02em; transition:color 0.22s; }
-    .link-arrow { font-size:0.85rem; color:var(--muted); opacity:0; transition:opacity 0.22s, color 0.22s; position:relative; z-index:1; }
+    .link-title { font-family:'Montserrat',sans-serif; font-size:0.82rem; font-weight:600; letter-spacing:0.04em; color:#ffffff; transition:color 0.22s; }
+    .link-desc  { font-size:0.7rem; color:rgba(255,255,255,0.7); margin-top:2px; letter-spacing:0.02em; transition:color 0.22s; }
+    .link-arrow { font-size:0.85rem; color:rgba(255,255,255,0.6); opacity:0; transition:opacity 0.22s, color 0.22s; position:relative; z-index:1; }
 
     /* 소셜 아이콘 */
     .socials { display:flex; gap:12px; margin-bottom:36px; }
@@ -178,13 +178,22 @@
       <span class="link-arrow">→</span>
     </a>
 
-    <div class="link-item" style="cursor:default;opacity:0.6;">
+    <a class="link-item" href="https://smartstore.naver.com/twolab" target="_blank" rel="noopener">
       <span class="link-icon">🛒</span>
       <div class="link-content">
         <div class="link-title" id="t2">네이버 스마트스토어</div>
-        <div class="link-desc" id="d2">오픈 준비 중</div>
+        <div class="link-desc" id="d2">온라인 쇼핑몰 바로가기</div>
       </div>
-      <span style="font-family:'Montserrat',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.1em;color:#8A9992;position:relative;z-index:1;">COMING SOON</span>
+      <span class="link-arrow">→</span>
+    </a>
+
+    <div class="link-item" style="cursor:default;opacity:0.65;background:#6b7d76;">
+      <span class="link-icon">📦</span>
+      <div class="link-content">
+        <div class="link-title" id="t3">AMAZON</div>
+        <div class="link-desc" id="d3">Coming Soon</div>
+      </div>
+      <span style="font-family:'Montserrat',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.1em;color:rgba(255,255,255,0.6);position:relative;z-index:1;">COMING SOON</span>
     </div>
 
     <a class="link-item" href="http://www.twolablog.com/inquiry.html" target="_blank" rel="noopener">
@@ -219,13 +228,15 @@
     ko: {
       bio: "자연과 공존하는 미니멀 아웃도어 펫 기어.<br>Urban Nature Dog Gear.<br><span style='font-size:0.75rem;letter-spacing:0.05em;color:var(--accent);opacity:0.8;'>🏷️ Coming Soon</span>",
       t1: "TWOLAB® 공식 홈페이지",
-      t2: "네이버 스마트스토어", d2: "오픈 준비 중",
+      t2: "네이버 스마트스토어", d2: "온라인 쇼핑몰 바로가기",
+      t3: "AMAZON", d3: "Coming Soon",
       t6: "문의"
     },
     en: {
       bio: "Minimal outdoor pet gear in harmony with nature.<br>Urban Nature Dog Gear.<br><span style='font-size:0.75rem;letter-spacing:0.05em;color:var(--accent);opacity:0.8;'>🏷️ Coming Soon</span>",
       t1: "TWOLAB® Official Website",
-      t2: "Naver Smart Store", d2: "Opening Soon",
+      t2: "Naver Smart Store", d2: "Visit our online store",
+      t3: "AMAZON", d3: "Coming Soon",
       t6: "Contact Us"
     }
   };
@@ -236,6 +247,8 @@
     document.getElementById('t1').innerHTML = t.t1;
     document.getElementById('t2').innerHTML = t.t2;
     document.getElementById('d2').innerHTML = t.d2;
+    document.getElementById('t3').innerHTML = t.t3;
+    document.getElementById('d3').innerHTML = t.d3;
     document.getElementById('t6').innerHTML = t.t6;
     document.getElementById('chip-ko').classList.toggle('active', lang === 'ko');
     document.getElementById('chip-en').classList.toggle('active', lang === 'en');
