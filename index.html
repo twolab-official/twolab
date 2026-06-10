@@ -89,6 +89,15 @@
     .story-img { flex:1; min-height:600px; background-size:cover; background-position:center 60%; background-repeat:no-repeat; position:relative; }
     .story-img:first-child { background-image:url('story2.png'); border-right:2px solid var(--gm-xdark); }
     .story-img:last-child { background-image:url('story.png'); }
+    /* 슬라이더 */
+    .story-slider { display:none; position:relative; width:100%; overflow:hidden; }
+    .story-slider-track { display:flex; transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .story-slide { min-width:100%; height:360px; background-size:cover; background-position:center 60%; position:relative; flex-shrink:0; }
+    .story-slide:nth-child(1) { background-image:url('story2.png'); }
+    .story-slide:nth-child(2) { background-image:url('story.png'); }
+    .story-dots { position:absolute; bottom:16px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:3; }
+    .story-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.4); cursor:pointer; transition:background 0.3s; }
+    .story-dot.active { background:#fff; }
     .story-img-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(42,58,52,0.5) 0%,rgba(42,58,52,0.05) 50%); }
     .story-img-badge { position:absolute; bottom:24px; left:20px; background:rgba(42,58,52,0.35); border:0.5px solid rgba(138,153,146,0.25); border-radius:2px; padding:10px 16px; backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); z-index:2; }
     .badge-brand { font-family:'Montserrat',sans-serif; font-weight:800; font-size:14px; letter-spacing:4px; color:var(--gm-xlight); }
@@ -127,7 +136,7 @@
     .cta-right { display:flex; flex-direction:column; gap:16px; }
 
     /* 스토어/인스타 카드 - 포인트 컬러 박스 */
-    .store-card { background:rgba(138,153,146,0.08); border:1.5px solid var(--gm); border-radius:2px; padding:20px 28px; min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:16px; text-decoration:none; transition:all 0.2s; }
+    .store-card { background:rgba(138,153,146,0.08); border:1.5px solid var(--gm); border-radius:2px; padding:0 28px; height:76px; display:flex; align-items:center; justify-content:space-between; gap:16px; text-decoration:none; transition:all 0.2s; }
     .store-card:hover { background:var(--gm); }
     .store-card:hover .store-name { color:var(--gm-xdark); }
     .store-card:hover .store-sub { color:var(--gm-xdark); }
@@ -137,7 +146,7 @@
     .store-name { font-family:'Montserrat',sans-serif; font-size:14px; font-weight:700; letter-spacing:1px; color:var(--gm-xlight); transition:color 0.2s; }
     .store-sub { font-size:12px; color:var(--gm); margin-top:4px; font-weight:300; transition:color 0.2s; }
     .store-arrow { font-size:20px; color:var(--gm); transition:color 0.2s; }
-    .ig-card { background:rgba(138,153,146,0.08); border:1.5px solid var(--gm); border-radius:2px; padding:20px 28px; min-height:76px; display:flex; align-items:center; justify-content:space-between; text-decoration:none; transition:all 0.2s; }
+    .ig-card { background:rgba(138,153,146,0.08); border:1.5px solid var(--gm); border-radius:2px; padding:0 28px; height:76px; display:flex; align-items:center; justify-content:space-between; text-decoration:none; transition:all 0.2s; }
     .ig-card:hover { background:var(--gm); }
     .ig-card:hover .ig-handle { color:var(--gm-xdark); }
     .ig-card:hover .ig-sub { color:var(--gm-xdark); }
@@ -251,6 +260,23 @@
         <div class="story-img-overlay"></div>
         <div class="story-img-badge"><div class="badge-brand">TWOLAB™</div></div>
       </div>
+      <!-- 모바일 슬라이더 -->
+      <div class="story-slider" id="storySlider">
+        <div class="story-slider-track" id="storyTrack">
+          <div class="story-slide">
+            <div class="story-img-overlay"></div>
+            <div class="story-img-badge"><div class="badge-brand">TWOLAB™</div></div>
+          </div>
+          <div class="story-slide">
+            <div class="story-img-overlay"></div>
+            <div class="story-img-badge"><div class="badge-brand">TWOLAB™</div></div>
+          </div>
+        </div>
+        <div class="story-dots">
+          <div class="story-dot active" onclick="goSlide(0)"></div>
+          <div class="story-dot" onclick="goSlide(1)"></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -343,14 +369,14 @@
       <p class="cta-desc" data-i18n="cta_desc">TWOLAB의 첫 번째 컬렉션을 곧 만나보실 수 있습니다.<br>인스타그램을 팔로우하고 오픈 소식을 가장 먼저 받아보세요.</p>
     </div>
     <div class="cta-right">
-      <div class="store-card" style="cursor:default;opacity:0.75;">
+      <a href="https://twolablog.cafe24.com" target="_blank" class="store-card">
         <div>
           <div class="store-label">TWOLAB OFFICIAL STORE</div>
           <div class="store-name" data-i18n="official_name">투랩 공식몰</div>
-          <div class="store-sub" data-i18n="official_sub">오픈 준비 중</div>
+          <div class="store-sub" data-i18n="official_sub">바로가기</div>
         </div>
-        <span style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;color:var(--gm);white-space:nowrap;">COMING SOON</span>
-      </div>
+        <span class="store-arrow">→</span>
+      </a>
       <div class="store-card" style="cursor:default;opacity:0.75;">
         <div>
           <div class="store-label">AMAZON</div>
@@ -444,7 +470,7 @@
         cta_heading:"온라인 스토어<br><em>오픈 준비 중입니다</em>",
         cta_desc:"TWOLAB의 첫 번째 컬렉션을 곧 만나보실 수 있습니다.<br>인스타그램을 팔로우하고 오픈 소식을 가장 먼저 받아보세요.",
         store_name:"네이버 스마트스토어", store_sub:"오픈 준비 중 · 알림 신청 가능",
-        ig_sub:"팔로우하고 오픈 소식 받기", official_name:"투랩 공식몰", official_sub:"오픈 준비 중", amazon_name:"아마존 스토어", amazon_sub:"오픈 준비 중",
+        ig_sub:"팔로우하고 오픈 소식 받기", official_name:"투랩 공식몰", official_sub:"바로가기", amazon_name:"아마존 스토어", amazon_sub:"오픈 준비 중",
         ft_customer:"Customer Service", ft_hours:"평일 AM 11:00 ~ PM 6:00<br>(점심시간 : PM 1:00 ~ 2:00)",
         ft_closed:"휴무 : 토,일요일 및 공휴일", ft_company:"Company Info",
         ft_bizname:"상호명 : 투랩 (TWOLAB)", ft_ceo:"대표 : 김효섭",
@@ -472,7 +498,7 @@
         cta_heading:"Online Store<br><em>Opening Soon</em>",
         cta_desc:"Our first collection is coming soon.<br>Follow us on Instagram to be the first to hear.",
         store_name:"Naver Smart Store", store_sub:"Opening Soon · Set a Reminder",
-        ig_sub:"Follow us for launch updates", official_name:"TWOLAB Official Store", official_sub:"Opening Soon", amazon_name:"Amazon Store", amazon_sub:"Opening Soon",
+        ig_sub:"Follow us for launch updates", official_name:"TWOLAB Official Store", official_sub:"Visit Store", amazon_name:"Amazon Store", amazon_sub:"Opening Soon",
         ft_customer:"Customer Service", ft_hours:"Weekdays 11:00 AM – 6:00 PM<br>(Lunch Break: 1:00 PM – 2:00 PM)",
         ft_closed:"Closed: Weekends and Public Holidays", ft_company:"Company Info",
         ft_bizname:"Company: TWOLAB", ft_ceo:"CEO: John H. Kim",
@@ -482,6 +508,36 @@
       }
     };
 
+
+    // 스토리 슬라이더
+    var slideIndex = 0;
+    var slideTotal = 2;
+    var sliderAuto;
+
+    function goSlide(n) {
+      slideIndex = n;
+      document.getElementById('storyTrack').style.transform = 'translateX(-' + (slideIndex * 100) + '%)';
+      var dots = document.querySelectorAll('.story-dot');
+      dots.forEach(function(d, i) { d.classList.toggle('active', i === slideIndex); });
+    }
+
+    function nextSlide() {
+      goSlide((slideIndex + 1) % slideTotal);
+    }
+
+    function startSlider() {
+      sliderAuto = setInterval(nextSlide, 2000);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      startSlider();
+      var slider = document.getElementById('storySlider');
+      if (slider) {
+        slider.addEventListener('touchstart', function(e) { clearInterval(sliderAuto); });
+        slider.addEventListener('touchend', function(e) { startSlider(); });
+      }
+    });
+    
     function setLang(lang) {
       localStorage.setItem("twolab_lang", lang);
       var els = document.querySelectorAll("[data-i18n]");
