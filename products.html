@@ -140,7 +140,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html#story" data-i18n="nav_brand">브랜드</a></li>
       <li><a href="products.html" class="active" data-i18n="nav_products">제품</a></li>
-      <li><a href="http://twolablog.cafe24.com" target="_blank" data-i18n="nav_store">스토어</a></li>
+      <li><a href="javascript:void(0)" onclick="goToStore()" data-i18n="nav_store">스토어</a></li>
       <li><a href="inquiry.html" data-i18n="nav_inquiry">문의</a></li>
       <li><a href="https://instagram.com/twolab_official" target="_blank" class="nav-ig">@twolab_official</a></li>
     </ul>
@@ -283,6 +283,13 @@
   </footer>
 
   <script>
+    function goToStore() {
+      var lang = localStorage.getItem('twolab_lang') || 'ko';
+      var url = lang === 'en'
+        ? 'https://twolablog.cafe24.com/shop2'
+        : 'https://twolablog.cafe24.com';
+      window.open(url, '_blank');
+    }
     function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
     document.addEventListener('click', function(e) { if (!e.target.closest('nav')) document.getElementById('navLinks').classList.remove('open'); });
 
