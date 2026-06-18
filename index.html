@@ -442,11 +442,7 @@
 
   <script>
     function goToStore() {
-      var lang = localStorage.getItem('twolab_lang') || 'ko';
-      var url = lang === 'en'
-        ? 'https://twolablog.cafe24.com/shop2'
-        : 'https://twolablog.cafe24.com';
-      window.open(url, '_blank');
+      window.open('https://twolabdogs.shop', '_blank');
     }
     function goToNaver() {
       var url = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)

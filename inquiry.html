@@ -235,11 +235,7 @@
 
   <script>
     function goToStore() {
-      var lang = localStorage.getItem('twolab_lang') || 'ko';
-      var url = lang === 'en'
-        ? 'https://twolablog.cafe24.com/shop2'
-        : 'https://twolablog.cafe24.com';
-      window.open(url, '_blank');
+      window.open('https://twolabdogs.shop', '_blank');
     }
     function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
     document.addEventListener('click', function(e) { if (!e.target.closest('nav')) document.getElementById('navLinks').classList.remove('open'); });
