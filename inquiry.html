@@ -24,7 +24,6 @@
     .nav-links { display:flex; align-items:center; gap:55px; list-style:none; }
     .nav-links a { font-family:'Montserrat',sans-serif; font-size:16px; font-weight:700; letter-spacing:2px; color:var(--gm-light); text-decoration:none; transition:color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color:var(--gm-xlight); }
-    .nav-ig { border:0.5px solid var(--gm) !important; color:var(--gm-light) !important; padding:8px 18px; border-radius:20px; font-size:10px !important; font-weight:700 !important; }
     .lang-btn { display:flex; align-items:center; gap:2px; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; letter-spacing:1.5px; margin-left:12px; }
     .lang-btn span { padding:6px 10px; cursor:pointer; color:rgba(196,206,202,0.6); border:0.5px solid rgba(138,153,146,0.2); border-radius:2px; transition:all 0.2s; }
     .lang-btn span:hover { color:var(--gm-xlight); border-color:rgba(138,153,146,0.5); }
@@ -88,6 +87,7 @@
       footer { padding:40px 24px 36px; } .footer-inner { grid-template-columns:1fr; gap:36px; }
       .footer-right-cols { grid-template-columns:1fr 1fr; gap:24px; }
     }
+
   </style>
 </head>
 <body>
@@ -98,8 +98,7 @@
       <li><a href="products.html" data-i18n="nav_products">Products</a></li>
       <li><a href="javascript:void(0)" onclick="goToStore()" data-i18n="nav_store">Shop</a></li>
       <li><a href="inquiry.html" class="active" data-i18n="nav_inquiry">Contact</a></li>
-      <li><a href="https://instagram.com/twolab_official" target="_blank" class="nav-ig">@twolab_official</a></li>
-    </ul>
+      </ul>
     <div class="lang-btn">
       <span id="btn-ko" class="active" onclick="setLang('ko')">KO</span>
       <span class="divider">/</span>
@@ -146,7 +145,7 @@
       <div class="faq-list">
         <div class="faq-item" onclick="toggleFaq(this)">
           <div class="faq-q"><span class="faq-q-text" data-i18n="faq_q1">제품은 언제 출시되나요?</span><span class="faq-icon">+</span></div>
-          <div class="faq-a"><div class="faq-a-inner" data-i18n="faq_a1">현재 첫 번째 컬렉션 출시를 준비 중입니다. 정확한 출시일은 인스타그램 @twolab_official 을 통해 가장 먼저 공지됩니다.</div></div>
+          <div class="faq-a"><div class="faq-a-inner" data-i18n="faq_a1">현재 첫 번째 컬렉션 출시를 준비 중입니다. 정확한 출시일은 인스타그램 @twolabdogs 을 통해 가장 먼저 공지됩니다.</div></div>
         </div>
         <div class="faq-item" onclick="toggleFaq(this)">
           <div class="faq-q"><span class="faq-q-text" data-i18n="faq_q2">제품 사이즈는 어떻게 선택하나요?</span><span class="faq-icon">+</span></div>
@@ -187,9 +186,9 @@
       <div class="ws-email-box">
         <div>
           <div class="ws-email-label" data-i18n="ws_email_label">WHOLESALE INQUIRY</div>
-          <div class="ws-email-addr">support@twolablog.com</div>
+          <div class="ws-email-addr">support@twolabdogs.com</div>
         </div>
-        <a href="mailto:support@twolablog.com" class="ws-email-btn" data-i18n="ws_email_btn">이메일 문의하기 →</a>
+        <a href="mailto:support@twolabdogs.com" class="ws-email-btn" data-i18n="ws_email_btn">이메일 문의하기 →</a>
       </div>
     </section>
 
@@ -211,7 +210,7 @@
           <p data-i18n="ft_addr">주소 : 인천광역시 서구 고산후로 95번길 32, 501-7 (당하동, 명진프라자)</p>
           <p data-i18n="ft_biz">사업자등록번호 : 746-05-03753</p>
           <p data-i18n="ft_ecom">통신판매업신고번호 : 2026-인천서구-2140</p>
-          <p>Email: support@twolablog.com</p>
+          <p>Email: support@twolabdogs.com</p>
         </div>
         <div class="footer-col">
           <span class="footer-col-title" data-i18n="ft_board">Support</span>
@@ -223,6 +222,7 @@
       <div class="footer-brand">
         <span class="footer-logo">TWOLAB™</span>
         <span class="footer-copy">Copyright © TWOLAB.<br>All rights reserved.</span>
+        <div class="footer-social"><a href="https://instagram.com/twolabdogs" target="_blank" class="footer-social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://facebook.com/twolabdogs" target="_blank" class="footer-social-icon" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://pf.kakao.com/_twolabdogs" target="_blank" class="footer-social-icon" aria-label="KakaoTalk"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.477 3 2 7.03 2 12c0 3.09 1.73 5.81 4.37 7.43l-.97 3.64 4.24-2.12c.75.13 1.52.2 2.36.2 5.523 0 10-4.03 10-9S17.523 3 12 3zM7 13.5H5.5v-4H7v4zm3.5 0H9v-4h1.5v4zm3.5 0h-1.5V11h-1v2.5H11v-4h3l.5 1.5L15 11v2.5z"/></svg></a></div>
       </div>
     </div>
   </footer>
@@ -255,7 +255,7 @@
         qna_desc:"궁금한 사항이나 필요한 지원을 문의해 주세요.<br>영업일 기준 1~2일 내 답변드리겠습니다.",
         form_submit:"문의 작성하기 →",
         faq_q1:"제품은 언제 출시되나요?",
-        faq_a1:"현재 첫 번째 컬렉션 출시를 준비 중입니다. 정확한 출시일은 인스타그램 @twolab_official 을 통해 가장 먼저 공지됩니다.",
+        faq_a1:"현재 첫 번째 컬렉션 출시를 준비 중입니다. 정확한 출시일은 인스타그램 @twolabdogs 을 통해 가장 먼저 공지됩니다.",
         faq_q2:"제품 사이즈는 어떻게 선택하나요?",
         faq_a2:"반려견의 목둘레와 가슴둘레를 기준으로 사이즈를 선택합니다. 제품 출시 시 상세 사이즈 가이드가 함께 제공될 예정입니다.",
         faq_q3:"교환 및 환불은 어떻게 진행되나요?",
@@ -287,7 +287,7 @@
         qna_desc:"We are here to help with any questions or support you need.<br>We aim to respond within 1–2 business days.",
         form_submit:"Submit an Inquiry →",
         faq_q1:"When will the products be available?",
-        faq_a1:"We are currently preparing our first collection. The launch date will be announced first on Instagram @twolab_official.",
+        faq_a1:"We are currently preparing our first collection. The launch date will be announced first on Instagram @twolabdogs.",
         faq_q2:"How do I find the right size for my dog?",
         faq_a2:"Sizing is based on your dog's neck and chest measurements. A detailed size guide will be provided at launch.",
         faq_q3:"What is your exchange and refund policy?",

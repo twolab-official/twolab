@@ -38,8 +38,6 @@
     .nav-links { display:flex; align-items:center; gap:55px; list-style:none; }
     .nav-links a { font-family:'Montserrat',sans-serif; font-size:16px; font-weight:700; letter-spacing:2px; color:var(--gm-light); text-decoration:none; transition:color 0.2s; }
     .nav-links a:hover { color:var(--gm-xlight); }
-    .nav-ig { border:0.5px solid var(--gm) !important; color:var(--gm-light) !important; padding:8px 18px; border-radius:20px; font-size:10px !important; font-weight:700 !important; }
-    .nav-ig:hover { background:rgba(138,153,146,0.12) !important; }
     .lang-btn { display:flex; align-items:center; gap:2px; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; letter-spacing:1.5px; margin-left:12px; }
     .lang-btn span { padding:6px 10px; cursor:pointer; color:rgba(196,206,202,0.6); border:0.5px solid rgba(138,153,146,0.2); border-radius:2px; transition:all 0.2s; }
     .lang-btn span:hover { color:var(--gm-xlight); border-color:rgba(138,153,146,0.5); }
@@ -145,13 +143,6 @@
     .store-name { font-family:'Montserrat',sans-serif; font-size:14px; font-weight:700; letter-spacing:1px; color:var(--gm-xlight); transition:color 0.2s; }
     .store-sub { font-size:12px; color:var(--gm); margin-top:4px; font-weight:300; transition:color 0.2s; }
     .store-arrow { font-size:20px; color:var(--gm); transition:color 0.2s; }
-    .ig-card { background:rgba(138,153,146,0.08); border:1.5px solid var(--gm); border-radius:2px; padding:0 28px; height:76px; display:flex; align-items:center; justify-content:space-between; text-decoration:none; transition:all 0.2s; }
-    .ig-card:hover { background:var(--gm); }
-    .ig-card:hover .ig-handle { color:var(--gm-xdark); }
-    .ig-card:hover .ig-sub { color:var(--gm-xdark); }
-    .ig-handle { font-family:'Montserrat',sans-serif; font-size:14px; font-weight:600; letter-spacing:1px; color:var(--gm-light); transition:color 0.2s; }
-    .ig-sub { font-size:12px; color:var(--gm); margin-top:4px; transition:color 0.2s; }
-    .ig-icon { font-size:20px; }
 
     /* FOOTER */
     footer { background:var(--gm-xdark); border-top:0.5px solid rgba(196,206,202,0.15); padding:56px 64px 48px; }
@@ -192,6 +183,7 @@
       .footer-right-cols { grid-template-columns:1fr 1fr; gap:24px; }
     }
     @media (max-width:1024px) { .prod-grid { grid-template-columns:repeat(5,1fr); } } @media (max-width:768px) { .prod-grid { grid-template-columns:repeat(3,1fr); } } @media (max-width:500px) { .prod-grid { grid-template-columns:repeat(2,1fr); } } 
+
   </style>
 </head>
 <body>
@@ -203,8 +195,7 @@
       <li><a href="products.html" data-i18n="nav_products">Products</a></li>
       <li><a href="javascript:void(0)" onclick="goToStore()" data-i18n="nav_store">Shop</a></li>
       <li><a href="inquiry.html" data-i18n="nav_inquiry">Contact</a></li>
-      <li><a href="https://instagram.com/twolab_official" target="_blank" class="nav-ig">@twolab_official</a></li>
-    </ul>
+      </ul>
     <div class="lang-btn">
       <span id="btn-ko" class="active" onclick="setLang('ko')">KO</span>
       <span class="divider">/</span>
@@ -394,13 +385,6 @@
         </div>
         <span class="store-arrow">→</span>
       </a>
-      <a href="https://instagram.com/twolab_official" target="_blank" class="ig-card">
-        <div>
-          <div class="ig-handle">@twolab_official</div>
-          <div class="ig-sub" data-i18n="ig_sub">팔로우하고 오픈 소식 받기</div>
-        </div>
-        <span class="ig-icon">📷</span>
-      </a>
     </div>
   </section>
 
@@ -420,7 +404,7 @@
           <p data-i18n="ft_addr">주소 : 인천광역시 서구 고산후로 95번길 32, 501-7 (당하동, 명진프라자)</p>
           <p data-i18n="ft_biz">사업자등록번호 : 746-05-03753</p>
           <p data-i18n="ft_ecom">통신판매업신고번호 : 2026-인천서구-2140</p>
-          <p>Email: support@twolablog.com</p>
+          <p>Email: support@twolabdogs.com</p>
         </div>
         <div class="footer-col">
           <span class="footer-col-title" data-i18n="ft_board">Support</span>
@@ -432,6 +416,7 @@
       <div class="footer-brand">
         <span class="footer-logo">TWOLAB™</span>
         <span class="footer-copy">Copyright © TWOLAB.<br>All rights reserved.</span>
+        <div class="footer-social"><a href="https://instagram.com/twolabdogs" target="_blank" class="footer-social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://facebook.com/twolabdogs" target="_blank" class="footer-social-icon" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://pf.kakao.com/_twolabdogs" target="_blank" class="footer-social-icon" aria-label="KakaoTalk"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.477 3 2 7.03 2 12c0 3.09 1.73 5.81 4.37 7.43l-.97 3.64 4.24-2.12c.75.13 1.52.2 2.36.2 5.523 0 10-4.03 10-9S17.523 3 12 3zM7 13.5H5.5v-4H7v4zm3.5 0H9v-4h1.5v4zm3.5 0h-1.5V11h-1v2.5H11v-4h3l.5 1.5L15 11v2.5z"/></svg></a></div>
       </div>
     </div>
   </footer>
