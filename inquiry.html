@@ -192,9 +192,9 @@
       <div class="ws-email-box">
         <div>
           <div class="ws-email-label" data-i18n="ws_email_label">WHOLESALE INQUIRY</div>
-          <div class="ws-email-addr">support@twolabdogs.com</div>
+          <div class="ws-email-addr">support@twolablog.com</div>
         </div>
-        <a href="mailto:support@twolabdogs.com" class="ws-email-btn" data-i18n="ws_email_btn">이메일 문의하기 →</a>
+        <a href="mailto:support@twolablog.com" class="ws-email-btn" data-i18n="ws_email_btn">이메일 문의하기 →</a>
       </div>
     </section>
 
@@ -205,7 +205,7 @@
       <div class="footer-right-cols">
         <div class="footer-col">
           <span class="footer-col-title" data-i18n="ft_customer">Customer Service</span>
-          <span class="footer-phone">000-000-0000</span>
+          <span class="footer-phone" data-i18n="footer_phone">070-8744-4316</span>
           <p data-i18n="ft_hours">평일 AM 11:00 ~ PM 6:00<br>(점심시간 : PM 1:00 ~ 2:00)</p>
           <p data-i18n="ft_closed">휴무 : 토,일요일 및 공휴일</p>
         </div>
@@ -216,7 +216,7 @@
           <p data-i18n="ft_addr">주소 : 인천광역시 서구 고산후로 95번길 32, 501-7 (당하동, 명진프라자)</p>
           <p data-i18n="ft_biz">사업자등록번호 : 746-05-03753</p>
           <p data-i18n="ft_ecom">통신판매업신고번호 : 2026-인천서구-2140</p>
-          <p>Email: support@twolabdogs.com</p>
+          <p>Email: support@twolablog.com</p>
         </div>
         <div class="footer-col">
           <span class="footer-col-title" data-i18n="ft_board">Support</span>
@@ -317,6 +317,7 @@
 
     function setLang(lang) {
       localStorage.setItem("twolab_lang", lang);
+      document.body.setAttribute("data-lang", lang);
       var els = document.querySelectorAll("[data-i18n]");
       for (var i = 0; i < els.length; i++) {
         var key = els[i].getAttribute("data-i18n");

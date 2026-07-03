@@ -203,6 +203,9 @@
     .footer-social-icon { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border:0.5px solid rgba(138,153,146,0.35); border-radius:50%; color:rgba(196,206,202,0.6); transition:all 0.25s; text-decoration:none; }
     .footer-social-icon:hover { background:rgba(138,153,146,0.15); color:var(--gm-xlight); border-color:var(--gm); transform:translateY(-2px); }
     .footer-social-icon svg { width:16px; height:16px; }
+
+    /* EN mode: limit hero-content height so eyebrow starts below shoulder */
+    [data-lang="en"] .hero-content { max-height: 58vh; overflow: hidden; }
   </style>
 </head>
 <body>
@@ -412,7 +415,7 @@
       <div class="footer-right-cols">
         <div class="footer-col">
           <span class="footer-col-title" data-i18n="ft_customer">Customer Service</span>
-          <span class="footer-phone">000-000-0000</span>
+          <span class="footer-phone" data-i18n="footer_phone">070-8744-4316</span>
           <p data-i18n="ft_hours">평일 AM 11:00 ~ PM 6:00<br>(점심시간 : PM 1:00 ~ 2:00)</p>
           <p data-i18n="ft_closed">휴무 : 토,일요일 및 공휴일</p>
         </div>
@@ -423,7 +426,7 @@
           <p data-i18n="ft_addr">주소 : 인천광역시 서구 고산후로 95번길 32, 501-7 (당하동, 명진프라자)</p>
           <p data-i18n="ft_biz">사업자등록번호 : 746-05-03753</p>
           <p data-i18n="ft_ecom">통신판매업신고번호 : 2026-인천서구-2140</p>
-          <p>Email: support@twolabdogs.com</p>
+          <p>Email: support@twolablog.com</p>
         </div>
         <div class="footer-col">
           <span class="footer-col-title" data-i18n="ft_board">Support</span>
@@ -484,7 +487,7 @@
         ft_bizname:"상호명 : 투랩 (TWOLAB)", ft_ceo:"대표 : 김효섭",
         ft_addr:"주소 : 인천광역시 서구 고산후로 95번길 32, 501-7 (당하동, 명진프라자)",
         ft_biz:"사업자등록번호 : 746-05-03753", ft_ecom:"통신판매업신고번호 : 2026-인천서구-2140",
-        ft_board:"Support", ft_qna:"Q&A", ft_faq:"FAQ", ft_wholesale:"Wholesale", ft_naver:"네이버 스토어"
+        ft_board:"Support", ft_qna:"Q&A", ft_faq:"FAQ", ft_wholesale:"Wholesale", ft_naver:"네이버 스토어", footer_phone:"070-8744-4316"
       },
       en: {
         nav_brand:"Our Story", nav_products:"Products", nav_store:"Shop", nav_inquiry:"Contact",
@@ -512,7 +515,7 @@
         ft_bizname:"Company: TWOLAB", ft_ceo:"CEO: John H. Kim",
         ft_addr:"Address: 501-7, 32, Gosanhu-ro 95beon-gil, Seo-gu, Incheon, The Republic of Korea (22682)",
         ft_biz:"Business Registration No.: 746-05-03753", ft_ecom:"E-Commerce Registration No.: 2026-Incheon Seo-gu-2140",
-        ft_board:"Support", ft_qna:"Q&A", ft_faq:"FAQ", ft_wholesale:"Wholesale", ft_naver:"Naver Store"
+        ft_board:"Support", ft_qna:"Q&A", ft_faq:"FAQ", ft_wholesale:"Wholesale", ft_naver:"Naver Store", footer_phone:"+82-70-8744-4316"
       }
     };
 
@@ -548,6 +551,7 @@
     
     function setLang(lang) {
       localStorage.setItem("twolab_lang", lang);
+      document.body.setAttribute("data-lang", lang);
       var els = document.querySelectorAll("[data-i18n]");
       for (var i = 0; i < els.length; i++) {
         var key = els[i].getAttribute("data-i18n");
