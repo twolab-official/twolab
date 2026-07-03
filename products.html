@@ -179,58 +179,7 @@
         <span class="step-text" data-i18n="step1">카테고리를 선택해주세요</span>
         <div class="step-line"></div>
       </div>
-      <div class="card-grid">
-        <div class="item-card" onclick="showCollections('collar')">
-          <div class="item-img" style="background-image:url('placeholder_collar.svg');">
-            <div class="img-cat-label">COLLAR</div>
-            <div class="img-badge">COMING SOON</div>
-          </div>
-          <div class="item-body">
-            <div class="item-name" data-i18n="cat_collar">Collars</div>
-            <div class="item-count">1 Collection</div>
-          </div>
-        </div>
-        <div class="item-card" onclick="showCollections('leash')">
-          <div class="item-img" style="background-image:url('placeholder_leash.svg');">
-            <div class="img-cat-label">LEASH</div>
-            <div class="img-badge">COMING SOON</div>
-          </div>
-          <div class="item-body">
-            <div class="item-name" data-i18n="cat_leash">Leashes</div>
-            <div class="item-count">1 Collection</div>
-          </div>
-        </div>
-        <div class="item-card" onclick="showCollections('harness')">
-          <div class="item-img" style="background-image:url('placeholder_harness.svg');">
-            <div class="img-cat-label">HARNESS</div>
-            <div class="img-badge">COMING SOON</div>
-          </div>
-          <div class="item-body">
-            <div class="item-name" data-i18n="cat_harness">Harnesses</div>
-            <div class="item-count">1 Collection</div>
-          </div>
-        </div>
-        <div class="item-card" onclick="showCollections('apparel')">
-          <div class="item-img" style="background-image:url('placeholder_raincoat.svg');">
-            <div class="img-cat-label">APPAREL</div>
-            <div class="img-badge">COMING SOON</div>
-          </div>
-          <div class="item-body">
-            <div class="item-name" data-i18n="cat_apparel">Apparel</div>
-            <div class="item-count">1 Collection</div>
-          </div>
-        </div>
-        <div class="item-card" onclick="showCollections('accessory')">
-          <div class="item-img" style="background-image:url('placeholder_accessory.svg');">
-            <div class="img-cat-label">ACCESSORY</div>
-            <div class="img-badge">COMING SOON</div>
-          </div>
-          <div class="item-body">
-            <div class="item-name" data-i18n="cat_accessory">Accessories</div>
-            <div class="item-count">1 Collection</div>
-          </div>
-        </div>
-      </div>
+      <div class="card-grid" id="categoryGrid"></div>
     </div>
 
     <!-- LEVEL 2: 컬렉션 -->
@@ -474,10 +423,35 @@
       updateBreadcrumb(currentCat, currentCol);
     }
 
+    function renderCategories() {
+      var grid = document.getElementById('categoryGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      var catKeys = ['collar','leash','harness','apparel','accessory'];
+      catKeys.forEach(function(catId) {
+        var cat = data[catId];
+        var count = cat.collections.length;
+        var label = catId.toUpperCase();
+        var card = document.createElement('div');
+        card.className = 'item-card';
+        card.onclick = function() { showCollections(catId); };
+        card.innerHTML =
+          '<div class="item-img" style="background-image:url(\'' + cat.img + '\');">' +
+          '<div class="img-cat-label">' + label + '</div>' +
+          '<div class="img-badge">COMING SOON</div></div>' +
+          '<div class="item-body">' +
+          '<div class="item-name">' + (lang === 'ko' ? cat.ko : cat.en) + '</div>' +
+          '<div class="item-count">' + count + ' ' + (count === 1 ? 'Collection' : 'Collections') + '</div>' +
+          '</div>';
+        grid.appendChild(card);
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
       var saved = localStorage.getItem('twolab_lang') || 'ko';
       document.body.setAttribute("data-lang", saved);
       setLang(saved);
+      renderCategories();
     });
   </script>
 </body>
