@@ -298,25 +298,33 @@
     var lang = 'ko';
 
     var data = {
-      collar:    { ko:'Collars',   en:'Collars',    img:'placeholder_collar.svg',    collections:[{ id:'light-lab', ko:'Light LAB', en:'Light LAB', desc_ko:'경량 트레일 목줄 컬렉션', desc_en:'Lightweight trail collar collection', img:'placeholder_collar.svg' }] },
-      leash:     { ko:'Leashes',   en:'Leashes',     img:'placeholder_leash.svg',     collections:[{ id:'light-lab', ko:'Light LAB', en:'Light LAB', desc_ko:'경량 트레일 리쉬 컬렉션', desc_en:'Lightweight trail leash collection', img:'placeholder_leash.svg' }] },
-      harness:   { ko:'Harnesses', en:'Harnesses',   img:'placeholder_harness.svg',   collections:[{ id:'air-lab',   ko:'Air LAB',   en:'Air LAB',   desc_ko:'초경량 에어 하네스 컬렉션', desc_en:'Ultra-light air harness collection', img:'placeholder_harness.svg' }] },
-      apparel:   { ko:'Apparel',   en:'Apparel',   img:'placeholder_raincoat.svg',  collections:[{ id:'rain-lab',  ko:'Rain LAB',  en:'Rain LAB',  desc_ko:'방수 아웃도어 의류 컬렉션', desc_en:'Waterproof outdoor apparel collection', img:'placeholder_raincoat.svg' }] },
+      collar:    { ko:'Collars',   en:'Collars',    img:'placeholder_collar.svg',    collections:[
+                   { id:'path-lab',  ko:'Path LAB',  en:'Path LAB',  desc_ko:'도시의 리듬 속, 빛이 되어 걷다', desc_en:'Walk the city. Be seen in the dark.', img:'placeholder_collar.svg' },
+                   { id:'trail-lab', ko:'Trail LAB', en:'Trail LAB', desc_ko:'자연의 결을 따라, 함께 나아가다', desc_en:'Follow the trail. Feel the wild.',             img:'placeholder_collar.svg' }] },
+      leash:     { ko:'Leashes',   en:'Leashes',     img:'placeholder_leash.svg',     collections:[
+                   { id:'path-lab',  ko:'Path LAB',  en:'Path LAB',  desc_ko:'도시의 리듬 속, 빛이 되어 걷다', desc_en:'Walk the city. Be seen in the dark.', img:'placeholder_leash.svg' },
+                   { id:'trail-lab', ko:'Trail LAB', en:'Trail LAB', desc_ko:'자연의 결을 따라, 함께 나아가다', desc_en:'Follow the trail. Feel the wild.',             img:'placeholder_leash.svg' }] },
+      harness:   { ko:'Harnesses', en:'Harnesses',   img:'placeholder_harness.svg',   collections:[
+                   { id:'grove-lab', ko:'Grove LAB', en:'Grove LAB', desc_ko:'숲과 도시의 경계에서, 두 세계를 담다', desc_en:'Where the city ends and the forest begins.', img:'placeholder_harness.svg' }] },
+      apparel:   { ko:'Apparel',   en:'Apparel',   img:'placeholder_raincoat.svg',  collections:[{ id:'rain-lab',   ko:'Rain LAB',   en:'Rain LAB',   desc_ko:'방수 아웃도어 의류 컬렉션',    desc_en:'Waterproof outdoor apparel collection',  img:'placeholder_raincoat.svg' }] },
       accessory: { ko:'Accessories', en:'Accessories', img:'placeholder_accessory.svg', collections:[{ id:'pocket-lab', ko:'Pocket LAB', en:'Pocket LAB', desc_ko:'산책 필수템 파우치 컬렉션', desc_en:'Walk-day essentials pouch collection', img:'placeholder_accessory.svg' }] }
     };
 
     var variants = {
-      'misty-forest': { ko:'미스티 포레스트', en:'Misty Forest', color:'#8A9992', bg:'#b8ccc4' },
-      'dust-taupe':   { ko:'더스트 토프',     en:'Dust Taupe',   color:'#b5a898', bg:'#c8bdb2' },
-      'volcanic-ash': { ko:'볼캐닉 애쉬',     en:'Volcanic Ash', color:'#3a3a3a', bg:'#707070' }
+      'misty-green':  { ko:'Misty Green',  en:'Misty Green',  color:'#4A6B52', bg:'#5C7D64' },
+      'clay-brown':   { ko:'Clay Brown',   en:'Clay Brown',   color:'#A0684A', bg:'#B87A5C' },
+      'ash-black':    { ko:'Ash Black',    en:'Ash Black',    color:'#3C3D3F', bg:'#505254' },
+      'dawn-green':   { ko:'Dawn Green',   en:'Dawn Green',   color:'#9AB2A8', bg:'#AEBFB8' },
+      'stone-beige':  { ko:'Stone Beige',  en:'Stone Beige',  color:'#C2B5A3', bg:'#D4CBBD' },
+      'smoke-gray':   { ko:'Smoke Gray',   en:'Smoke Gray',   color:'#9C9896', bg:'#AEAAA8' }
     };
 
     var variantsByCat = {
-      collar:    ['misty-forest','dust-taupe','volcanic-ash'],
-      leash:     ['misty-forest','dust-taupe','volcanic-ash'],
-      harness:   ['misty-forest','dust-taupe'],
-      apparel:   ['misty-forest'],
-      accessory: ['misty-forest','dust-taupe']
+      collar:    { 'path-lab': ['misty-green','clay-brown','ash-black'], 'trail-lab': ['dawn-green','stone-beige','smoke-gray'] },
+      leash:     { 'path-lab': ['misty-green','clay-brown','ash-black'], 'trail-lab': ['dawn-green','stone-beige','smoke-gray'] },
+      harness:   { 'grove-lab': ['dawn-green','stone-beige','smoke-gray'] },
+      apparel:   { 'rain-lab': ['misty-green'] },
+      accessory: { 'pocket-lab': ['misty-green','stone-beige'] }
     };
 
     var currentCat = null;
@@ -366,13 +374,13 @@
       var grid = document.getElementById('variantGrid');
       grid.innerHTML = '';
 
-      var vids = variantsByCat[catId] || [];
+      var vids = (variantsByCat[catId] && variantsByCat[catId][colId]) || [];
       vids.forEach(function(vid) {
         var v = variants[vid];
         var card = document.createElement('div');
         card.className = 'item-card';
-        card.innerHTML = '<div class="item-img" style="background-color:' + v.bg + ';">' +
-          '<div class="color-swatch" style="background:' + v.color + ';"></div></div>' +
+        card.innerHTML = '<div class="item-img" style="background-color:' + v.color + ';">' +
+          '</div>' +
           '<div class="item-body">' +
           '<div class="item-sub">' + (lang === 'ko' ? v.ko : v.en) + '</div>' +
           '<div class="item-name">' + (lang === 'ko' ? cat.ko : cat.en) + '</div>' +
