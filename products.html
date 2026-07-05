@@ -537,7 +537,16 @@
       document.body.setAttribute("data-lang", saved);
       setLang(saved);
       renderCategories();
-      history.replaceState({level:1}, '', window.location.pathname);
+
+      // Handle direct links from index (e.g. products.html#collar)
+      var hash = window.location.hash.replace('#', '');
+      var validCats = ['collar','leash','harness','apparel','accessory'];
+      if (hash && validCats.indexOf(hash) !== -1) {
+        history.replaceState({level:1}, '', window.location.pathname);
+        showCollections(hash);
+      } else {
+        history.replaceState({level:1}, '', window.location.pathname);
+      }
     });
 
     window.addEventListener('popstate', function(e) {
