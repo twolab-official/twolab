@@ -119,7 +119,7 @@
     .products-sub { font-size:13px; color:var(--text-muted); font-weight:300; line-height:1.8; max-width:280px; text-align:right; }
     .prod-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; width:100%; }
     .prod-card { background:var(--cream); border:0.5px solid #d4c9b0; border-radius:2px; overflow:hidden; transition:transform 0.2s; position:relative; min-width:0; cursor:pointer; text-decoration:none; display:block; color:inherit; }
-    .prod-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--gm); transform:scaleX(0); transition:transform 0.3s; transform-origin:left; }
+    .prod-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--gm); transform:scaleX(0); transition:transform 0.3s; transform-origin:left; pointer-events:none; z-index:0; }
     .prod-card:hover { transform:translateY(-4px); }
     .prod-card:hover::after { transform:scaleX(1); }
     .prod-img { width:100%; aspect-ratio:1/1; background:var(--warm); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; border-bottom:0.5px solid #d4c9b0; }
@@ -220,6 +220,9 @@
       .donation-inner { gap:32px; }
       .donation-divider { width:48px; height:1px; }
     }
+
+    /* STORY CHAPTER TITLES */
+    .story-chapter-title { font-family:'Noto Sans KR',sans-serif; font-size:clamp(15px,1.5vw,20px); font-weight:700; color:var(--gm-dark); margin-bottom:12px; line-height:1.6; letter-spacing:-0.2px; }
   </style>
 </head>
 <body>
@@ -288,12 +291,14 @@
         <div class="section-line"></div>
         <span class="section-tag">BRAND STORY</span>
       </div>
-      <h2 class="story-heading" data-i18n="story_heading">【 The Origin 】<br><em>두 쌍의 눈망울</em></h2>
-      <p class="story-body" data-i18n="story_body">모든 위대한 여정은 현관문 앞, 꼬리를 흔들며 나를 바라보던 두 쌍의 맑은 눈망울에서 시작되었습니다. 그 깊은 교감의 눈빛이 우리의 기록, TWOLAB의 첫 페이지를 열었습니다.</p>
+      <div class="story-chapter-title" data-i18n="story_ch1_title">【 The Origin 】 두 쌍의 눈망울</div>
+      <p class="story-body" data-i18n="story_ch1_body">모든 위대한 여정은 현관문 앞, 꼬리를 흔들며 나를 바라보던 두 쌍의 맑은 눈망울에서 시작되었습니다. 그 깊은 교감의 눈빛이 우리의 기록, TWOLAB의 첫 페이지를 열었습니다.</p>
       <div class="story-divider"></div>
-      <p class="story-body story-bold" data-i18n="story_quote">【 The Philosophy : TWOLAB LOG 】<br>반려견과 함께하는 아웃도어 라이프는 단순한 산책이 아니라, 서로의 호흡을 맞추며 신뢰를 쌓아가는 하나의 기록(Log)이라는 것을. 자연에서 태어나 도시를 걷고, 다시 자연으로 돌아가는 교감의 기록, 그것이 바로 'TWOLAB LOG'입니다.</p>
+      <div class="story-chapter-title" data-i18n="story_ch2_title">【 The Philosophy : TWOLAB LOG 】</div>
+      <p class="story-body" data-i18n="story_ch2_body">반려견과 함께하는 아웃도어 라이프는 단순한 산책이 아니라, 서로의 호흡을 맞추며 신뢰를 쌓아가는 하나의 기록(Log)이라는 것을. 자연에서 태어나 도시를 걷고, 다시 자연으로 돌아가는 교감의 기록, 그것이 바로 'TWOLAB LOG'입니다.</p>
       <div class="story-divider"></div>
-      <p class="story-body story-bold" data-i18n="story_born">【 The Gear : Built for the Wild, Designed for Togetherness 】<br>투랩(TWOLAB)은 대자연이 선물한 따뜻하고 견고한 어스 톤의 색채 위에, 도심의 안전함과 야생의 강인함을 담아 자연과 인간, 반려견이 함께하는 아웃도어 라이프스타일을 제안합니다. 당신과 반려견이 함께할 모든 위대한 여정을 완벽하게 서포트합니다.</p>
+      <div class="story-chapter-title" data-i18n="story_ch3_title">【 The Gear : Built for the Wild, Designed for Togetherness 】</div>
+      <p class="story-body" data-i18n="story_ch3_body">투랩(TWOLAB)은 대자연이 선물한 따뜻하고 견고한 어스 톤의 색채 위에, 도심의 안전함과 야생의 강인함을 담아 자연과 인간, 반려견이 함께하는 아웃도어 라이프스타일을 제안합니다. 당신과 반려견이 함께할 모든 위대한 여정을 완벽하게 서포트합니다.</p>
     </div>
     <div class="story-right">
       <div class="story-img">
@@ -491,10 +496,12 @@
         hero_title:"함께 새겨나가는,<br><em>하나의 기록.</em>",
         hero_desc:"평일의 리드미컬한 시티 워크부터<br>주말의 거친 대자연을 향한 탐험까지.<br>도시의 미니멀한 실루엣 속에<br>자연의 날씨를 버텨낼 기술력을 숨겨둡니다.<br>숲의 흙내음, 거친 트래킹, 그리고 별빛 아래의 아웃도어 라이프.<br>우리는 자연과 사람, 반려견이 공존하는 삶을 연구합니다.<br>도시와 자연을 연결하는 위대한 여정의 시작.<br>Explore with TWOLAB.",
         hero_btn1:"STORE 오픈 예정", hero_btn2:"BRAND STORY",
-        story_heading:"【 The Origin 】<br><em>두 쌍의 눈망울</em>",
-        story_body:"모든 위대한 여정은 현관문 앞, 꼬리를 흔들며 나를 바라보던 두 쌍의 맑은 눈망울에서 시작되었습니다. 그 깊은 교감의 눈빛이 우리의 기록, TWOLAB의 첫 페이지를 열었습니다.",
-        story_quote:"【 The Philosophy : TWOLAB LOG 】<br>반려견과 함께하는 아웃도어 라이프는 단순한 산책이 아니라, 서로의 호흡을 맞추며 신뢰를 쌓아가는 하나의 기록(Log)이라는 것을. 자연에서 태어나 도시를 걷고, 다시 자연으로 돌아가는 교감의 기록, 그것이 바로 'TWOLAB LOG'입니다.",
-        story_born:"【 The Gear : Built for the Wild, Designed for Togetherness 】<br>투랩(TWOLAB)은 대자연이 선물한 따뜻하고 견고한 어스 톤의 색채 위에, 도심의 안전함과 야생의 강인함을 담아 자연과 인간, 반려견이 함께하는 아웃도어 라이프스타일을 제안합니다. 당신과 반려견이 함께할 모든 위대한 여정을 완벽하게 서포트합니다.",
+        story_ch1_title:"【 The Origin 】 두 쌍의 눈망울",
+        story_ch1_body:"모든 위대한 여정은 현관문 앞, 꼬리를 흔들며 나를 바라보던 두 쌍의 맑은 눈망울에서 시작되었습니다. 그 깊은 교감의 눈빛이 우리의 기록, TWOLAB의 첫 페이지를 열었습니다.",
+        story_ch2_title:"【 The Philosophy : TWOLAB LOG 】",
+        story_ch2_body:"반려견과 함께하는 아웃도어 라이프는 단순한 산책이 아니라, 서로의 호흡을 맞추며 신뢰를 쌓아가는 하나의 기록(Log)이라는 것을. 자연에서 태어나 도시를 걷고, 다시 자연으로 돌아가는 교감의 기록, 그것이 바로 'TWOLAB LOG'입니다.",
+        story_ch3_title:"【 The Gear : Built for the Wild, Designed for Togetherness 】",
+        story_ch3_body:"투랩(TWOLAB)은 대자연이 선물한 따뜻하고 견고한 어스 톤의 색채 위에, 도심의 안전함과 야생의 강인함을 담아 자연과 인간, 반려견이 함께하는 아웃도어 라이프스타일을 제안합니다. 당신과 반려견이 함께할 모든 위대한 여정을 완벽하게 서포트합니다.",
         prod_heading:"함께하는<br>모든 순간을 위해",
         prod_sub:"반려견과 함께하는 모든 아웃도어 활동에 최적화된<br>TWOLAB의 첫 번째 컬렉션을 준비 중입니다.",
         prod_collar:"Collars", prod_leash:"Leashes", prod_harness:"Harnesses", prod_raincoat:"Apparel", prod_accessory:"Accessories",
@@ -519,10 +526,12 @@
         hero_tag:"URBAN NATURE DOG GEAR", hero_title:"A Record of Every<br><em>Moment Together.</em>",
         hero_desc:"From easy weekday walks through the city<br>to rugged weekend escapes into the wild.<br>We believe in a lifestyle where nature, people, and dogs live in harmony.<br>Explore with TWOLAB.",
         hero_btn1:"Store Opening Soon", hero_btn2:"Our Story",
-        story_heading:"【 The Origin 】<br><em>Two Pairs of Eyes</em>",
-        story_body:"Every great journey began with two pairs of bright, clear eyes — wagging tails and a gaze that stopped us right at the front door. That deep moment of connection opened the first page of our story, and the beginning of TWOLAB.",
-        story_quote:"【 The Philosophy : TWOLAB LOG 】<br>We discovered it out on the trail: life outdoors with your dog is more than just a walk. It's a log — a record built step by step, breath by breath, on a foundation of trust. Born in nature, walked through the city, and returning again to the wild. That shared record of connection is what we call the TWOLAB LOG.",
-        story_born:"【 The Gear : Built for the Wild, Designed for Togetherness 】<br>TWOLAB is grounded in the warm, earthy tones drawn straight from nature. We bring together urban safety and wilderness resilience to offer an outdoor lifestyle where people, dogs, and the natural world move as one. Whatever journey you and your dog take on next, TWOLAB is built to be there for every step of it.",
+        story_ch1_title:"【 The Origin 】 Two Pairs of Eyes",
+        story_ch1_body:"Every great journey began with two pairs of bright, clear eyes — wagging tails and a gaze that stopped us right at the front door. That deep moment of connection opened the first page of our story, and the beginning of TWOLAB.",
+        story_ch2_title:"【 The Philosophy : TWOLAB LOG 】",
+        story_ch2_body:"We discovered it out on the trail: life outdoors with your dog is more than just a walk. It's a log — a record built step by step, breath by breath, on a foundation of trust. Born in nature, walked through the city, and returning again to the wild. That shared record of connection is what we call the TWOLAB LOG.",
+        story_ch3_title:"【 The Gear : Built for the Wild, Designed for Togetherness 】",
+        story_ch3_body:"TWOLAB is grounded in the warm, earthy tones drawn straight from nature. We bring together urban safety and wilderness resilience to offer an outdoor lifestyle where people, dogs, and the natural world move as one. Whatever journey you and your dog take on next, TWOLAB is built to be there for every step of it.",
         prod_heading:"For every moment<br>spent together",
         prod_sub:"Designed for every outdoor adventure with your dog.<br>Our first collection is on its way.",
         prod_collar:"Collars", prod_leash:"Leashes", prod_harness:"Harnesses", prod_raincoat:"Apparel", prod_accessory:"Accessories",
