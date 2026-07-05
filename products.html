@@ -351,8 +351,9 @@
     var currentCat = null;
     var currentCol = null;
 
-    function showCollections(catId) {
+    function showCollections(catId, fromPop) {
       currentCat = catId;
+      if (!fromPop) history.pushState({level:2, catId:catId}, '', '#' + catId);
       var cat = data[catId];
       var grid = document.getElementById('collectionGrid');
       grid.innerHTML = '';
@@ -388,9 +389,10 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function showVariants(catId, colId) {
+    function showVariants(catId, colId, fromPop) {
       currentCol = colId;
       var cat = data[catId];
+      if (!fromPop) history.pushState({level:3, catId:catId, colId:colId}, '', '#' + catId + '-' + colId);
       var col = cat.collections.find(function(c) { return c.id === colId; });
       var grid = document.getElementById('variantGrid');
       grid.innerHTML = '';
@@ -448,12 +450,13 @@
       bc.innerHTML = html;
     }
 
-    function goLevel1() {
+    function goLevel1(fromPop) {
       document.getElementById('level1').classList.add('visible');
       document.getElementById('level2').classList.remove('visible');
       document.getElementById('level3').classList.remove('visible');
       updateBreadcrumb(null, null);
       currentCat = null; currentCol = null;
+      if (!fromPop) history.pushState({level:1}, '', window.location.pathname);
     }
 
     function goLevel2(catId) {
@@ -534,6 +537,21 @@
       document.body.setAttribute("data-lang", saved);
       setLang(saved);
       renderCategories();
+      history.replaceState({level:1}, '', window.location.pathname);
+    });
+
+    window.addEventListener('popstate', function(e) {
+      var state = e.state;
+      if (!state || state.level === 1) {
+        goLevel1(true);
+      } else if (state.level === 2) {
+        goLevel1(true);
+        showCollections(state.catId, true);
+      } else if (state.level === 3) {
+        goLevel1(true);
+        showCollections(state.catId, true);
+        showVariants(state.catId, state.colId, true);
+      }
     });
   </script>
 </body>
