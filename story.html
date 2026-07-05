@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TWOLAB™ — Urban Nature Dog Gear</title>
+  <title>Our Story — TWOLAB™</title>
   <meta name="description" content="TWOLAB™ — Urban Nature Dog Gear. Premium outdoor collars, leashes and harnesses for dogs. Lightweight, technical, built for the trail. 강아지 아웃도어 전문 브랜드." />
   <meta name="keywords" content="강아지 목줄, 강아지 하네스, 강아지 리쉬, 반려견 아웃도어, 강아지 아웃도어 용품, 프리미엄 강아지 목줄, 강아지 등산용품, 대형견 목줄, 친환경 강아지 용품, 강아지 산책 용품, dog outdoor gear, dog hiking gear, premium dog collar, technical dog collar, urban dog gear, dog trail gear, RPET dog collar, eco dog accessories, dog leash outdoor, dog harness hiking, Korean dog brand, minimalist dog gear, TWOLAB, 투랩" />
   <meta name="robots" content="index, follow" />
@@ -230,6 +230,21 @@
 
     /* STORY BADGE */
     .story-badge { display:inline-block; background:rgba(138,153,146,0.15); border:0.5px solid var(--gm); color:var(--gm-dark); font-family:'Montserrat',sans-serif; font-size:0.65em; font-weight:700; letter-spacing:0.1em; padding:2px 8px; border-radius:2px; vertical-align:middle; margin-right:8px; white-space:nowrap; }
+
+    /* SLIDER ARROWS */
+    .slider-arrow { position:absolute; top:50%; transform:translateY(-50%); z-index:4; background:rgba(42,58,52,0.45); border:0.5px solid rgba(138,153,146,0.3); color:var(--gm-xlight); width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; opacity:0; transition:opacity 0.25s, background 0.2s; user-select:none; }
+    .story-slider:hover .slider-arrow { opacity:1; }
+    .slider-arrow:hover { background:rgba(42,58,52,0.75); }
+    .slider-arrow-prev { left:16px; }
+    .slider-arrow-next { right:16px; }
+    @media(max-width:600px) { .slider-arrow { display:none; } }
+
+    /* NEW STORY LAYOUT */
+    .story-headline { font-family:'Montserrat',sans-serif; font-size:clamp(18px,2vw,26px); font-weight:800; color:var(--gm-dark); letter-spacing:0.5px; margin-bottom:28px; line-height:1.4; }
+    .story-emphasis { font-weight:600 !important; color:var(--gm-dark) !important; font-style:italic; margin-top:24px !important; }
+    .story-closing { margin-top:32px; padding-top:24px; border-top:0.5px solid rgba(138,153,146,0.3); }
+    .story-closing-tag { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:3px; color:var(--gm); margin-bottom:8px; text-transform:uppercase; }
+    .story-closing-line { font-family:'Montserrat',sans-serif; font-size:clamp(12px,1.2vw,15px); font-weight:700; color:var(--gm-dark); letter-spacing:0.5px; line-height:1.6; }
   </style>
 </head>
 <body>
@@ -237,8 +252,8 @@
   <nav>
     <a href="#" class="nav-logo">TWOLAB<sup>™</sup></a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.html" class="active" data-i18n="nav_home">Home</a></li>
-      <li><a href="story.html" data-i18n="nav_brand">Our Story</a></li>
+      <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+      <li><a href="story.html" class="active" data-i18n="nav_brand">Our Story</a></li>
       <li><a href="products.html" data-i18n="nav_products">Products</a></li>
       <li><a href="javascript:void(0)" onclick="goToStore()" data-i18n="nav_store">Shop</a></li>
       <li><a href="inquiry.html" data-i18n="nav_inquiry">Contact</a></li>
@@ -253,157 +268,55 @@
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="hero-eyebrow fade-up">
-        <div class="hero-line"></div>
-        <span class="hero-tag" data-i18n="hero_tag">URBAN NATURE DOG GEAR</span>
+  <div style="padding-top:72px;"></div>
+  <section class="story" id="story">
+    <div class="story-left">
+      <div class="section-label">
+        <div class="section-line"></div>
+        <span class="section-tag">BRAND STORY</span>
       </div>
-      <h1 class="hero-title fade-up delay-1" data-i18n="hero_title">함께 새겨나가는,<br><em>하나의 기록.</em></h1>
-      <p class="hero-subtitle fade-up delay-1">TWOLAB — Earthy Tones for Urban Trails</p>
-      <p class="hero-desc fade-up delay-2" data-i18n="hero_desc">평일의 리드미컬한 시티 워크부터<br>주말의 거친 대자연을 향한 탐험까지.<br>숲의 흙내음, 거친 트래킹, 그리고 별빛 아래의 아웃도어 라이프.<br><br>TWOLAB은 래브라도 리트리버 두 마리와 함께하는<br>진짜 아웃도어 경험에서 시작된 프리미엄 반려견 기어 브랜드입니다.<br><br>도시의 일상부터 자연 속 모험까지,<br>디자인과 기능 모두를 놓치지 않는 제품을 만듭니다.<br>Explore with TWOLAB.</p>
-      <div class="hero-btns fade-up delay-3">
-        <a href="#store" class="btn-fill" data-i18n="hero_btn1">STORE 오픈 예정</a>
-        <a href="story.html" class="btn-outline" data-i18n="hero_btn2">Our Story</a>
+      <div class="story-headline">Every Great Journey Begins<br>with Two Labradors.</div>
+      <p class="story-body" data-i18n="s_body1">TWOLAB은 두 마리의 래브라도 리트리버 시루, 하루와 함께한 일상에서 시작되었습니다.</p>
+      <p class="story-body" data-i18n="s_body2">우리는 디자인과 기능 중 하나를 선택해야 하는 반려견 용품이 늘 아쉬웠습니다. 그래서 자연에서 영감을 받은 컬러와 믿을 수 있는 소재, 오래 사용할 수 있는 구조를 담아 도시와 자연 어디에서나 함께할 수 있는 아웃도어 기어를 만들었습니다.</p>
+      <p class="story-body story-emphasis" data-i18n="s_body3">우리가 만드는 것은 장비가 아니라, 함께 걷는 시간을 위한 경험입니다.</p>
+      <div class="story-closing">
+        <div class="story-closing-tag">Urban Nature Dog Gear</div>
+        <div class="story-closing-line">Born from Two Labradors.<br>Built for Every Adventure.</div>
       </div>
     </div>
-    <div class="hero-scroll">
-      <span>SCROLL</span>
-      <div class="scroll-line"></div>
+    <div class="story-right">
+      <div class="story-slider" id="storySlider">
+        <div class="story-slider-track" id="storyTrack">
+          <div class="story-slide">
+            <div class="story-img-overlay"></div>
+            <div class="story-img-badge"><div class="badge-brand">TWOLAB™</div></div>
+          </div>
+          <div class="story-slide">
+            <div class="story-img-overlay"></div>
+            <div class="story-img-badge"><div class="badge-brand">TWOLAB™</div></div>
+          </div>
+        </div>
+        <div class="slider-arrow slider-arrow-prev" onclick="prevSlide()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M15 18l-6-6 6-6"/></svg>
+          </div>
+          <div class="slider-arrow slider-arrow-next" onclick="nextSlide()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+          <div class="story-dots">
+          <div class="story-dot active" onclick="goSlide(0)"></div>
+          <div class="story-dot" onclick="goSlide(1)"></div>
+        </div>
+      </div>
     </div>
   </section>
 
+
   <!-- STORY -->
-  <section class="donation">
-    <div class="donation-inner">
-      <div class="donation-badge">
-        <img src="Donation.png" alt="TWOLAB Donation" class="donation-dog-img" />
-        <div class="donation-text">
-          <div class="donation-amount" data-i18n="don_amount">판매금액의 1%</div>
-          <div class="donation-desc" data-i18n="don_desc">유기견 보호단체 기부</div>
-        </div>
-      </div>
-      <div class="donation-divider"></div>
-      <div class="donation-note" data-i18n="don_note">
-        TWOLAB은 상품 판매 1건당 1,000원을<br>유기견 보호·구조 단체에 기부합니다.
-      </div>
-    </div>
-  </section>
 
 
   <!-- PRODUCTS -->
-  <section class="products" id="products">
-    <div class="products-header">
-      <div>
-        <div class="section-label">
-          <div class="section-line"></div>
-          <span class="section-tag">PRODUCTS</span>
-        </div>
-        <h2 class="products-heading" data-i18n="prod_heading">함께하는<br>모든 순간을 위해</h2>
-      </div>
-      <p class="products-sub" data-i18n="prod_sub">반려견과 함께하는 모든 아웃도어 활동에 최적화된<br>TWOLAB의 첫 번째 컬렉션을 준비 중입니다.</p>
-    </div>
-    <div class="prod-grid">
-      <a href="products.html#collar" class="prod-card">        <div class="prod-img" style="background-image:url('placeholder_collar.svg');background-size:cover;background-position:center;">
-          <div class="img-placeholder"><span class="img-icon">📿</span><span class="img-label">PRODUCT IMAGE</span></div>
-        </div>
-        <div class="prod-body">
-          <div class="prod-num">01</div>
-          <div class="prod-name" data-i18n="prod_collar">Collars</div>
-          <p class="prod-desc" data-i18n="desc_collar">트레일에서도 안심할 수 있는 견고한 소재와 안전한 버클 설계</p>
-          <span class="prod-soon" data-i18n="coming_soon">COMING SOON</span>
-        </div>
-      </a>
-      <a href="products.html#leash" class="prod-card">        <div class="prod-img" style="background-image:url('placeholder_leash.svg');background-size:cover;background-position:center;">
-          <div class="img-placeholder"><span class="img-icon">🔗</span><span class="img-label">PRODUCT IMAGE</span></div>
-        </div>
-        <div class="prod-body">
-          <div class="prod-num">02</div>
-          <div class="prod-name" data-i18n="prod_leash">Leashes</div>
-          <p class="prod-desc" data-i18n="desc_leash">다양한 지형과 활동에 맞춘 강도와 길이, 핸들 그립감</p>
-          <span class="prod-soon" data-i18n="coming_soon">COMING SOON</span>
-        </div>
-      </a>
-      <a href="products.html#harness" class="prod-card">        <div class="prod-img" style="background-image:url('placeholder_harness.svg');background-size:cover;background-position:center;">
-          <div class="img-placeholder"><span class="img-icon">🦺</span><span class="img-label">PRODUCT IMAGE</span></div>
-        </div>
-        <div class="prod-body">
-          <div class="prod-num">03</div>
-          <div class="prod-name" data-i18n="prod_harness">Harnesses</div>
-          <p class="prod-desc" data-i18n="desc_harness">장시간 착용에도 편안한 아웃도어 전용 하네스</p>
-          <span class="prod-soon" data-i18n="coming_soon">COMING SOON</span>
-        </div>
-      </a>
-      <a href="products.html#apparel" class="prod-card">        <div class="prod-img" style="background-image:url('placeholder_raincoat.svg');background-size:cover;background-position:center;">
-          <div class="img-placeholder"><span class="img-icon">🌧️</span><span class="img-label">PRODUCT IMAGE</span></div>
-        </div>
-        <div class="prod-body">
-          <div class="prod-num">04</div>
-          <div class="prod-name" data-i18n="prod_raincoat">Apparel</div>
-          <p class="prod-desc" data-i18n="desc_raincoat">어떤 날씨에도 함께할 수 있는 경량 방수 레인코트</p>
-          <span class="prod-soon" data-i18n="coming_soon">COMING SOON</span>
-        </div>
-      </a>
-      <a href="products.html#accessory" class="prod-card">        <div class="prod-img" style="background-image:url('placeholder_accessory.svg');background-size:cover;background-position:center;">
-          <div class="img-placeholder"><span class="img-icon">🎒</span><span class="img-label">PRODUCT IMAGE</span></div>
-        </div>
-        <div class="prod-body">
-          <div class="prod-num">05</div>
-          <div class="prod-name" data-i18n="prod_accessory">Accessories</div>
-          <p class="prod-desc" data-i18n="desc_accessory">산책 필수템을 깔끔하게 수납하는 Pocket LAB 파우치</p>
-          <span class="prod-soon" data-i18n="coming_soon">COMING SOON</span>
-        </div>
-      </a>
-    </div>
-    <div class="view-all-wrap">
-      <a href="products.html" class="view-all-btn">
-        <span class="view-all-line"></span>
-        <span data-i18n="view_all">전체 컬렉션 보기</span>
-        <span class="view-all-line"></span>
-      </a>
-    </div>
-  </section>
 
   <!-- CTA / STORE -->
-  <section class="cta" id="store">
-    <div>
-      <div class="section-label">
-        <div class="section-line" style="background:var(--gm)"></div>
-        <span class="section-tag" style="color:var(--gm)">OPENING SOON</span>
-      </div>
-      <h2 class="cta-heading" data-i18n="cta_heading">온라인 스토어<br><em>오픈 준비 중입니다</em></h2>
-      <p class="cta-desc" data-i18n="cta_desc">TWOLAB의 첫 번째 컬렉션을 곧 만나보실 수 있습니다.<br>인스타그램을 팔로우하고 오픈 소식을 가장 먼저 받아보세요.</p>
-    </div>
-    <div class="cta-right">
-      <a href="javascript:void(0)" onclick="goToStore()" class="store-card">
-        <div>
-          <div class="store-label">TWOLAB OFFICIAL STORE</div>
-          <div class="store-name" data-i18n="official_name">투랩 공식몰</div>
-          <div class="store-sub" data-i18n="official_sub">바로가기</div>
-        </div>
-        <span class="store-arrow">→</span>
-      </a>
-      <div class="store-card" style="cursor:default;opacity:0.75;">
-        <div>
-          <div class="store-label">AMAZON</div>
-          <div class="store-name" data-i18n="amazon_name">아마존</div>
-          <div class="store-sub" data-i18n="amazon_sub">오픈 준비 중</div>
-        </div>
-        <span style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;color:var(--gm);white-space:nowrap;">COMING SOON</span>
-      </div>
-      <a href="javascript:void(0)" onclick="goToNaver()" class="store-card">
-        <div>
-          <div class="store-label">NAVER SMART STORE</div>
-          <div class="store-name" data-i18n="store_name">네이버 스마트스토어</div>
-          <div class="store-sub" data-i18n="store_sub">오픈 준비 중 · 알림 신청 가능</div>
-        </div>
-        <span class="store-arrow">→</span>
-      </a>
-    </div>
-  </section>
 
   <footer>
     <div class="footer-inner">
@@ -457,7 +370,7 @@
 
     var translations = {
       ko: {
-        nav_home:"홈", nav_brand:"Our Story", nav_products:"Products", nav_store:"Shop", nav_inquiry:"Support",
+        nav_home:"홈", nav_brand:"Our Story", s_body1:"TWOLAB은 두 마리의 래브라도 리트리버 시루, 하루와 함께한 일상에서 시작되었습니다.", s_body2:"우리는 디자인과 기능 중 하나를 선택해야 하는 반려견 용품이 늘 아쉬웠습니다. 그래서 자연에서 영감을 받은 컬러와 믿을 수 있는 소재, 오래 사용할 수 있는 구조를 담아 도시와 자연 어디에서나 함께할 수 있는 아웃도어 기어를 만들었습니다.", s_body3:"우리가 만드는 것은 장비가 아니라, 함께 걷는 시간을 위한 경험입니다.", nav_products:"Products", nav_store:"Shop", nav_inquiry:"Support",
         hero_title:"함께 새겨나가는,<br><em>하나의 기록.</em>",
         hero_desc:"평일의 리드미컬한 시티 워크부터<br>주말의 거친 대자연을 향한 탐험까지.<br>숲의 흙내음, 거친 트래킹, 그리고 별빛 아래의 아웃도어 라이프.<br><br>TWOLAB은 래브라도 리트리버 두 마리와 함께하는<br>진짜 아웃도어 경험에서 시작된 프리미엄 반려견 기어 브랜드입니다.<br><br>도시의 일상부터 자연 속 모험까지,<br>디자인과 기능 모두를 놓치지 않는 제품을 만듭니다.<br>Explore with TWOLAB.",
         hero_btn1:"STORE 오픈 예정", hero_btn2:"BRAND STORY",
@@ -487,7 +400,7 @@
         ft_board:"Support", ft_qna:"Q&A", ft_faq:"FAQ", ft_wholesale:"Wholesale", ft_naver:"네이버 스토어", footer_phone:"070-8744-4316"
       },
       en: {
-        nav_home:"Home", nav_brand:"Our Story", nav_products:"Products", nav_store:"Shop", nav_inquiry:"Support",
+        nav_home:"Home", nav_brand:"Our Story", s_body1:"TWOLAB started with two Labrador Retrievers — Siroo and Haroo — and the everyday adventures we shared with them.", s_body2:"We were always frustrated by dog products that forced a choice between design and function. So we created outdoor gear inspired by nature's colours, built with trusted materials and lasting construction — gear that works in the city and on the trail alike.", s_body3:"What we make isn't equipment. It's an experience for every walk you share together.", nav_products:"Products", nav_store:"Shop", nav_inquiry:"Support",
         hero_tag:"URBAN NATURE DOG GEAR", hero_title:"A Record of Every<br><em>Moment Together.</em>",
         hero_desc:"From rhythmic city walks on weekday mornings<br>to rugged weekend escapes into the wild.<br>The scent of forest soil, tough terrain, and nights under the stars.<br><br>TWOLAB is a premium dog gear brand<br>born from real outdoor experiences with two Labrador Retrievers.<br><br>We make gear that holds its own — from urban streets to wilderness trails,<br>never compromising on design or function.<br>Explore with TWOLAB.",
         hero_btn1:"Store Opening Soon", hero_btn2:"Our Story",
@@ -531,9 +444,9 @@
       dots.forEach(function(d, i) { d.classList.toggle('active', i === slideIndex); });
     }
 
-    function nextSlide() {
-      goSlide((slideIndex + 1) % slideTotal);
-    }
+    var touchStartX = 0;
+    function nextSlide() { goSlide((slideIndex + 1) % slideTotal); }
+    function prevSlide() { goSlide((slideIndex - 1 + slideTotal) % slideTotal); }
 
     function startSlider() {
       if (document.getElementById('storySlider')) sliderAuto = setInterval(nextSlide, 3000);
@@ -543,8 +456,15 @@
       startSlider();
       var slider = document.getElementById('storySlider');
       if (slider) {
-        slider.addEventListener('touchstart', function(e) { clearInterval(sliderAuto); });
-        slider.addEventListener('touchend', function(e) { startSlider(); });
+        slider.addEventListener('touchstart', function(e) {
+          touchStartX = e.touches[0].clientX;
+          clearInterval(sliderAuto);
+        });
+        slider.addEventListener('touchend', function(e) {
+          var diff = touchStartX - e.changedTouches[0].clientX;
+          if (Math.abs(diff) > 50) { diff > 0 ? nextSlide() : prevSlide(); }
+          startSlider();
+        });
       }
     });
     
