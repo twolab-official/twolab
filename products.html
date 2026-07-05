@@ -154,19 +154,6 @@
       .donation-inner { gap:32px; }
       .donation-divider { width:48px; height:1px; }
     }
-
-    /* LEVEL 3 TWO-COLUMN LAYOUT */
-    .level3-inner { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; }
-    .col-info { position:sticky; top:24px; }
-    .col-info-label { font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:2px; color:var(--gm); margin-bottom:12px; text-transform:uppercase; }
-    .col-info-name { font-family:'Montserrat',sans-serif; font-size:22px; font-weight:700; letter-spacing:1px; color:var(--gm-dark); margin-bottom:8px; }
-    .col-info-tag { font-family:'Noto Sans KR',sans-serif; font-size:13px; font-style:italic; color:var(--gm); margin-bottom:20px; line-height:1.6; }
-    .col-info-divider { width:32px; height:1px; background:var(--gm); margin-bottom:20px; opacity:0.4; }
-    .col-info-desc { font-family:'Noto Sans KR',sans-serif; font-size:12.5px; color:var(--gm); line-height:1.9; letter-spacing:0.01em; }
-    @media(max-width:900px) {
-      .level3-inner { grid-template-columns:1fr; gap:32px; }
-      .col-info { position:static; }
-    }
   </style>
 </head>
 <body>
@@ -200,7 +187,7 @@
       <div class="donation-badge">
         <img src="Donation.png" alt="TWOLAB Donation" class="donation-dog-img" />
         <div class="donation-text">
-          <div class="donation-amount" data-i18n="don_amount">판매금액의 2%</div>
+          <div class="donation-amount" data-i18n="don_amount">판매금액의 1%</div>
           <div class="donation-desc" data-i18n="don_desc">유기견 보호단체 기부</div>
         </div>
       </div>
@@ -245,10 +232,7 @@
         <span class="step-text" data-i18n="step3">색상을 선택해주세요</span>
         <div class="step-line"></div>
       </div>
-      <div class="level3-inner">
-        <div class="col-info" id="colInfo"></div>
-        <div class="card-grid" id="variantGrid"></div>
-      </div>
+      <div class="card-grid" id="variantGrid"></div>
     </div>
 
   </div>
@@ -294,29 +278,6 @@
     document.addEventListener('click', function(e) { if (!e.target.closest('nav')) document.getElementById('navLinks').classList.remove('open'); });
 
     var lang = 'ko';
-
-    var fullDesc = {
-      'collar-path-lab': {
-        ko: '도심의 빌딩 숲과 가로수길을 배경으로 걷는 데일리 산책을 위한 목줄입니다. 야간이나 어두운 골목길에서도 보호자와 반려견의 안전을 지켜줄 수 있도록 전면에 고감도 반사 웨빙을 사용했습니다. 차분한 어스 톤 컬러에 스포티한 빛의 안전함을 더해, 도시의 밤낮 속에서 반려견을 가장 안전하고 아름답게 빛내줍니다.',
-        en: 'Your everyday companion for city streets. High-sensitivity reflective webbing across the full surface keeps your dog visible and safe during low-light walks through the neighbourhood. Earthy tones meet urban safety — built for the rhythm of daily life.'
-      },
-      'collar-trail-lab': {
-        ko: '깊은 숲, 거친 바위산, 계곡 등 대자연의 품으로 뛰어드는 탐험을 위해 설계된 하이엔드 아웃도어 목줄입니다. 가볍고 튼튼한 고강도 나일론 기반의 립스탑 원단을 베이스로 제작되어 찢어짐이나 변형 걱정이 없습니다. 반려견의 목 피부가 닿는 안쪽에는 프리미엄 스웨이드를 덧대어, 거친 야생 속에서도 자연의 품과 같은 안락함을 제공합니다.',
-        en: `Built for the trail, designed for the wild. Tear-resistant ripstop nylon holds up against rough terrain without losing its shape, while a premium suede lining sits softly against your dog's skin for all-day comfort on any adventure.`
-      },
-      'leash-path-lab': {
-        ko: '보호자의 손끝과 반려견의 움직임을 도심의 리듬에 맞춰 가장 안전하게 연결하는 리드줄입니다. 줄 전체에 빛을 반사하는 고감도 반사 웨빙을 사용하여 야간 시인성을 극대화했습니다. 상황에 맞게 길이를 자유롭게 조절할 수 있어, 사람이 많은 도심 인도에서는 짧고 안전하게, 넓은 공원에서는 길고 자유롭게 맞춤형 산책을 즐길 수 있습니다.',
-        en: 'Full-length reflective webbing maximises visibility on evening walks and dimly lit streets. An adjustable design lets you go short and controlled in busy areas, or long and free in open parks — adapting to wherever the day takes you.'
-      },
-      'leash-trail-lab': {
-        ko: '거친 마찰과 나뭇가지에도 뜯기지 않는 고강도 웨빙과 손바닥을 보호하는 스웨이드 핸들이 적용된 리드줄입니다. 험난한 오프로드를 고려하여 반려견과 가장 가까운 앞쪽에 별도의 숏 핸들을 배치했습니다. 거친 지형에서도 즉각적으로 제어할 수 있어 완벽하고 안전한 컨트롤이 가능합니다.',
-        en: `Built with high-strength webbing and a suede grip handle to protect your hands on long hikes. A short front handle positioned close to your dog provides immediate control on rugged terrain or during unexpected encounters.`
-      },
-      'harness-grove-lab': {
-        ko: '도심 산책용 Path 라인의 반사 웨빙과 아웃도어용 Trail 라인의 고강도 나일론 원단을 하이브리드로 결합한 투랩의 플래그십 하네스입니다. 반려견의 등과 가슴을 흔들림 없이 감싸안는 새들 형태의 디자인을 채택했으며, 안감에는 통기성이 뛰어난 입체 에어매쉬를 적용했습니다. 방수 기능까지 갖춰 사계절 내내 안전하고 자유로운 탐험을 보장합니다.',
-        en: `TWOLAB's flagship harness. Reflective webbing and lightweight ripstop nylon combine in a secure saddle-fit design that wraps your dog's back and chest with confidence. Breathable air-mesh lining and water-resistant construction keep them comfortable and dry across all four seasons.`
-      }
-    };
 
     var data = {
       collar:    { ko:'Collars',   en:'Collars',    img:'placeholder_collar.svg',    collections:[
@@ -395,16 +356,6 @@
       var grid = document.getElementById('variantGrid');
       grid.innerHTML = '';
 
-      var info = document.getElementById('colInfo');
-      var descKey = catId + '-' + colId;
-      var desc = fullDesc[descKey] || {};
-      info.innerHTML =
-        '<div class="col-info-label">Collection</div>' +
-        '<div class="col-info-name">' + (lang === 'ko' ? col.ko : col.en) + '</div>' +
-        '<div class="col-info-tag">' + (lang === 'ko' ? col.desc_ko : col.desc_en) + '</div>' +
-        '<div class="col-info-divider"></div>' +
-        '<div class="col-info-desc">' + (lang === 'ko' ? (desc.ko || '') : (desc.en || '')) + '</div>';
-
       var vids = (variantsByCat[catId] && variantsByCat[catId][colId]) || [];
       vids.forEach(function(vid) {
         var v = variants[vid];
@@ -471,7 +422,7 @@
         ft_customer:"Customer Service", ft_hours:"평일 AM 11:00 ~ PM 6:00<br>(점심시간 : PM 1:00 ~ 2:00)",
         ft_closed:"휴무 : 토,일요일 및 공휴일", ft_company:"Company Info",
         ft_bizname:"상호명 : 투랩 (TWOLAB)", ft_ceo:"대표 : 김효섭",
-        don_amount:"판매금액의 2%", don_desc:"유기견 보호단체 기부", don_note:"TWOLAB은 모든 상품 판매금액의 2%를<br>유기견 보호·구조 단체에 기부합니다.", ft_addr:"주소 : 인천광역시 검단구 고산후로 95번길 32, 501-7 (당하동, 명진프라자)",
+        don_amount:"판매금액의 1%", don_desc:"유기견 보호단체 기부", don_note:"TWOLAB은 모든 상품 판매금액의 1%를<br>유기견 보호·구조 단체에 기부합니다.", ft_addr:"주소 : 인천광역시 검단구 고산후로 95번길 32, 501-7 (당하동, 명진프라자)",
         ft_biz:"사업자등록번호 : 746-05-03753", ft_ecom:"통신판매업신고번호 : 2026-인천서구-2140",
         ft_board:"Support", ft_qna:"Q&A", ft_faq:"FAQ", ft_wholesale:"Wholesale", footer_phone:"070-8744-4316"
       },
@@ -485,7 +436,7 @@
         ft_customer:"Customer Service", ft_hours:"Weekdays 11:00 AM – 6:00 PM<br>(Lunch Break: 1:00 PM – 2:00 PM)",
         ft_closed:"Closed: Weekends and Public Holidays", ft_company:"Company Info",
         ft_bizname:"Company: TWOLAB", ft_ceo:"CEO: John H. Kim",
-        don_amount:"2% of Every Sale", don_desc:"Donated to Rescue Dogs", don_note:"TWOLAB donates 2% of every purchase<br>to organizations rescuing and protecting dogs.", ft_addr:"Address: 501-7, 32, Gosanhu-ro 95beon-gil, Geomdan-gu, Incheon, The Republic of Korea (22682)",
+        don_amount:"1% of Every Sale", don_desc:"Donated to Rescue Dogs", don_note:"TWOLAB donates 1% of every purchase<br>to organizations rescuing and protecting dogs.", ft_addr:"Address: 501-7, 32, Gosanhu-ro 95beon-gil, Geomdan-gu, Incheon, The Republic of Korea (22682)",
         ft_biz:"Business Registration No.: 746-05-03753", ft_ecom:"E-Commerce Registration No.: 2026-Incheon Seo-gu-2140",
         ft_board:"Support", ft_qna:"Q&A", ft_faq:"FAQ", ft_wholesale:"Wholesale", footer_phone:"+82-70-8744-4316"
       }
