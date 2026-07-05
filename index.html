@@ -230,6 +230,97 @@
 
     /* STORY BADGE */
     .story-badge { display:inline-block; background:rgba(138,153,146,0.15); border:0.5px solid var(--gm); color:var(--gm-dark); font-family:'Montserrat',sans-serif; font-size:0.65em; font-weight:700; letter-spacing:0.1em; padding:2px 8px; border-radius:2px; vertical-align:middle; margin-right:8px; white-space:nowrap; }
+
+    /* ── MOBILE PRODUCT CAROUSEL ── */
+    .prod-card-arrow { display:none; }
+    .prod-btn { display:none; }
+
+    @media(max-width:768px) {
+      .products { padding-left:0; padding-right:0; overflow:visible; }
+      .products-header { padding:0 24px; }
+      .view-all-wrap { padding:0 24px; }
+
+      /* Outer: flex row - buttons in flow */
+      .prod-outer {
+        display:flex;
+        align-items:flex-start;
+        gap:0;
+      }
+
+      /* Buttons - in flex flow, vertically centered on image */
+      .prod-btn {
+        display:flex !important;
+        flex-shrink:0;
+        width:36px; height:36px;
+        margin-top:calc(78vw * 4/3 / 2 - 18px);
+        border-radius:50%;
+        background:rgba(255,255,255,0.95);
+        border:none;
+        align-items:center;
+        justify-content:center;
+        cursor:pointer;
+        box-shadow:0 2px 10px rgba(0,0,0,0.2);
+        color:#333;
+        z-index:5;
+      }
+      .prod-btn:disabled { opacity:0.2; cursor:default; }
+
+      /* Track wrapper clips scroll bar */
+      .prod-track-wrap {
+        flex:1;
+        overflow:hidden;
+      }
+
+      /* Scrollable track */
+      #prodTrack {
+        display:flex !important;
+        grid-template-columns:none !important;
+        gap:10px;
+        padding:0 8px 4px;
+        overflow-x:auto;
+        scroll-behavior:smooth;
+        scrollbar-width:none;
+        -ms-overflow-style:none;
+        scroll-snap-type:x mandatory;
+      }
+      #prodTrack::-webkit-scrollbar { display:none; }
+
+      /* Each card - 3:4 portrait */
+      #prodTrack .prod-card {
+        min-width:72%;
+        flex-shrink:0;
+        border-radius:10px;
+        scroll-snap-align:start;
+      }
+
+      /* Image 3:4 ratio */
+      #prodTrack .prod-card .prod-img {
+        aspect-ratio:3/4 !important;
+        height:auto !important;
+      }
+
+      /* Card body: name left + arrow right */
+      #prodTrack .prod-card .prod-body {
+        display:flex !important;
+        flex-direction:row !important;
+        align-items:center !important;
+        justify-content:space-between !important;
+        height:auto !important;
+        min-height:auto !important;
+        padding:14px 16px !important;
+      }
+      #prodTrack .prod-card .prod-name { font-size:14px; font-weight:700; margin:0 !important; }
+      #prodTrack .prod-card .prod-desc { display:none !important; }
+      #prodTrack .prod-card .prod-soon { display:none !important; }
+      #prodTrack .prod-card .prod-num  { display:none !important; }
+      .prod-card-arrow { display:inline-flex; color:var(--gm-dark); }
+    }
+    @media(min-width:769px) {
+      .prod-btn { display:none !important; }
+      .prod-card-arrow { display:none; }
+      .prod-track-wrap { overflow:visible; }
+      #prodTrack { overflow:visible !important; display:grid !important; }
+    }
   </style>
 </head>
 <body>
@@ -263,7 +354,7 @@
       <p class="hero-desc fade-up delay-2" data-i18n="hero_desc">평일의 리드미컬한 시티 워크부터<br>주말의 거친 대자연을 향한 탐험까지.<br>숲의 흙내음, 거친 트래킹,<br>그리고 별빛 아래의 아웃도어 라이프.<br><br>TWOLAB은 래브라도 리트리버 두 마리와 함께하는<br>진짜 아웃도어 경험에서 시작된<br>프리미엄 반려견 기어 브랜드입니다.<br><br>도시의 일상부터 자연 속 모험까지,<br>디자인과 기능 모두를 놓치지 않는 제품을 만듭니다.<br>Explore with TWOLAB.</p>
       <div class="hero-btns fade-up delay-3">
         <a href="#store" class="btn-fill" data-i18n="hero_btn1">STORE 오픈 예정</a>
-        <a href="story.html" class="btn-outline" data-i18n="hero_btn2">Our Story</a>
+        <a href="story.html" class="btn-outline" data-i18n="hero_btn2">Brand Story</a>
       </div>
     </div>
     <div class="hero-scroll">
@@ -302,7 +393,12 @@
       </div>
       <p class="products-sub" data-i18n="prod_sub">반려견과 함께하는 모든 아웃도어 활동에 최적화된<br>TWOLAB의 첫 번째 컬렉션을 준비 중입니다.</p>
     </div>
-    <div class="prod-grid">
+    <div class="prod-outer">
+      <button class="prod-btn prod-btn-prev" id="prodPrev" onclick="prodScroll(-1)" aria-label="이전">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="prod-track-wrap">
+        <div class="prod-grid" id="prodTrack">
       <a href="products.html#collar" class="prod-card">        <div class="prod-img" style="background-image:url('placeholder_collar.svg');background-size:cover;background-position:center;">
           <div class="img-placeholder"><span class="img-icon">📿</span><span class="img-label">PRODUCT IMAGE</span></div>
         </div>
@@ -311,6 +407,7 @@
           <div class="prod-name" data-i18n="prod_collar">Collars</div>
           <p class="prod-desc" data-i18n="desc_collar">트레일에서도 안심할 수 있는 견고한 소재와 안전한 버클 설계</p>
           <span class="prod-soon" data-i18n="coming_soon">COMING SOON</span>
+          <span class="prod-card-arrow">→</span>
         </div>
       </a>
       <a href="products.html#leash" class="prod-card">        <div class="prod-img" style="background-image:url('placeholder_leash.svg');background-size:cover;background-position:center;">
@@ -321,6 +418,7 @@
           <div class="prod-name" data-i18n="prod_leash">Leashes</div>
           <p class="prod-desc" data-i18n="desc_leash">다양한 지형과 활동에 맞춘 강도와 길이, 핸들 그립감</p>
           <span class="prod-soon" data-i18n="coming_soon">COMING SOON</span>
+          <span class="prod-card-arrow">→</span>
         </div>
       </a>
       <a href="products.html#harness" class="prod-card">        <div class="prod-img" style="background-image:url('placeholder_harness.svg');background-size:cover;background-position:center;">
@@ -331,6 +429,7 @@
           <div class="prod-name" data-i18n="prod_harness">Harnesses</div>
           <p class="prod-desc" data-i18n="desc_harness">장시간 착용에도 편안한 아웃도어 전용 하네스</p>
           <span class="prod-soon" data-i18n="coming_soon">COMING SOON</span>
+          <span class="prod-card-arrow">→</span>
         </div>
       </a>
       <a href="products.html#apparel" class="prod-card">        <div class="prod-img" style="background-image:url('placeholder_raincoat.svg');background-size:cover;background-position:center;">
@@ -341,6 +440,7 @@
           <div class="prod-name" data-i18n="prod_raincoat">Apparel</div>
           <p class="prod-desc" data-i18n="desc_raincoat">어떤 날씨에도 함께할 수 있는 경량 방수 레인코트</p>
           <span class="prod-soon" data-i18n="coming_soon">COMING SOON</span>
+          <span class="prod-card-arrow">→</span>
         </div>
       </a>
       <a href="products.html#accessory" class="prod-card">        <div class="prod-img" style="background-image:url('placeholder_accessory.svg');background-size:cover;background-position:center;">
@@ -351,8 +451,14 @@
           <div class="prod-name" data-i18n="prod_accessory">Accessories</div>
           <p class="prod-desc" data-i18n="desc_accessory">산책 필수템을 깔끔하게 수납하는 Pocket LAB 파우치</p>
           <span class="prod-soon" data-i18n="coming_soon">COMING SOON</span>
+          <span class="prod-card-arrow">→</span>
         </div>
       </a>
+        </div>
+      </div>
+      <button class="prod-btn prod-btn-next" id="prodNext" onclick="prodScroll(1)" aria-label="다음">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
     </div>
     <div class="view-all-wrap">
       <a href="products.html" class="view-all-btn">
@@ -456,7 +562,7 @@
         nav_home:"HOME", nav_brand:"Our Story", nav_products:"Products", nav_store:"Shop", nav_inquiry:"Support",
         hero_title:"Urban Nature<br><em>Dog Gear</em>",
         hero_desc:"평일의 리드미컬한 시티 워크부터<br>주말의 거친 대자연을 향한 탐험까지.<br>숲의 흙내음, 거친 트래킹,<br>그리고 별빛 아래의 아웃도어 라이프.<br><br>TWOLAB은 래브라도 리트리버 두 마리와 함께하는<br>진짜 아웃도어 경험에서 시작된<br>프리미엄 반려견 기어 브랜드입니다.<br><br>도시의 일상부터 자연 속 모험까지,<br>디자인과 기능 모두를 놓치지 않는 제품을 만듭니다.<br>Explore with TWOLAB.",
-        hero_btn1:"STORE 오픈 예정", hero_btn2:"BRAND STORY",
+        hero_btn1:"STORE 오픈 예정", hero_btn2:"Brand Story",
         story_ch1_title:"<span class=\"story-badge\">The Origin</span> 두 쌍의 눈망울",
         story_ch1_body:"모든 위대한 여정은 현관문 앞, 꼬리를 흔들며 나를 바라보던 두 쌍의 맑은 눈망울에서 시작되었습니다. 그 깊은 교감의 눈빛이 우리의 기록, TWOLAB의 첫 페이지를 열었습니다.",
         story_ch2_title:"<span class=\"story-badge\">The Philosophy</span> TWOLAB LOG",
@@ -486,7 +592,7 @@
         nav_home:"Home", nav_brand:"Our Story", nav_products:"Products", nav_store:"Shop", nav_inquiry:"Support",
         hero_tag:"URBAN NATURE DOG GEAR", hero_title:"Urban Nature<br><em>Dog Gear</em>",
         hero_desc:"From weekday walks through the city<br>to rugged weekend escapes into the wild.<br>The smell of the forest floor, tough terrain,<br>and starlit nights in the backcountry.<br><br>TWOLAB is a premium dog gear brand<br>rooted in real adventures with two Labrador Retrievers.<br><br>From city sidewalks to mountain trails,<br>we make gear that never makes you choose<br>between great design and solid function.<br>Explore with TWOLAB.",
-        hero_btn1:"Store Opening Soon", hero_btn2:"Our Story",
+        hero_btn1:"Store Opening Soon", hero_btn2:"Brand Story",
         story_ch1_title:"<span class=\"story-badge\">The Origin</span> Two Pairs of Eyes",
         story_ch1_body:"Every great journey began with two pairs of bright, clear eyes — wagging tails and a gaze that stopped us right at the front door. That deep moment of connection opened the first page of our story, and the beginning of TWOLAB.",
         story_ch2_title:"<span class=\"story-badge\">The Philosophy</span> TWOLAB LOG",
@@ -544,6 +650,28 @@
       }
     });
     
+
+    // Product carousel
+    function prodScroll(dir) {
+      var track = document.getElementById('prodTrack');
+      if (!track || window.innerWidth > 768) return;
+      var card = track.querySelector('.prod-card');
+      if (!card) return;
+      track.scrollLeft += dir * (card.offsetWidth + 10);
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      var p = document.getElementById('prodPrev');
+      if (p) p.disabled = true;
+      var track = document.getElementById('prodTrack');
+      if (!track) return;
+      track.addEventListener('scroll', function() {
+        var p = document.getElementById('prodPrev');
+        var n = document.getElementById('prodNext');
+        if (p) p.disabled = track.scrollLeft <= 4;
+        if (n) n.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+      });
+    });
+
     function setLang(lang) {
       localStorage.setItem("twolab_lang", lang);
       document.body.setAttribute("data-lang", lang);
