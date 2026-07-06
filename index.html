@@ -61,7 +61,7 @@
     .nav-toggle span { display:block; width:24px; height:1.5px; background:var(--gm-light); }
 
     /* HERO */
-    .hero { position:relative; min-height:100vh; display:flex; align-items:flex-end; padding:0 0 80px; overflow:hidden; background:var(--gm-xdark); }
+    .hero { position:relative; min-height:100vh; display:flex; align-items:flex-end; padding:72px 0 72px; overflow:hidden; background:var(--gm-xdark); }
     .hero-bg { position:absolute; inset:0; background-image:url('hero.png'); background-size:cover; background-position:center 58%; background-repeat:no-repeat; }
     .hero-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(42,58,52,0.92) 0%, rgba(42,58,52,0.40) 50%, rgba(42,58,52,0.20) 100%); }
     .hero-content { position:relative; z-index:2; padding:0 48px; max-width:720px; }
@@ -126,11 +126,11 @@
     .prod-img.has-image .img-placeholder { display:none; }
     .img-icon { font-size:36px; opacity:0.25; }
     .img-label { font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:2px; color:rgba(138,153,146,0.4); }
-    .prod-body { padding:12px; }
+    .prod-body { padding:12px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; }
     .prod-num { display:none; }
-    .prod-name { font-family:'Montserrat',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.5px; color:var(--text-dark); margin-bottom:8px; }
-    .prod-desc { font-size:11px; color:var(--text-muted); line-height:1.5; font-weight:300; margin-bottom:10px; }
-    .prod-soon { display:inline-block; font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:2px; color:var(--gm-dark); background:var(--gm-xlight); padding:4px 10px; border-radius:10px; }
+    .prod-name { font-family:'Montserrat',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.5px; color:var(--text-dark); margin:0; }
+    .prod-desc { display:none; }
+    .prod-soon { display:none; }
 
     /* 전체 컬렉션 버튼 */
     .view-all-wrap { text-align:center; margin-top:48px; }
@@ -232,7 +232,7 @@
     .story-badge { display:inline-block; background:rgba(138,153,146,0.15); border:0.5px solid var(--gm); color:var(--gm-dark); font-family:'Montserrat',sans-serif; font-size:0.65em; font-weight:700; letter-spacing:0.1em; padding:2px 8px; border-radius:2px; vertical-align:middle; margin-right:8px; white-space:nowrap; }
 
     /* ── MOBILE PRODUCT CAROUSEL ── */
-    .prod-card-arrow { display:none; }
+    .prod-card-arrow { display:inline-flex; align-items:center; color:var(--gm-dark); flex-shrink:0; font-size:14px; }
     .prod-btn { display:none; }
 
     @media(max-width:768px) {
@@ -317,7 +317,7 @@
     }
     @media(min-width:769px) {
       .prod-btn { display:none !important; }
-      .prod-card-arrow { display:none; }
+      .prod-card-arrow { display:inline-flex; align-items:center; color:var(--gm-dark); flex-shrink:0; font-size:14px; }
       .prod-track-wrap { overflow:visible; }
       #prodTrack { overflow:visible !important; display:grid !important; }
     }
