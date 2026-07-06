@@ -354,7 +354,7 @@
 
     function showCollections(catId, fromPop) {
       currentCat = catId;
-      if (!fromPop) history.pushState({level:2, catId:catId}, '', '#' + catId);
+      try { if (!fromPop) history.pushState({level:2, catId:catId}, '', '#' + catId); } catch(e) {}
       var cat = data[catId];
       var grid = document.getElementById('collectionGrid');
       grid.innerHTML = '';
@@ -393,7 +393,7 @@
     function showVariants(catId, colId, fromPop) {
       currentCol = colId;
       var cat = data[catId];
-      if (!fromPop) history.pushState({level:3, catId:catId, colId:colId}, '', '#' + catId + '-' + colId);
+      try { if (!fromPop) history.pushState({level:3, catId:catId, colId:colId}, '', '#' + catId + '-' + colId); } catch(e) {}
       var col = cat.collections.find(function(c) { return c.id === colId; });
       var grid = document.getElementById('variantGrid');
       grid.innerHTML = '';
@@ -457,7 +457,7 @@
       document.getElementById('level3').classList.remove('visible');
       updateBreadcrumb(null, null);
       currentCat = null; currentCol = null;
-      if (!fromPop) history.pushState({level:1}, '', window.location.pathname);
+      try { if (!fromPop) history.pushState({level:1}, '', window.location.pathname); } catch(e) {}
     }
 
     function goLevel2(catId) {
@@ -546,7 +546,7 @@
         history.replaceState({level:1}, '', window.location.pathname);
         showCollections(hash);
       } else {
-        history.replaceState({level:1}, '', window.location.pathname);
+        try { history.replaceState({level:1}, '', window.location.pathname); } catch(e) {}
       }
     });
 
