@@ -61,14 +61,14 @@
     .nav-toggle span { display:block; width:24px; height:1.5px; background:var(--gm-light); }
 
     /* HERO */
-    .hero { position:relative; min-height:100vh; display:flex; align-items:flex-end; padding:72px 0 72px; overflow:hidden; background:var(--gm-xdark); }
+    .hero { position:relative; min-height:100vh; display:flex; align-items:flex-end; padding:120px 0 80px; overflow:hidden; background:var(--gm-xdark); }
     .hero-bg { position:absolute; inset:0; background-image:url('hero.png'); background-size:cover; background-position:center 58%; background-repeat:no-repeat; }
     .hero-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(42,58,52,0.92) 0%, rgba(42,58,52,0.40) 50%, rgba(42,58,52,0.20) 100%); }
     .hero-content { position:relative; z-index:2; padding:0 48px; max-width:720px; }
     .hero-eyebrow { display:flex; align-items:center; gap:14px; margin-bottom:24px; }
     .hero-line { width:36px; height:1px; background:var(--gm); }
     .hero-tag { font-family:'Montserrat',sans-serif; font-size:13px; font-weight:700; letter-spacing:3px; color:#ffffff; }
-    .hero-title { font-family:'Montserrat',sans-serif; font-size:clamp(34px,4.8vw,60px); font-weight:800; line-height:1.2; letter-spacing:-0.5px; color:#fff; margin-bottom:16px; }
+    .hero-title { font-family:'Montserrat',sans-serif; font-size:clamp(26px,2.4vw,36px); font-weight:800; line-height:1.25; letter-spacing:0.5px; color:#fff; margin-bottom:14px; }
     .hero-title em { color:var(--gm-light); font-style:normal; font-weight:700; }
     .hero-subtitle { font-family:'Montserrat',sans-serif; font-size:13px; letter-spacing:3px; color:rgba(255,255,255,0.75); font-weight:600; margin-bottom:28px; }
     .hero-desc { font-size:14px; line-height:2.1; color:rgba(196,206,202,0.8); font-weight:300; max-width:440px; margin-bottom:40px; letter-spacing:0.02em; }
@@ -116,7 +116,7 @@
     .products { background:var(--warm); padding:96px 48px; }
     .products-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:56px; gap:24px; }
     .products-heading { font-family:'Noto Sans KR',sans-serif; font-size:clamp(26px,3vw,38px); font-weight:700; letter-spacing:-0.5px; color:var(--text-dark); line-height:1.3; margin-top:12px; }
-    .products-sub { font-size:13px; color:var(--text-muted); font-weight:300; line-height:1.8; max-width:280px; text-align:right; }
+    .products-sub { font-size:13px; color:var(--text-dark); font-weight:400; line-height:1.8; max-width:300px; text-align:right; }
     .prod-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; width:100%; }
     .prod-card { background:var(--cream); border:0.5px solid #d4c9b0; border-radius:2px; overflow:hidden; transition:transform 0.2s; position:relative; min-width:0; cursor:pointer; text-decoration:none; display:block; color:inherit; }
     .prod-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--gm); transform:scaleX(0); transition:transform 0.3s; transform-origin:left; pointer-events:none; z-index:0; }
@@ -179,7 +179,7 @@
       .hero-tag { font-size:11px !important; letter-spacing:2px; }
       .hero-subtitle { font-size:12px !important; letter-spacing:1.5px; }
       .hero-desc { font-size:13px !important; line-height:1.9 !important; max-width:100% !important; }
-      .hero-title { font-size:clamp(28px,8vw,44px) !important; }
+      .hero-title { font-size:clamp(22px,6vw,32px) !important; }
       .hero-bg { background-image:url('hero_m.png') !important; background-position:center center !important; }
       .story { grid-template-columns:1fr; height:auto; }
       .story-left { padding:32px 24px; }
@@ -216,9 +216,9 @@
     .donation-dog-img { width:80px; height:80px; object-fit:contain; flex-shrink:0; }
     .donation-text { }
     .donation-amount { font-family:'Montserrat',sans-serif; font-size:18px; font-weight:700; letter-spacing:1px; color:var(--gm-dark); }
-    .donation-desc { font-size:13px; color:var(--gm); margin-top:4px; line-height:1.6; }
+    .donation-desc { font-size:13px; color:#A0684A; margin-top:4px; line-height:1.6; font-weight:500; }
     .donation-divider { width:1px; height:48px; background:rgba(138,153,146,0.25); }
-    .donation-note { font-size:12px; color:var(--gm); line-height:1.8; max-width:320px; text-align:center; letter-spacing:0.02em; }
+    .donation-note { font-size:12px; color:#A0684A; line-height:1.8; max-width:320px; text-align:center; letter-spacing:0.02em; }
     @media(max-width:600px) {
       .donation { padding:36px 24px; }
       .donation-inner { gap:32px; }
@@ -391,7 +391,7 @@
         </div>
         <h2 class="products-heading" data-i18n="prod_heading">함께하는<br>모든 순간을 위해</h2>
       </div>
-      <p class="products-sub" data-i18n="prod_sub">반려견과 함께하는 모든 아웃도어 활동에 최적화된<br>TWOLAB의 첫 번째 컬렉션을 준비 중입니다.</p>
+      <p class="products-sub" data-i18n="prod_sub">도시의 빌딩 숲부터 대자연의 트레일까지,<br>반려견과 함께하는 모든 여정에<br>최적화된 TWOLAB의 프리미엄 기어를 만나보세요.</p>
     </div>
     <div class="prod-outer">
       <button class="prod-btn prod-btn-prev" id="prodPrev" onclick="prodScroll(-1)" aria-label="이전">
@@ -570,7 +570,7 @@
         story_ch3_title:"<span class=\"story-badge\">The Gear</span> 자연에서 영감을 받아, 함께함을 위해 디자인되다",
         story_ch3_body:"투랩(TWOLAB)은 대자연이 선물한 따뜻하고 견고한 어스 톤의 색채 위에, 도심의 안전함과 야생의 강인함을 담아 자연과 인간, 반려견이 함께하는 아웃도어 라이프스타일을 제안합니다. 당신과 반려견이 함께할 모든 위대한 여정을 완벽하게 서포트합니다.",
         prod_heading:"함께하는<br>모든 순간을 위해",
-        prod_sub:"반려견과 함께하는 모든 아웃도어 활동에 최적화된<br>TWOLAB의 첫 번째 컬렉션을 준비 중입니다.",
+        prod_sub:"도시의 빌딩 숲부터 대자연의 트레일까지,<br>반려견과 함께하는 모든 여정에<br>최적화된 TWOLAB의 프리미엄 기어를 만나보세요.",
         prod_collar:"Collars", prod_leash:"Leashes", prod_harness:"Harnesses", prod_raincoat:"Apparel", prod_accessory:"Accessories",
         desc_collar:"트레일에서도 안심할 수 있는 견고한 소재와 안전한 버클 설계", desc_accessory:"산책 필수템을 깔끔하게 수납하는 Pocket LAB 파우치",
         desc_leash:"다양한 지형과 활동에 맞춘 강도와 길이, 핸들 그립감",
@@ -600,7 +600,7 @@
         story_ch3_title:"<span class=\"story-badge\">The Gear</span> Inspired by nature, designed for togetherness.",
         story_ch3_body:"TWOLAB is grounded in the warm, earthy tones drawn straight from nature. We bring together urban safety and wilderness resilience to offer an outdoor lifestyle where people, dogs, and the natural world move as one. Whatever journey you and your dog take on next, TWOLAB is built to be there for every step of it.",
         prod_heading:"For every moment<br>spent together",
-        prod_sub:"Designed for every outdoor adventure with your dog.<br>Our first collection is on its way.",
+        prod_sub:"From city streets to mountain trails —<br>premium dog gear built for every journey<br>you and your dog take together.",
         prod_collar:"Collars", prod_leash:"Leashes", prod_harness:"Harnesses", prod_raincoat:"Apparel", prod_accessory:"Accessories",
         desc_collar:"Durable materials and a secure buckle built for the trail", desc_accessory:"A compact Pocket LAB pouch for your walk-day essentials",
         desc_leash:"Designed for all terrain — strong, flexible, and easy to grip",
