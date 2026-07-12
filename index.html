@@ -322,6 +322,21 @@
       .prod-track-wrap { overflow:visible; }
       #prodTrack { overflow:visible !important; display:grid !important; }
     }
+
+    /* CTA SOCIAL FOLLOW BUTTONS */
+    .cta-social { display:flex; gap:12px; margin-top:28px; }
+    .cta-social-btn { display:flex; flex:1; align-items:center; gap:10px; padding:12px 20px; border-radius:4px; text-decoration:none; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; letter-spacing:1px; transition:opacity 0.2s, transform 0.2s; }
+    .cta-social-btn:hover { opacity:0.85; transform:translateY(-1px); }
+    .cta-social-btn svg { width:16px; height:16px; flex-shrink:0; }
+    .cta-social-ig { background:linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color:#fff; border:none; }
+    .cta-social-kakao { background:#FEE500; color:#3A1D1D; border:none; }
+    .cta-social-label { display:flex; flex-direction:column; }
+    .cta-social-name { font-size:11px; font-weight:700; letter-spacing:1px; }
+    .cta-social-sub { font-size:9px; font-weight:400; letter-spacing:0.5px; opacity:0.75; margin-top:1px; }
+
+    /* LOGO IMAGE */
+    .nav-logo-img { height:36px; width:auto; display:block; filter:brightness(0) invert(1); }
+    .footer-logo-img { height:40px; width:auto; display:block; filter:brightness(0) invert(0.7); margin-bottom:12px; }
   </style>
 </head>
 <body>
@@ -478,7 +493,24 @@
         <span class="section-tag" style="color:var(--gm)">OPENING SOON</span>
       </div>
       <h2 class="cta-heading" data-i18n="cta_heading">온라인 스토어<br><em>오픈 준비 중입니다</em></h2>
-      <p class="cta-desc" data-i18n="cta_desc">TWOLAB의 첫 번째 컬렉션을 곧 만나보실 수 있습니다.<br>인스타그램을 팔로우하고 오픈 소식을 가장 먼저 받아보세요.</p>
+      <p class="cta-desc" data-i18n="cta_desc">도시의 빌딩 숲부터 대자연의 트레일까지,<br>반려견과 함께하는 모든 여정에 최적화된<br>TWOLAB의 프리미엄 기어를 만나보세요.</p>
+      <p class="cta-desc" style="margin-top:16px;" data-i18n="cta_social_desc">인스타그램 팔로우와 카카오채널 구독으로<br>오픈 소식을 가장 먼저 받아보세요.</p>
+      <div class="cta-social">
+        <a href="https://www.instagram.com/twolabdogs" target="_blank" rel="noopener" class="cta-social-btn cta-social-ig">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          <div class="cta-social-label">
+            <span class="cta-social-name" data-i18n="cta_ig_name">INSTAGRAM</span>
+            <span class="cta-social-sub" data-i18n="cta_ig_sub">@twolabdogs 팔로우</span>
+          </div>
+        </a>
+        <a href="http://pf.kakao.com/_BliXX" target="_blank" rel="noopener" class="cta-social-btn cta-social-kakao">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.477 3 2 7.03 2 12c0 3.09 1.73 5.81 4.37 7.43l-.97 3.64 4.24-2.12c.75.13 1.52.2 2.36.2 5.523 0 10-4.03 10-9S17.523 3 12 3z"/></svg>
+          <div class="cta-social-label">
+            <span class="cta-social-name" data-i18n="cta_kakao_name">KAKAO CHANNEL</span>
+            <span class="cta-social-sub" data-i18n="cta_kakao_sub">채널 추가하기</span>
+          </div>
+        </a>
+      </div>
     </div>
     <div class="cta-right">
       <a href="javascript:void(0)" onclick="goToStore()" class="store-card">
@@ -534,7 +566,7 @@
         </div>
       </div>
       <div class="footer-brand">
-        <span class="footer-logo">TWOLAB™</span>
+        <img src="twolab_logo.png" alt="TWOLAB™" class="footer-logo-img">
         <span class="footer-copy">Copyright © TWOLAB.<br>All rights reserved.</span>
         <div class="footer-social"><a href="https://instagram.com/twolabdogs" target="_blank" class="footer-social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://facebook.com/twolabdogs" target="_blank" class="footer-social-icon" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="http://pf.kakao.com/_BliXX" target="_blank" class="footer-social-icon" aria-label="KakaoTalk"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.477 3 2 7.03 2 12c0 3.09 1.73 5.81 4.37 7.43l-.97 3.64 4.24-2.12c.75.13 1.52.2 2.36.2 5.523 0 10-4.03 10-9S17.523 3 12 3zM7 13.5H5.5v-4H7v4zm3.5 0H9v-4h1.5v4zm3.5 0h-1.5V11h-1v2.5H11v-4h3l.5 1.5L15 11v2.5z"/></svg></a><a href="https://x.com/twolabdogs" target="_blank" class="footer-social-icon" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.264 5.632 5.9-5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="https://threads.net/@twolabdogs" target="_blank" class="footer-social-icon" aria-label="Threads"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg></a><a href="https://www.youtube.com/@twolablog" target="_blank" class="footer-social-icon" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="4"/><polygon points="10,9 16,12 10,15" fill="currentColor" stroke="none"/></svg></a><a href="https://www.tiktok.com/@twolablog" target="_blank" class="footer-social-icon" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a></div>
       </div>
@@ -579,7 +611,7 @@
         desc_raincoat:"어떤 날씨에도 함께할 수 있는 경량 방수 레인코트",
         coming_soon:"COMING SOON", view_all:"전체 컬렉션 보기",
         cta_heading:"온라인 스토어<br><em>오픈 준비 중입니다</em>",
-        cta_desc:"TWOLAB의 첫 번째 컬렉션을 곧 만나보실 수 있습니다.<br>인스타그램을 팔로우하고 오픈 소식을 가장 먼저 받아보세요.",
+        cta_desc:"도시의 빌딩 숲부터 대자연의 트레일까지,<br>반려견과 함께하는 모든 여정에 최적화된<br>TWOLAB의 프리미엄 기어를 만나보세요.", cta_social_desc:"인스타그램 팔로우와 카카오채널 구독으로<br>오픈 소식을 가장 먼저 받아보세요.", cta_ig_name:"INSTAGRAM", cta_ig_sub:"@twolabdogs 팔로우", cta_kakao_name:"KAKAO CHANNEL", cta_kakao_sub:"채널 추가하기",
         store_name:"네이버 스마트스토어", store_sub:"오픈 준비 중 · 알림 신청 가능",
         ig_sub:"팔로우하고 오픈 소식 받기", official_name:"투랩 공식몰", official_sub:"바로가기", amazon_name:"아마존", amazon_sub:"오픈 준비 중",
         ft_customer:"Customer Service", ft_hours:"평일 AM 11:00 ~ PM 6:00",
@@ -609,7 +641,7 @@
         desc_raincoat:"A lightweight, waterproof rain jacket for any weather",
         coming_soon:"Coming Soon", view_all:"View Full Collection",
         cta_heading:"Online Store<br><em>Opening Soon</em>",
-        cta_desc:"Our first collection is coming soon.<br>Follow us on Instagram to be the first to hear.",
+        cta_desc:"From city streets to mountain trails —<br>premium dog gear built for every journey<br>you and your dog take together.", cta_social_desc:"Follow us on Instagram and subscribe to our KakaoTalk channel<br>to be the first to hear about our launch.", cta_ig_name:"INSTAGRAM", cta_ig_sub:"Follow @twolabdogs", cta_kakao_name:"KAKAO CHANNEL", cta_kakao_sub:"Subscribe to channel",
         store_name:"Naver Smart Store", store_sub:"Opening Soon · Set a Reminder",
         ig_sub:"Follow us for launch updates", official_name:"TWOLAB Official Store", official_sub:"Visit Store", amazon_name:"Amazon", amazon_sub:"Opening Soon",
         ft_customer:"Customer Service", ft_hours:"Weekdays 11:00 AM – 6:00 PM",
