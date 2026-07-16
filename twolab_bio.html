@@ -141,6 +141,11 @@
 
     /* 푸터 */
     footer { font-family:'Montserrat',sans-serif; font-size:0.62rem; letter-spacing:0.12em; color:rgba(232,226,217,0.2); text-align:center; }
+
+    .bio-lang { display:flex; justify-content:flex-end; gap:8px; margin-bottom:12px; }
+    .bio-lang-btn { font-family:'Montserrat',sans-serif; font-size:11px; font-weight:600; letter-spacing:1px; color:rgba(255,255,255,0.4); background:none; border:none; cursor:pointer; padding:4px 6px; transition:color 0.2s; }
+    .bio-lang-btn.active { color:#ffffff; border-bottom:1px solid rgba(255,255,255,0.6); }
+    .bio-lang-divider { color:rgba(255,255,255,0.2); font-size:11px; line-height:2; }
   </style>
 </head>
 <body>
@@ -178,29 +183,38 @@
       <span class="link-arrow">→</span>
     </a>
 
-    <div class="link-item" style="cursor:default;opacity:0.7;">
+    <a class="link-item" href="https://twolabdogs.shop" target="_blank" rel="noopener">
       <span class="link-icon">🏪</span>
       <div class="link-content">
         <div class="link-title" id="t0">TWOLAB™ 공식몰</div>
-        <div class="link-desc" id="d0">오픈 준비 중</div>
+        <div class="link-desc">twolabdogs.shop</div>
       </div>
-      <span style="font-family:'Montserrat',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;color:#8A9992;position:relative;z-index:1;">COMING SOON</span>
-    </div>
+      <span class="link-arrow">→</span>
+    </a>
 
-    <div class="link-item" style="cursor:default;opacity:0.7;">
+    <a class="link-item" href="https://smartstore.naver.com/twolab" target="_blank" rel="noopener">
       <span class="link-icon">🛒</span>
       <div class="link-content">
-        <div class="link-title" id="t2">네이버 스마트스토어</div>
-        <div class="link-desc" id="d2">오픈 준비 중</div>
+        <div class="link-title" id="t2">네이버 구매하기</div>
+        <div class="link-desc">smartstore.naver.com/twolab</div>
       </div>
-      <span style="font-family:'Montserrat',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;color:#8A9992;position:relative;z-index:1;">COMING SOON</span>
-    </div>
+      <span class="link-arrow">→</span>
+    </a>
+
+    <a class="link-item" href="https://store.kakao.com/twolabdogs" target="_blank" rel="noopener">
+      <span class="link-icon">🛍️</span>
+      <div class="link-content">
+        <div class="link-title" id="t4">카카오 구매하기</div>
+        <div class="link-desc">store.kakao.com/twolabdogs</div>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
 
     <div class="link-item" style="cursor:default;opacity:0.7;">
       <span class="link-icon">📦</span>
       <div class="link-content">
         <div class="link-title" id="t3">Amazon</div>
-        <div class="link-desc" id="d3">오픈 준비 중</div>
+        <div class="link-desc">오픈 준비 중</div>
       </div>
       <span style="font-family:'Montserrat',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;color:#8A9992;position:relative;z-index:1;">COMING SOON</span>
     </div>
@@ -238,25 +252,27 @@
 <script>
   var texts = {
     ko: {
-      bio: "자연과 공존하는 미니멀 아웃도어 펫 기어.<br>Urban Nature Dog Gear.<br><span style='font-size:0.75rem;letter-spacing:0.05em;color:var(--accent);opacity:0.8;'>🏷️ Coming Soon</span>",
-      t0: "TWOLAB™ 공식몰", d0: "오픈 준비 중",
+      bio: "자연과 공존하는 미니멀 아웃도어 펫 기어.<br>Urban Nature Dog Gear.",
+      t0: "TWOLAB™ 공식몰",
       t1: "TWOLAB™ 공식 홈페이지",
-      t2: "네이버 스마트스토어", d2: "오픈 준비 중",
-      t3: "Amazon", d3: "오픈 준비 중"
+      t2: "네이버 구매하기",
+      t3: "Amazon", d3: "오픈 준비 중",
+      t4: "카카오 구매하기"
     },
     en: {
-      bio: "Minimal outdoor pet gear in harmony with nature.<br>Urban Nature Dog Gear.<br><span style='font-size:0.75rem;letter-spacing:0.05em;color:var(--accent);opacity:0.8;'>🏷️ Coming Soon</span>",
-      t0: "TWOLAB™ Official Store", d0: "Opening Soon",
+      bio: "Minimal outdoor pet gear in harmony with nature.<br>Urban Nature Dog Gear.",
+      t0: "TWOLAB™ Official Store",
       t1: "TWOLAB™ Official Website",
-      t2: "Naver Smart Store", d2: "Opening Soon",
-      t3: "Amazon", d3: "Opening Soon"
+      t2: "Buy on Naver",
+      t3: "Amazon", d3: "Coming Soon",
+      t4: "Buy on Kakao"
     }
   };
 
   function setLang(lang) {
     var t = texts[lang];
     document.getElementById('bio-text').innerHTML = t.bio;
-    ['t0','t1','t2','t3'].forEach(function(id) {
+    ['t0','t1','t2','t3','t4'].forEach(function(id) {
       if(document.getElementById(id)) document.getElementById(id).innerHTML = t[id];
     });
     ['d0','d2','d3'].forEach(function(id) {
@@ -272,5 +288,6 @@
     setLang(saved);
   });
 </script>
+
 </body>
 </html>
