@@ -83,8 +83,8 @@
     @keyframes scrollLine { 0%,100%{opacity:1;transform:scaleY(1)} 50%{opacity:0.3;transform:scaleY(0.5)} }
 
     /* STORY */
-    .story { display:grid; grid-template-columns:1fr 1fr; height:640px; }
-    .story-left { padding:48px 64px; background:var(--cream); display:flex; flex-direction:column; justify-content:center; overflow-y:auto; }
+    .story { display:grid; grid-template-columns:1fr 1fr; min-height:600px; }
+    .story-left { padding:56px 64px; background:var(--cream); display:flex; flex-direction:column; justify-content:flex-start; }
     .section-label { display:flex; align-items:center; gap:14px; margin-bottom:20px; }
     .section-line { width:28px; height:1px; background:var(--gm); }
     .section-tag { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; color:var(--gm-dark); }
@@ -102,7 +102,7 @@
     /* 슬라이더 */
     .story-slider { display:flex; flex-direction:column; position:relative; width:100%; overflow:hidden; }
     .story-slider-track { display:flex; height:100%; transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
-    .story-slide { min-width:100%; height:100%; min-height:640px; background-size:cover; background-position:center 60%; position:relative; flex-shrink:0; }
+    .story-slide { min-width:100%; height:100%; min-height:600px; background-size:cover; background-position:center 60%; position:relative; flex-shrink:0; }
     .story-slide:nth-child(1) { background-image:url('story2.png'); }
     .story-slide:nth-child(2) { background-image:url('story.png'); }
     .story-dots { position:absolute; bottom:16px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:3; }
@@ -251,16 +251,17 @@
     .footer-logo-img { height:40px; width:auto; display:block; filter:brightness(0) invert(0.7); margin-bottom:12px; }
 
     /* MISSION VISION VALUES */
-    .mvv { background:var(--gm-dark); padding:72px 64px; }
-    .mvv-inner { max-width:960px; margin:0 auto; }
-    .mvv-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:48px; }
+    .mvv { background:var(--gm-dark); padding:clamp(48px,7vw,100px) clamp(32px,7vw,120px); }
+    .mvv-inner { max-width:1600px; margin:0 auto; }
+    .mvv-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:clamp(32px,5vw,96px); }
     .mvv-item { }
-    .mvv-label { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:3px; color:var(--gm); margin-bottom:14px; text-transform:uppercase; }
-    .mvv-text { font-size:13px; color:var(--gm-light); line-height:1.9; }
-    .mvv-values { display:flex; flex-direction:column; gap:18px; margin-top:4px; }
-    .mvv-value-name { font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; color:var(--gm-xlight); letter-spacing:1px; margin-bottom:4px; }
-    .mvv-value-desc { font-size:12px; color:var(--gm); line-height:1.8; }
-    @media(max-width:900px) { .mvv { padding:56px 32px; } .mvv-grid { grid-template-columns:1fr; gap:40px; } }
+    .mvv-label { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:3px; color:var(--gm); margin-bottom:clamp(12px,1.5vw,20px); text-transform:uppercase; }
+    .mvv-text { font-size:clamp(13px,1vw,15px); color:var(--gm-light); line-height:1.9; }
+    .mvv-values { display:flex; flex-direction:column; gap:clamp(14px,2vw,28px); margin-top:4px; }
+    .mvv-value-name { font-family:'Montserrat',sans-serif; font-size:clamp(10px,0.9vw,13px); font-weight:700; color:var(--gm-xlight); letter-spacing:1px; margin-bottom:6px; }
+    .mvv-value-desc { font-size:clamp(11px,0.85vw,13px); color:var(--gm); line-height:1.9; }
+    @media(max-width:1024px) { .mvv-grid { gap:clamp(28px,4vw,48px); } }
+    @media(max-width:900px) { .mvv-grid { grid-template-columns:1fr; gap:40px; } }
     @media(max-width:600px) { .mvv { padding:48px 24px; } }
 
     /* STORY PAGE HEADER */
@@ -271,6 +272,16 @@
     .story-page-title { font-family:'Noto Sans KR',sans-serif; font-weight:700; font-size:clamp(28px,4vw,48px); color:var(--gm-xlight); letter-spacing:-1px; line-height:1.2; margin-bottom:12px; }
     .story-page-sub { font-size:13px; color:var(--gm); line-height:1.8; max-width:480px; }
     @media(max-width:600px) { .story-page-header { padding:100px 24px 48px; } .story-page-header::after { display:none; } }
+
+    /* PAGE HEADER */
+    .page-header { background:var(--gm-xdark); padding:120px 64px 64px; position:relative; overflow:hidden; }
+    .page-header::after { content:'STORY'; position:absolute; right:48px; bottom:-20px; font-family:'Montserrat',sans-serif; font-weight:800; font-size:120px; color:rgba(138,153,146,0.04); letter-spacing:-4px; line-height:1; }
+    .page-eyebrow { display:flex; align-items:center; gap:14px; margin-bottom:16px; }
+    .page-line { width:36px; height:1px; background:var(--gm); }
+    .page-tag { font-family:'Montserrat',sans-serif; font-size:11px; font-weight:600; letter-spacing:3px; color:var(--gm); }
+    .page-title { font-family:'Noto Sans KR',sans-serif; font-weight:700; font-size:clamp(28px,4vw,48px); color:var(--gm-xlight); letter-spacing:-1px; line-height:1.2; margin-bottom:12px; }
+    .page-desc { font-size:14px; color:rgba(196,206,202,0.65); font-weight:300; line-height:1.8; }
+    @media(max-width:600px) { .page-header { padding:100px 24px 48px; } .page-header::after { display:none; } }
   </style>
 </head>
 <body>
@@ -294,7 +305,11 @@
     </div>
   </nav>
 
-  <div style="padding-top:72px;"></div>
+  <div class="page-header">
+    <div class="page-eyebrow"><div class="page-line"></div><span class="page-tag">BRAND STORY</span></div>
+    <h1 class="page-title" data-i18n="story_page_title">우리의 이야기</h1>
+    <p class="page-desc" data-i18n="story_page_desc">두 마리의 래브라도 리트리버와 함께한 일상에서 시작된 브랜드</p>
+  </div>
   <section class="story" id="story">
     <div class="story-left">
       <div class="section-label">
@@ -427,7 +442,7 @@
 
     var translations = {
       ko: {
-        nav_home:"Home", nav_brand:"Story", story_page_tag:"BRAND STORY", story_page_title:"Every Great Journey<br>Begins with Two Labradors.", story_page_sub:"From city streets to wilderness trails — this is the story behind TWOLAB.", story_page_tag:"BRAND STORY", story_page_title:"Every Great Journey<br>Begins with Two Labradors.", story_page_sub:"도시의 일상부터 자연 속 트레일까지 — TWOLAB의 이야기를 만나보세요.", s_body1:"TWOLAB은 두 마리의 래브라도 리트리버 — 시루와 하루 — 와 함께한 일상에서 시작되었습니다.<br><br>스튜디오에서가 아닙니다.<br>공장에서도 아닙니다.<br><br>매일의 산책, 진흙 묻은 트레일,<br>그리고 조용히 함께 나눈 수많은 순간들 속에서.", s_body2:"그들과 함께하는 삶은 우리에게 가르쳐 주었습니다. 좋은 반려견 기어란, 디자인과 성능 중 하나를 선택하도록 강요해서는 안 된다는 것을. 삶이 이끄는 어디에서든, 자연스럽게 어울려야 한다는 것을.<br><br>그래서 우리는 자연에서 영감을 받은 컬러, 엄선된 소재, 그리고 실제 생활에서의 테스트를 통해 다듬어진 제품을 만듭니다.<br><br>모험만을 위한 것이 아닙니다.<br>함께하는 모든 하루를 위한 것입니다.", s_body3:"우리가 만드는 것은 장비가 아니라, 함께 걷는 시간을 위한 경험입니다.", mvv_mission:"도시의 일상과 자연의 탐험, 그 사이 어딘가에서 반려견과 함께하는 모든 순간을 위해 — 섬세하게 설계된 정직한 기어를 만듭니다.", mvv_vision:"반려견과 함께하는 삶의 방식을 새롭게 정의하는, 세계에서 가장 신뢰받는 현대적 반려견 기어 브랜드가 됩니다.", mvv_v1_name:"Urban Nature", mvv_v1_desc:"도시와 자연, 두 세계를 동시에 담습니다.", mvv_v2_name:"Honest Design", mvv_v2_desc:"보여주기 위한 디자인이 아닌, 함께 걷기 위한 디자인.", mvv_v3_name:"Built to Last", mvv_v3_desc:"한 철이 아닌, 평생을 함께할 수 있는 제품.", nav_products:"Products", nav_store:"Shop", nav_inquiry:"Support",
+        nav_home:"Home", nav_brand:"Story", story_page_title:"Our Story", story_page_desc:"A brand born from everyday life with two Labrador Retrievers", story_page_title:"우리의 이야기", story_page_desc:"두 마리의 래브라도 리트리버와 함께한 일상에서 시작된 브랜드", story_page_tag:"BRAND STORY", story_page_title:"Every Great Journey<br>Begins with Two Labradors.", story_page_sub:"From city streets to wilderness trails — this is the story behind TWOLAB.", story_page_tag:"BRAND STORY", story_page_title:"Every Great Journey<br>Begins with Two Labradors.", story_page_sub:"도시의 일상부터 자연 속 트레일까지 — TWOLAB의 이야기를 만나보세요.", s_body1:"TWOLAB은 두 마리의 래브라도 리트리버 — 시루와 하루 — 와 함께한 일상에서 시작되었습니다.<br><br>스튜디오에서가 아닙니다.<br>공장에서도 아닙니다.<br><br>매일의 산책, 진흙 묻은 트레일,<br>그리고 조용히 함께 나눈 수많은 순간들 속에서.", s_body2:"그들과 함께하는 삶은 우리에게 가르쳐 주었습니다. 좋은 반려견 기어란, 디자인과 성능 중 하나를 선택하도록 강요해서는 안 된다는 것을. 삶이 이끄는 어디에서든, 자연스럽게 어울려야 한다는 것을.<br><br>그래서 우리는 자연에서 영감을 받은 컬러, 엄선된 소재, 그리고 실제 생활에서의 테스트를 통해 다듬어진 제품을 만듭니다.<br><br>모험만을 위한 것이 아닙니다.<br>함께하는 모든 하루를 위한 것입니다.", s_body3:"우리가 만드는 것은 장비가 아니라, 함께 걷는 시간을 위한 경험입니다.", mvv_mission:"도시의 일상과 자연의 탐험, 그 사이 어딘가에서 반려견과 함께하는 모든 순간을 위해 — 섬세하게 설계된 정직한 기어를 만듭니다.", mvv_vision:"반려견과 함께하는 삶의 방식을 새롭게 정의하는, 세계에서 가장 신뢰받는 현대적 반려견 기어 브랜드가 됩니다.", mvv_v1_name:"Urban Nature", mvv_v1_desc:"도시와 자연, 두 세계를 동시에 담습니다.", mvv_v2_name:"Honest Design", mvv_v2_desc:"보여주기 위한 디자인이 아닌, 함께 걷기 위한 디자인.", mvv_v3_name:"Built to Last", mvv_v3_desc:"한 철이 아닌, 평생을 함께할 수 있는 제품.", nav_products:"Products", nav_store:"Shop", nav_inquiry:"Support",
         hero_title:"함께 새겨나가는,<br><em>하나의 기록.</em>",
         hero_desc:"평일의 리드미컬한 시티 워크부터<br>주말의 거친 대자연을 향한 탐험까지.<br>숲의 흙내음, 거친 트래킹, 그리고 별빛 아래의 아웃도어 라이프.<br><br>TWOLAB은 래브라도 리트리버 두 마리와 함께하는<br>진짜 아웃도어 경험에서 시작된 프리미엄 반려견 기어 브랜드입니다.<br><br>도시의 일상부터 자연 속 모험까지,<br>디자인과 기능 모두를 놓치지 않는 제품을 만듭니다.<br>Explore with TWOLAB.",
         hero_btn1:"STORE 오픈 예정", hero_btn2:"BRAND STORY",
@@ -457,7 +472,7 @@
         ft_board:"Support", ft_qna:"Q&A", ft_faq:"FAQ", ft_wholesale:"Wholesale", ft_naver:"네이버 스토어", footer_phone:"070-8744-4316"
       },
       en: {
-        nav_home:"Home", nav_brand:"Story", story_page_tag:"BRAND STORY", story_page_title:"Every Great Journey<br>Begins with Two Labradors.", story_page_sub:"From city streets to wilderness trails — this is the story behind TWOLAB.", s_body1:"TWOLAB was born out of everyday life with two Labrador Retrievers — Siroo and Haroo.<br><br>Not in a studio.<br>Not in a factory.<br><br>But on daily walks, muddy trails,<br>and quiet moments shared in between.", s_body2:"Living with them taught us something simple: great dog gear shouldn't make you choose between thoughtful design and dependable performance. It should just belong — wherever life takes you.<br><br>So we make products inspired by nature\'s colours, built with carefully selected materials, and refined through real-world testing with real dogs.<br><br>Not just for the big adventure.<br><br>For every ordinary day you spend together.", s_body3:"What we make isn\'t equipment. It\'s an experience — for every walk you share.", mvv_mission:"We make dog gear that earns its place on every walk — carefully built for the moments between city streets and open trails.", mvv_vision:"To be the most trusted name in modern dog gear — for people who actually live the outdoor life with their dogs.", mvv_v1_name:"Urban Nature", mvv_v1_desc:"Gear that moves between the city and the wild without missing a beat.", mvv_v2_name:"Honest Design", mvv_v2_desc:"Built to work, not just to look good.", mvv_v3_name:"Built to Last", mvv_v3_desc:"Made to go the distance, season after season.", nav_products:"Products", nav_store:"Shop", nav_inquiry:"Support",
+        nav_home:"Home", nav_brand:"Story", story_page_title:"Our Story", story_page_desc:"A brand born from everyday life with two Labrador Retrievers", story_page_tag:"BRAND STORY", story_page_title:"Every Great Journey<br>Begins with Two Labradors.", story_page_sub:"From city streets to wilderness trails — this is the story behind TWOLAB.", s_body1:"TWOLAB was born out of everyday life with two Labrador Retrievers — Siroo and Haroo.<br><br>Not in a studio.<br>Not in a factory.<br><br>But on daily walks, muddy trails,<br>and quiet moments shared in between.", s_body2:"Living with them taught us something simple: great dog gear shouldn't make you choose between thoughtful design and dependable performance. It should just belong — wherever life takes you.<br><br>So we make products inspired by nature\'s colours, built with carefully selected materials, and refined through real-world testing with real dogs.<br><br>Not just for the big adventure.<br><br>For every ordinary day you spend together.", s_body3:"What we make isn\'t equipment. It\'s an experience — for every walk you share.", mvv_mission:"We make dog gear that earns its place on every walk — carefully built for the moments between city streets and open trails.", mvv_vision:"To be the most trusted name in modern dog gear — for people who actually live the outdoor life with their dogs.", mvv_v1_name:"Urban Nature", mvv_v1_desc:"Gear that moves between the city and the wild without missing a beat.", mvv_v2_name:"Honest Design", mvv_v2_desc:"Built to work, not just to look good.", mvv_v3_name:"Built to Last", mvv_v3_desc:"Made to go the distance, season after season.", nav_products:"Products", nav_store:"Shop", nav_inquiry:"Support",
         hero_tag:"URBAN NATURE DOG GEAR", hero_title:"Urban Nature<br><em>Dog Gear</em>",
         hero_desc:"From rhythmic city walks on weekday mornings<br>to rugged weekend escapes into the wild.<br>The scent of forest soil, tough terrain, and nights under the stars.<br><br>TWOLAB is a premium dog gear brand<br>born from real outdoor experiences with two Labrador Retrievers.<br><br>We make gear that holds its own — from urban streets to wilderness trails,<br>never compromising on design or function.<br>Explore with TWOLAB.",
         hero_btn1:"Store Opening Soon", hero_btn2:"Our Story",
