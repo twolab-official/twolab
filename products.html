@@ -243,6 +243,20 @@
       <div class="card-grid" id="collectionGrid"></div>
     </div>
 
+
+    <!-- LEVEL 2B: 타입 (Leash 전용) -->
+    <div id="level2b" class="level">
+      <div class="step-label">
+        <span class="step-num">03</span>
+        <span class="step-text" data-i18n="step_type">타입을 선택해주세요</span>
+        <div class="step-line"></div>
+      </div>
+      <div class="level3-inner">
+        <div class="col-info" id="typeInfo"></div>
+        <div class="card-grid" id="typeGrid"></div>
+      </div>
+    </div>
+
     <!-- LEVEL 3: 색상/상세 -->
     <div id="level3" class="level">
       <div class="step-label">
@@ -301,38 +315,29 @@
     var lang = 'ko';
 
     var fullDesc = {
-      'collar-path-lab': {
-        ko: '도심의 빌딩 숲과 가로수길을 배경으로 걷는 데일리 산책을 위한 목줄입니다. 야간이나 어두운 골목길에서도 보호자와 반려견의 안전을 지켜줄 수 있도록 전면에 고감도 반사 웨빙을 사용했습니다. 차분한 어스 톤 컬러에 스포티한 빛의 안전함을 더해, 도시의 밤낮 속에서 반려견을 가장 안전하고 아름답게 빛내줍니다.',
-        en: 'Your everyday companion for city streets. High-sensitivity reflective webbing across the full surface keeps your dog visible and safe during low-light walks through the neighbourhood. Earthy tones meet urban safety — built for the rhythm of daily life.'
-      },
-      'collar-trail-lab': {
-        ko: '깊은 숲, 거친 바위산, 계곡 등 대자연의 품으로 뛰어드는 탐험을 위해 설계된 하이엔드 아웃도어 목줄입니다. 가볍고 튼튼한 고강도 나일론 기반의 립스탑 원단을 베이스로 제작되어 찢어짐이나 변형 걱정이 없습니다. 반려견의 목 피부가 닿는 안쪽에는 프리미엄 스웨이드를 덧대어, 거친 야생 속에서도 자연의 품과 같은 안락함을 제공합니다.',
-        en: `Built for the trail, designed for the wild. Tear-resistant ripstop nylon holds up against rough terrain without losing its shape, while a premium suede lining sits softly against your dog's skin for all-day comfort on any adventure.`
-      },
-      'leash-path-lab': {
-        ko: '보호자의 손끝과 반려견의 움직임을 도심의 리듬에 맞춰 가장 안전하게 연결하는 리드줄입니다. 줄 전체에 빛을 반사하는 고감도 반사 웨빙을 사용하여 야간 시인성을 극대화했습니다. 상황에 맞게 길이를 자유롭게 조절할 수 있어, 사람이 많은 도심 인도에서는 짧고 안전하게, 넓은 공원에서는 길고 자유롭게 맞춤형 산책을 즐길 수 있습니다.',
-        en: 'Full-length reflective webbing maximises visibility on evening walks and dimly lit streets. An adjustable design lets you go short and controlled in busy areas, or long and free in open parks — adapting to wherever the day takes you.'
-      },
-      'leash-trail-lab': {
-        ko: '거친 마찰과 나뭇가지에도 뜯기지 않는 고강도 웨빙과 손바닥을 보호하는 스웨이드 핸들이 적용된 리드줄입니다. 험난한 오프로드를 고려하여 반려견과 가장 가까운 앞쪽에 별도의 숏 핸들을 배치했습니다. 거친 지형에서도 즉각적으로 제어할 수 있어 완벽하고 안전한 컨트롤이 가능합니다.',
-        en: `Built with high-strength webbing and a suede grip handle to protect your hands on long hikes. A short front handle positioned close to your dog provides immediate control on rugged terrain or during unexpected encounters.`
-      },
-      'harness-grove-lab': {
-        ko: '도심 산책용 Path 라인의 반사 웨빙과 아웃도어용 Trail 라인의 고강도 나일론 원단을 하이브리드로 결합한 투랩의 플래그십 하네스입니다. 반려견의 등과 가슴을 흔들림 없이 감싸안는 새들 형태의 디자인을 채택했으며, 안감에는 통기성이 뛰어난 입체 에어매쉬를 적용했습니다. 방수 기능까지 갖춰 사계절 내내 안전하고 자유로운 탐험을 보장합니다.',
-        en: `TWOLAB's flagship harness. Reflective webbing and lightweight ripstop nylon combine in a secure saddle-fit design that wraps your dog's back and chest with confidence. Breathable air-mesh lining and water-resistant construction keep them comfortable and dry across all four seasons.`
-      }
+      'collar-aurora-lab': { ko: '도시의 리듬 속, 빛이 되어 걷다<br>야간이나 어두운 골목길에서도 보호자와 반려견의 안전을 지켜줄 수 있도록 전면에 고감도 반사 웨빙을 사용했습니다. 차분한 어스 톤 컬러에 스포티한 빛의 안전함을 더해, 도시의 밤낮 속에서 반려견을 가장 안전하고 아름답게 빛내줍니다.', en: 'Walk the city. Be seen in the dark.<br>High-sensitivity reflective webbing across the full surface keeps your dog visible and safe on night walks and dimly lit streets. Earthy tones meet urban safety — your dog at their best, around the clock.' },
+      'collar-willow-lab': { ko: '자연의 결을 따라, 함께 나아가다<br>깊은 숲, 거친 바위산, 계곡 등 대자연의 품으로 뛰어드는 탐험을 위해 설계된 하이엔드 아웃도어 라인입니다. 가볍고 튼튼한 고강도 나일론 기반의 립스탑 원단을 베이스로 제작되어 찢어짐이나 변형 걱정이 없습니다. 반려견의 피부가 닿는 안쪽에는 프리미엄 스웨이드를 덧대어, 거친 야생 속에서도 자연의 품과 같은 안락함을 제공합니다.', en: 'Follow the trail. Move as one.<br>Designed for high-end outdoor adventures — deep forests, rocky terrain, and rushing creeks. High-strength ripstop nylon holds its shape on the roughest trails, while a premium suede lining sits gently against your dog\'s skin for all-day comfort, no matter how wild it gets.' },
+      'leash-aurora-lab': { ko: '도시의 리듬 속, 빛이 되어 걷다<br>야간이나 어두운 골목길에서도 보호자와 반려견의 안전을 지켜줄 수 있도록 전면에 고감도 반사 웨빙을 사용했습니다. 차분한 어스 톤 컬러에 스포티한 빛의 안전함을 더해, 도시의 밤낮 속에서 반려견을 가장 안전하고 아름답게 빛내줍니다.', en: 'Walk the city. Be seen in the dark.<br>High-sensitivity reflective webbing across the full surface keeps your dog visible and safe on night walks and dimly lit streets. Earthy tones meet urban safety — your dog at their best, around the clock.' },
+      'leash-willow-lab': { ko: '자연의 결을 따라, 함께 나아가다<br>깊은 숲, 거친 바위산, 계곡 등 대자연의 품으로 뛰어드는 탐험을 위해 설계된 하이엔드 아웃도어 라인입니다. 가볍고 튼튼한 고강도 나일론 기반의 립스탑 원단을 베이스로 제작되어 찢어짐이나 변형 걱정이 없습니다. 반려견의 피부가 닿는 안쪽에는 프리미엄 스웨이드를 덧대어, 거친 야생 속에서도 자연의 품과 같은 안락함을 제공합니다.', en: 'Follow the trail. Move as one.<br>Designed for high-end outdoor adventures — deep forests, rocky terrain, and rushing creeks. High-strength ripstop nylon holds its shape on the roughest trails, while a premium suede lining sits gently against your dog\'s skin for all-day comfort, no matter how wild it gets.' },
+      'leash-willow-lab-a': { ko: '자연의 결을 따라, 함께 나아가다<br>깊은 숲, 거친 바위산, 계곡 등 대자연의 품으로 뛰어드는 탐험을 위해 설계된 하이엔드 아웃도어 라인입니다. 가볍고 튼튼한 고강도 나일론 기반의 립스탑 원단을 베이스로 제작되어 찢어짐이나 변형 걱정이 없습니다. 반려견의 피부가 닿는 안쪽에는 프리미엄 스웨이드를 덧대어, 거친 야생 속에서도 자연의 품과 같은 안락함을 제공합니다.', en: 'Follow the trail. Move as one.<br>Designed for high-end outdoor adventures — deep forests, rocky terrain, and rushing creeks. High-strength ripstop nylon holds its shape on the roughest trails, while a premium suede lining sits gently against your dog\'s skin for all-day comfort, no matter how wild it gets.' },
+      'harness-willow-lab': { ko: '자연의 결을 따라, 함께 나아가다<br>깊은 숲, 거친 바위산, 계곡 등 대자연의 품으로 뛰어드는 탐험을 위해 설계된 하이엔드 아웃도어 라인입니다. 가볍고 튼튼한 고강도 나일론 기반의 립스탑 원단을 베이스로 제작되어 찢어짐이나 변형 걱정이 없습니다. 반려견의 피부가 닿는 안쪽에는 프리미엄 스웨이드를 덧대어, 거친 야생 속에서도 자연의 품과 같은 안락함을 제공합니다.', en: 'Follow the trail. Move as one.<br>Designed for high-end outdoor adventures — deep forests, rocky terrain, and rushing creeks. High-strength ripstop nylon holds its shape on the roughest trails, while a premium suede lining sits gently against your dog\'s skin for all-day comfort, no matter how wild it gets.' },
+      'apparel-ecrin-lab': { ko: '보석함이 겉은 단단하게, 속은 부드럽게 감싸듯 — Écrin LAB은 여름엔 가벼운 방수 쉘로, 겨울엔 그 안에 보온 내피를 더해 사계절 내내 반려견을 지킵니다.', en: 'Just as a case holds what\'s precious — sturdy on the outside, soft within. Écrin LAB protects your dog through every season. One coat, four seasons.' }
     };
 
     var data = {
       collar:    { ko:'Collars',   en:'Collars',    img:'placeholder_collar.svg',    collections:[
-                   { id:'path-lab',  ko:'Path LAB',  en:'Path LAB',  desc_ko:'도시의 리듬 속, 빛이 되어 걷다', desc_en:'Walk the city. Be seen in the dark.', img:'placeholder_collar.svg' },
-                   { id:'trail-lab', ko:'Trail LAB', en:'Trail LAB', desc_ko:'자연의 결을 따라, 함께 나아가다', desc_en:'Follow the trail. Feel the wild.',             img:'placeholder_collar.svg' }] },
+                   { id:'aurora-lab', ko:'Aurora LAB', en:'Aurora LAB', desc_ko:'Signature Edition — 시그니처 반사 라인', desc_en:'Signature Edition — reflective line', img:'placeholder_collar.svg' },
+                   { id:'willow-lab', ko:'Willow LAB', en:'Willow LAB', desc_ko:'Daily Essential — 데일리 에센셜 라인', desc_en:'Daily Essential — everyday comfort line', img:'placeholder_collar.svg' }] },
       leash:     { ko:'Leashes',   en:'Leashes',     img:'placeholder_leash.svg',     collections:[
-                   { id:'path-lab',  ko:'Path LAB',  en:'Path LAB',  desc_ko:'도시의 리듬 속, 빛이 되어 걷다', desc_en:'Walk the city. Be seen in the dark.', img:'placeholder_leash.svg' },
-                   { id:'trail-lab', ko:'Trail LAB', en:'Trail LAB', desc_ko:'자연의 결을 따라, 함께 나아가다', desc_en:'Follow the trail. Feel the wild.',             img:'placeholder_leash.svg' }] },
+                   { id:'aurora-lab', ko:'Aurora LAB', en:'Aurora LAB', desc_ko:'Signature Edition — 시그니처 반사 라인', desc_en:'Signature Edition — reflective line', img:'placeholder_leash.svg',
+                     types:[{ id:'standard', ko:'Standard', en:'Standard', desc_ko:'고정 길이 · 데일리 산책용', desc_en:'Fixed length · for everyday walks' },
+                            { id:'adjustable', ko:'Adjustable', en:'Adjustable', desc_ko:'길이조절 · 상황에 맞게 자유롭게', desc_en:'Adjustable · adapt to any situation' }] },
+                   { id:'willow-lab', ko:'Willow LAB', en:'Willow LAB', desc_ko:'Daily Essential — 데일리 에센셜 라인', desc_en:'Daily Essential — everyday comfort line', img:'placeholder_leash.svg',
+                     types:[{ id:'standard', ko:'Standard', en:'Standard', desc_ko:'고정 길이 · 데일리 산책용', desc_en:'Fixed length · for everyday walks' },
+                            { id:'adjustable', ko:'Adjustable', en:'Adjustable', desc_ko:'길이조절 · 상황에 맞게 자유롭게', desc_en:'Adjustable · adapt to any situation' }] }] },
       harness:   { ko:'Harnesses', en:'Harnesses',   img:'placeholder_harness.svg',   collections:[
-                   { id:'grove-lab', ko:'Grove LAB', en:'Grove LAB', desc_ko:'숲과 도시의 경계에서, 두 세계를 담다', desc_en:'Where the city ends and the forest begins.', img:'placeholder_harness.svg' }] },
-      apparel:   { ko:'Apparel',   en:'Apparel',   img:'placeholder_raincoat.svg',  collections:[{ id:'rain-lab',   ko:'Rain LAB',   en:'Rain LAB',   desc_ko:'방수 아웃도어 의류 컬렉션',    desc_en:'Waterproof outdoor apparel collection',  img:'placeholder_raincoat.svg' }] },
+                   { id:'willow-lab', ko:'Willow LAB', en:'Willow LAB', desc_ko:'Daily Essential — 데일리 에센셜 라인', desc_en:'Daily Essential — everyday comfort line', img:'placeholder_harness.svg' }] },
+      apparel:   { ko:'Apparel',   en:'Apparel',   img:'placeholder_raincoat.svg',  collections:[{ id:'ecrin-lab',  ko:'Écrin LAB',  en:'Écrin LAB',  desc_ko:'All-Season Protection — 사계절 보호 컬렉션', desc_en:'All-Season Protection — one coat, four seasons', img:'placeholder_raincoat.svg' }] },
       accessory: { ko:'Accessories', en:'Accessories', img:'placeholder_accessory.svg', collections:[{ id:'pocket-lab', ko:'Pocket LAB', en:'Pocket LAB', desc_ko:'산책 필수템 파우치 컬렉션', desc_en:'Walk-day essentials pouch collection', img:'placeholder_accessory.svg' }] }
     };
 
@@ -346,15 +351,16 @@
     };
 
     var variantsByCat = {
-      collar:    { 'path-lab': ['misty-green','clay-brown','ash-black'], 'trail-lab': ['dawn-green','stone-beige','smoke-gray'] },
-      leash:     { 'path-lab': ['misty-green','clay-brown','ash-black'], 'trail-lab': ['dawn-green','stone-beige','smoke-gray'] },
-      harness:   { 'grove-lab': ['dawn-green','stone-beige','smoke-gray'] },
-      apparel:   { 'rain-lab': ['misty-green'] },
+      collar:    { 'aurora-lab': ['misty-green','clay-brown','ash-black'], 'willow-lab': ['dawn-green','stone-beige','smoke-gray'] },
+      leash:     { 'aurora-lab': ['misty-green','clay-brown','ash-black'], 'willow-lab': ['dawn-green','stone-beige','smoke-gray'] },
+      harness:   { 'willow-lab': ['dawn-green','stone-beige','smoke-gray'] },
+      apparel:   { 'ecrin-lab': ['misty-green','clay-brown'] },
       accessory: { 'pocket-lab': ['misty-green','stone-beige'] }
     };
 
     var currentCat = null;
     var currentCol = null;
+    var currentType = null;
 
     function showCollections(catId, fromPop) {
       currentCat = catId;
@@ -389,26 +395,73 @@
 
       document.getElementById('level1').classList.remove('visible');
       document.getElementById('level2').classList.add('visible');
+      document.getElementById('level2b').classList.remove('visible');
       document.getElementById('level3').classList.remove('visible');
       updateBreadcrumb(catId, null);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function showVariants(catId, colId, fromPop) {
+    function showTypes(catId, colId, fromPop) {
+      currentCat = catId; currentCol = colId;
+      var cat = data[catId];
+      var col = cat.collections.find(function(c) { return c.id === colId; });
+      try { if (!fromPop) history.pushState({level:2.5, catId:catId, colId:colId}, '', '#' + catId + '-' + colId); } catch(e) {}
+
+      var info = document.getElementById('typeInfo');
+      var desc = fullDesc[catId + '-' + colId] || {};
+      info.innerHTML =
+        '<div class="col-info-label">Collection</div>' +
+        '<div class="col-info-name">' + (lang === 'ko' ? col.ko : col.en) + '</div>' +
+        '<div class="col-info-tag">' + (lang === 'ko' ? col.desc_ko : col.desc_en) + '</div>' +
+        '<div class="col-info-divider"></div>' +
+        '<div class="col-info-desc">' + (lang === 'ko' ? (desc.ko || '') : (desc.en || '')) + '</div>';
+
+      var grid = document.getElementById('typeGrid');
+      grid.innerHTML = '';
+      col.types.forEach(function(t) {
+        var card = document.createElement('div');
+        card.className = 'item-card';
+        card.onclick = function() { showVariants(catId, colId, false, t.id); };
+        card.innerHTML = '<div class="item-img" style="background-image:url(\'' + col.img + '\');">' +
+          '<div class="img-cat-label">' + t.en + '</div>' +
+          '<div class="img-badge">COMING SOON</div></div>' +
+          '<div class="item-body">' +
+          '<div class="item-sub">' + (lang === 'ko' ? col.ko : col.en) + '</div>' +
+          '<div class="item-name">' + (lang === 'ko' ? t.ko : t.en) + '</div>' +
+          '<div class="item-desc">' + (lang === 'ko' ? t.desc_ko : t.desc_en) + '</div>' +
+          '</div>';
+        grid.appendChild(card);
+      });
+
+      document.getElementById('level1').classList.remove('visible');
+      document.getElementById('level2').classList.remove('visible');
+      document.getElementById('level2b').classList.add('visible');
+      document.getElementById('level3').classList.remove('visible');
+      updateBreadcrumb(catId, colId);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showVariants(catId, colId, fromPop, typeId) {
       currentCol = colId;
       var cat = data[catId];
-      try { if (!fromPop) history.pushState({level:3, catId:catId, colId:colId}, '', '#' + catId + '-' + colId); } catch(e) {}
       var col = cat.collections.find(function(c) { return c.id === colId; });
+
+      // Has types and no type selected → show type level
+      if (col.types && !typeId) { showTypes(catId, colId, fromPop); return; }
+
+      currentType = typeId || null;
+      try { if (!fromPop) history.pushState({level:3, catId:catId, colId:colId, typeId:typeId}, '', '#' + catId + '-' + colId + (typeId ? '-' + typeId : '')); } catch(e) {}
       var grid = document.getElementById('variantGrid');
       grid.innerHTML = '';
 
       var info = document.getElementById('colInfo');
       var descKey = catId + '-' + colId;
       var desc = fullDesc[descKey] || {};
+      var typeObj = (col.types && typeId) ? col.types.find(function(t){ return t.id === typeId; }) : null;
       info.innerHTML =
         '<div class="col-info-label">Collection</div>' +
-        '<div class="col-info-name">' + (lang === 'ko' ? col.ko : col.en) + '</div>' +
-        '<div class="col-info-tag">' + (lang === 'ko' ? col.desc_ko : col.desc_en) + '</div>' +
+        '<div class="col-info-name">' + (lang === 'ko' ? col.ko : col.en) + (typeObj ? ' — ' + (lang === 'ko' ? typeObj.ko : typeObj.en) : '') + '</div>' +
+        '<div class="col-info-tag">' + (typeObj ? (lang === 'ko' ? typeObj.desc_ko : typeObj.desc_en) : (lang === 'ko' ? col.desc_ko : col.desc_en)) + '</div>' +
         '<div class="col-info-divider"></div>' +
         '<div class="col-info-desc">' + (lang === 'ko' ? (desc.ko || '') : (desc.en || '')) + '</div>';
 
@@ -427,7 +480,9 @@
         grid.appendChild(card);
       });
 
+      document.getElementById('level1').classList.remove('visible');
       document.getElementById('level2').classList.remove('visible');
+      document.getElementById('level2b').classList.remove('visible');
       document.getElementById('level3').classList.add('visible');
       updateBreadcrumb(catId, colId);
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -458,6 +513,7 @@
     function goLevel1(fromPop) {
       document.getElementById('level1').classList.add('visible');
       document.getElementById('level2').classList.remove('visible');
+      document.getElementById('level2b').classList.remove('visible');
       document.getElementById('level3').classList.remove('visible');
       updateBreadcrumb(null, null);
       currentCat = null; currentCol = null;
@@ -473,7 +529,7 @@
         nav_home:"Home", nav_brand:"Story", nav_products:"Products", nav_store:"Shop", nav_inquiry:"Support",
         page_title:"함께하는<br>모든 순간을 위해",
         page_desc:"도시의 빌딩 숲부터 대자연의 트레일까지,<br>반려견과 함께하는 모든 여정에 최적화된<br>TWOLAB의 프리미엄 기어를 만나보세요.",
-        step1:"카테고리를 선택해주세요", step2:"컬렉션을 선택해주세요", step3:"색상을 선택해주세요",
+        step1:"카테고리를 선택해주세요", step2:"컬렉션을 선택해주세요", step3:"색상을 선택해주세요", step_type:"타입을 선택해주세요",
         bc_all:"전체 카테고리",
         cat_collar:"Collars", cat_leash:"Leashes", cat_harness:"Harnesses", cat_apparel:"Apparel", cat_accessory:"Accessories",
         ft_customer:"Customer Service", ft_hours:"평일 AM 11:00 ~ PM 6:00",
@@ -561,10 +617,14 @@
       } else if (state.level === 2) {
         goLevel1(true);
         showCollections(state.catId, true);
+      } else if (state.level === 2.5) {
+        goLevel1(true);
+        showCollections(state.catId, true);
+        showTypes(state.catId, state.colId, true);
       } else if (state.level === 3) {
         goLevel1(true);
         showCollections(state.catId, true);
-        showVariants(state.catId, state.colId, true);
+        showVariants(state.catId, state.colId, true, state.typeId);
       }
     });
   </script>
