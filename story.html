@@ -105,6 +105,7 @@
     .story-slide { min-width:100%; height:100%; min-height:600px; background-size:cover; background-position:center 60%; position:relative; flex-shrink:0; }
     .story-slide:nth-child(1) { background-image:url('story2.png'); }
     .story-slide:nth-child(2) { background-image:url('story.png'); }
+    .story-slide:nth-child(3) { background-image:url('story3.png'); }
     .story-dots { position:absolute; bottom:16px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:3; }
     .story-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.4); cursor:pointer; transition:background 0.3s; }
     .story-dot.active { background:#fff; }
@@ -187,6 +188,7 @@
       .story-slide { min-height:200px !important; max-height:220px !important; }
       .story-slide:nth-child(1) { background-image:url('story_m1.png') !important; }
       .story-slide:nth-child(2) { background-image:url('story_m2.png') !important; }
+      .story-slide:nth-child(3) { background-image:url('story_m3.png') !important; }
       .story-chapter-title { font-size:14px; margin-bottom:8px; }
       .story-divider { margin:14px 0; }
       .story-body { font-size:13px; line-height:1.9; }
@@ -336,6 +338,10 @@
             <div class="story-img-overlay"></div>
             <div class="story-img-badge"><div class="badge-brand">TWOLAB™</div></div>
           </div>
+          <div class="story-slide">
+            <div class="story-img-overlay"></div>
+            <div class="story-img-badge"><div class="badge-brand">TWOLAB™</div></div>
+          </div>
         </div>
         <div class="slider-arrow slider-arrow-prev" onclick="prevSlide()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M15 18l-6-6 6-6"/></svg>
@@ -346,6 +352,7 @@
           <div class="story-dots">
           <div class="story-dot active" onclick="goSlide(0)"></div>
           <div class="story-dot" onclick="goSlide(1)"></div>
+          <div class="story-dot" onclick="goSlide(2)"></div>
         </div>
       </div>
     </div>
@@ -506,7 +513,7 @@
 
     // 스토리 슬라이더
     var slideIndex = 0;
-    var slideTotal = 2;
+    var slideTotal = 3;
     var sliderAuto;
 
     function goSlide(n) {
