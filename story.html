@@ -286,6 +286,45 @@
     .page-title { font-family:'Noto Sans KR',sans-serif; font-weight:700; font-size:clamp(28px,4vw,48px); color:var(--gm-xlight); letter-spacing:-1px; line-height:1.2; margin-bottom:12px; }
     .page-desc { font-size:14px; color:rgba(196,206,202,0.65); font-weight:300; line-height:1.8; }
     @media(max-width:600px) { .page-header { padding:100px 24px 48px; } .page-header::after { display:none; } }
+
+    /* PRODUCTS DROPDOWN */
+    .nav-dd { position:static; }
+    .nav-dd > a::after { content:'▾'; font-size:9px; margin-left:6px; opacity:0.55; vertical-align:middle; }
+    .nav-dropdown {
+      position:absolute; top:72px; left:0; right:0;
+      background:rgba(30,42,38,0.985); backdrop-filter:blur(14px);
+      border-bottom:0.5px solid rgba(138,153,146,0.18);
+      box-shadow:0 18px 40px rgba(0,0,0,0.28);
+      opacity:0; visibility:hidden; transform:translateY(-6px);
+      transition:opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+      z-index:99;
+    }
+    .nav-dd:hover .nav-dropdown, .nav-dropdown:hover { opacity:1; visibility:visible; transform:translateY(0); }
+    .nav-dd-inner { max-width:1400px; margin:0 auto; padding:40px 48px 44px; display:grid; grid-template-columns:repeat(5,1fr); gap:clamp(20px,3vw,56px); }
+    .nav-dd-col { display:flex; flex-direction:column; }
+    .nav-dd-cat {
+      font-family:'Montserrat',sans-serif; font-size:13px !important; font-weight:800 !important;
+      letter-spacing:2px !important; color:var(--gm-xlight) !important; text-transform:uppercase;
+      padding-bottom:12px; margin-bottom:12px; border-bottom:0.5px solid rgba(138,153,146,0.22);
+    }
+    .nav-dd-cat:hover { color:#fff !important; }
+    .nav-dd-sub {
+      font-family:'Noto Sans KR',sans-serif; font-size:13px !important; font-weight:400 !important;
+      letter-spacing:0.2px !important; color:rgba(196,206,202,0.68) !important;
+      padding:6px 0; transition:color 0.18s, padding-left 0.18s;
+    }
+    .nav-dd-sub:hover { color:var(--gm-xlight) !important; padding-left:5px; }
+    .nav-dd-note { font-size:10px; letter-spacing:1.5px; color:rgba(138,153,146,0.5); margin-top:10px; font-family:'Montserrat',sans-serif; }
+    @media(max-width:1024px) { .nav-dd-inner { padding:32px 24px; gap:20px; } }
+    @media(max-width:900px) {
+      .nav-dd > a::after { content:''; }
+      .nav-dropdown { position:static; opacity:1; visibility:visible; transform:none; background:none; box-shadow:none; border:none; backdrop-filter:none; }
+      .nav-dd-inner { display:block; padding:8px 0 0 12px; }
+      .nav-dd-col { margin-bottom:14px; }
+      .nav-dd-cat { font-size:11px !important; padding-bottom:6px; margin-bottom:6px; }
+      .nav-dd-sub { font-size:12px !important; padding:4px 0; }
+      .nav-dd-note { display:none; }
+    }
   </style>
 </head>
 <body>
@@ -295,7 +334,36 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html" data-i18n="nav_home">Home</a></li>
       <li><a href="story.html" class="active" data-i18n="nav_brand">Story</a></li>
-      <li><a href="products.html" data-i18n="nav_products">Products</a></li>
+      <li class="nav-dd">
+        <a href="products.html" data-i18n="nav_products">Products</a>
+        <div class="nav-dropdown">
+          <div class="nav-dd-inner">
+            <div class="nav-dd-col">
+              <a class="nav-dd-cat" href="products.html#collar">Collars</a>
+              <a class="nav-dd-sub" href="products.html#collar">Aurora LAB</a>
+              <a class="nav-dd-sub" href="products.html#collar">Willow LAB</a>
+            </div>
+            <div class="nav-dd-col">
+              <a class="nav-dd-cat" href="products.html#leash">Leashes</a>
+              <a class="nav-dd-sub" href="products.html#leash">Aurora LAB</a>
+              <a class="nav-dd-sub" href="products.html#leash">Willow LAB</a>
+            </div>
+            <div class="nav-dd-col">
+              <a class="nav-dd-cat" href="products.html#harness">Harnesses</a>
+              <a class="nav-dd-sub" href="products.html#harness">Willow LAB</a>
+            </div>
+            <div class="nav-dd-col">
+              <a class="nav-dd-cat" href="products.html#apparel">Apparel</a>
+              <a class="nav-dd-sub" href="products.html#apparel">&Eacute;crin Dual Shell LAB</a>
+            </div>
+            <div class="nav-dd-col">
+              <a class="nav-dd-cat" href="products.html#accessory">Accessories</a>
+              <a class="nav-dd-sub" href="products.html#accessory">Utility Pouch</a>
+              <a class="nav-dd-sub" href="products.html#accessory">Packable Dog Bowl</a>
+            </div>
+          </div>
+        </div>
+      </li>
       <li><a href="javascript:void(0)" onclick="goToStore()" data-i18n="nav_store">Shop</a></li>
       <li><a href="inquiry.html" data-i18n="nav_inquiry">Contact</a></li>
       </ul>
