@@ -79,8 +79,71 @@
     .footer-phone { font-family:'Montserrat',sans-serif; font-size:15px; font-weight:700; color:var(--gm-xlight); letter-spacing:1px; margin-bottom:6px; display:block; }
     @media (max-width:768px) {
       nav { padding:0 24px; } .nav-links { display:none; }
-      .nav-links.open { display:flex; flex-direction:column; position:fixed; top:72px; left:0; right:0; background:var(--gm-xdark2); padding:24px; gap:20px; }
       .nav-toggle { display:flex; }
+
+      /* ---- MOBILE DRILL-DOWN PANEL ---- */
+      .nav-links.open {
+        display:block; position:fixed; inset:0; margin:0;
+        padding:72px 0 48px; background:var(--gm-xdark);
+        z-index:200; overflow-y:auto; -webkit-overflow-scrolling:touch;
+      }
+      .nav-links.open > li { width:100%; }
+      .nav-links.open > li > a {
+        display:flex; align-items:center; justify-content:space-between;
+        padding:17px 28px; font-family:'Montserrat',sans-serif;
+        font-size:17px; font-weight:600; letter-spacing:0.4px;
+        color:var(--gm-xlight);
+      }
+      .nav-links.open > li > a:active { background:rgba(138,153,146,0.1); }
+
+      .nav-links.open .m-bar {
+        display:flex; position:fixed; top:0; left:0; right:0; height:72px;
+        align-items:center; justify-content:space-between; padding:0 18px;
+        background:var(--gm-xdark);
+        border-bottom:0.5px solid rgba(138,153,146,0.14); z-index:230;
+      }
+      .m-btn {
+        width:42px; height:42px; display:flex; align-items:center; justify-content:center;
+        background:none; border:none; color:var(--gm-xlight); cursor:pointer; padding:0;
+      }
+      .m-btn svg { width:22px; height:22px; }
+      .m-back { opacity:0; pointer-events:none; transition:opacity 0.2s; }
+      .nav-links.drill .m-back { opacity:1; pointer-events:auto; }
+
+      .nav-dd > a::after {
+        content:'\203A'; font-family:'Montserrat',sans-serif; font-size:26px;
+        font-weight:300; opacity:0.45; margin-left:auto; line-height:1; margin-top:-4px;
+      }
+
+      /* level 2 slide-in */
+      .nav-dropdown {
+        position:fixed; inset:0; margin:0; padding:72px 0 48px;
+        background:var(--gm-xdark);
+        opacity:1; visibility:visible; transform:translateX(100%);
+        transition:transform 0.32s cubic-bezier(.4,0,.2,1);
+        box-shadow:none; border:none; backdrop-filter:none;
+        overflow-y:auto; z-index:210;
+      }
+      .nav-dd:hover .nav-dropdown { transform:translateX(100%); }
+      .nav-links.drill .nav-dropdown,
+      .nav-links.drill .nav-dd:hover .nav-dropdown { transform:translateX(0); }
+
+      .m-dd-title {
+        display:block; padding:8px 28px 16px; font-family:'Montserrat',sans-serif;
+        font-size:11px; font-weight:700; letter-spacing:3px;
+        color:rgba(138,153,146,0.6); text-transform:uppercase;
+      }
+      .nav-dd-inner { display:block; max-width:none; margin:0; padding:0; gap:0; }
+      .nav-dd-col { display:block; margin:0; }
+      .nav-dd-cat {
+        display:block; padding:17px 28px !important; margin:0 !important;
+        font-size:17px !important; font-weight:600 !important; letter-spacing:0.4px !important;
+        text-transform:none; border-bottom:none !important;
+        color:var(--gm-xlight) !important;
+      }
+      .nav-dd-cat:active { background:rgba(138,153,146,0.1); }
+      .nav-dd-sub { display:none !important; }
+      .nav-dd-note { display:none; }
       .page-header { padding:100px 24px 48px; } .page-header::after { display:none; }
       .sec-tabs { padding:0 24px; overflow-x:auto; } .main { padding:36px 24px; }
       .wholesale-grid { grid-template-columns:1fr; }
@@ -143,24 +206,31 @@
     @media(max-width:1024px) { .nav-dd-inner { padding:32px 24px; gap:20px; } }
     @media(max-width:900px) {
       .nav-dd > a::after { content:''; }
-      .nav-dropdown { position:static; opacity:1; visibility:visible; transform:none; background:none; box-shadow:none; border:none; backdrop-filter:none; }
-      .nav-dd-inner { display:block; padding:8px 0 0 12px; }
-      .nav-dd-col { margin-bottom:14px; }
-      .nav-dd-cat { font-size:11px !important; padding-bottom:6px; margin-bottom:6px; }
-      .nav-dd-sub { font-size:12px !important; padding:4px 0; }
-      .nav-dd-note { display:none; }
     }
+
+    /* MOBILE NAV PANEL (desktop: hidden) */
+    .m-bar { display:none; }
+    .m-dd-title { display:none; }
   </style>
 </head>
 <body>
   <nav>
     <a href="index.html" class="nav-logo"><img src="twolab_logo.png" alt="TWOLAB™ Urban Nature Dog Gear" class="nav-logo-img"></a>
     <ul class="nav-links" id="navLinks">
+      <li class="m-bar">
+        <button class="m-btn m-back" onclick="navBack()" aria-label="Back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
+        <button class="m-btn m-close" onclick="closeNav()" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </li>
       <li><a href="index.html" data-i18n="nav_home">Home</a></li>
       <li><a href="story.html" data-i18n="nav_brand">Story</a></li>
       <li class="nav-dd">
-        <a href="products.html" data-i18n="nav_products">Products</a>
+        <a href="products.html" class="nav-dd-trigger" data-i18n="nav_products" onclick="navDrill(event)">Products</a>
         <div class="nav-dropdown">
+          <div class="m-dd-title" data-i18n="nav_products">Products</div>
           <div class="nav-dd-inner">
             <div class="nav-dd-col">
               <a class="nav-dd-cat" href="products.html#collar">Collars</a>
@@ -349,8 +419,41 @@
     function goToStore() {
       window.open('https://twolabdogs.shop', '_blank');
     }
-    function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
-    document.addEventListener('click', function(e) { if (!e.target.closest('nav')) document.getElementById('navLinks').classList.remove('open'); });
+    function toggleNav() {
+      var nl = document.getElementById('navLinks');
+      var open = nl.classList.toggle('open');
+      nl.classList.remove('drill');
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    function closeNav() {
+      var nl = document.getElementById('navLinks');
+      nl.classList.remove('open');
+      nl.classList.remove('drill');
+      document.body.style.overflow = '';
+    }
+    function navDrill(e) {
+      if (window.innerWidth > 768) return;
+      e.preventDefault();
+      document.getElementById('navLinks').classList.add('drill');
+    }
+    function navBack() {
+      document.getElementById('navLinks').classList.remove('drill');
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      var nl = document.getElementById('navLinks');
+      if (!nl) return;
+      nl.addEventListener('click', function(e) {
+        var a = e.target.closest('a');
+        if (a && !a.classList.contains('nav-dd-trigger')) closeNav();
+      });
+    });
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
+        var nl = document.getElementById('navLinks');
+        if (nl) { nl.classList.remove('open'); nl.classList.remove('drill'); }
+        document.body.style.overflow = '';
+      }
+    });
     function toggleFaq(item) { item.classList.toggle('open'); }
     var tabs = document.querySelectorAll('.sec-tab');
     var sections = document.querySelectorAll('.inq-section');
