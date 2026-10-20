@@ -317,10 +317,29 @@
       .prod-card-arrow { display:inline-flex; color:var(--gm-dark); }
     }
     @media(min-width:769px) {
-      .prod-btn { display:none !important; }
       .prod-card-arrow { display:inline-flex; align-items:center; color:var(--gm-dark); flex-shrink:0; font-size:14px; }
-      .prod-track-wrap { overflow:visible; }
-      #prodTrack { overflow:visible !important; display:grid !important; }
+      .prod-outer { position:relative; }
+      .prod-track-wrap { overflow:hidden; }
+      #prodTrack {
+        display:flex !important; gap:10px;
+        overflow-x:auto; scroll-behavior:smooth;
+        scrollbar-width:none; -ms-overflow-style:none;
+        scroll-snap-type:x mandatory;
+      }
+      #prodTrack::-webkit-scrollbar { display:none; }
+      /* 카드 크기는 기존 5열과 동일 */
+      #prodTrack .prod-card { flex:0 0 calc((100% - 40px) / 5); scroll-snap-align:start; }
+      .prod-btn {
+        display:flex !important; position:absolute; top:38%; transform:translateY(-50%);
+        width:44px; height:44px; border-radius:50%;
+        background:rgba(255,255,255,0.96); border:none;
+        align-items:center; justify-content:center; cursor:pointer;
+        box-shadow:0 2px 14px rgba(0,0,0,0.18); color:#333; z-index:5;
+        transition:opacity 0.2s;
+      }
+      .prod-btn:disabled { opacity:0; pointer-events:none; }
+      .prod-btn-prev { left:-16px; }
+      .prod-btn-next { right:-16px; }
     }
 
     /* CTA SOCIAL FOLLOW BUTTONS */
@@ -351,7 +370,7 @@
       z-index:99;
     }
     .nav-dd:hover .nav-dropdown, .nav-dropdown:hover { opacity:1; visibility:visible; transform:translateY(0); }
-    .nav-dd-inner { max-width:1400px; margin:0 auto; padding:40px 48px 44px; display:grid; grid-template-columns:repeat(5,1fr); gap:clamp(20px,3vw,56px); }
+    .nav-dd-inner { max-width:1400px; margin:0 auto; padding:40px 48px 44px; display:grid; grid-template-columns:repeat(6,1fr); gap:clamp(20px,3vw,56px); }
     .nav-dd-col { display:flex; flex-direction:column; }
     .nav-dd-cat {
       font-family:'Montserrat',sans-serif; font-size:13px !important; font-weight:800 !important;
@@ -485,6 +504,10 @@
               <a class="nav-dd-sub" href="products.html#accessory">Utility Pouch</a>
               <a class="nav-dd-sub" href="products.html#accessory">Packable Dog Bowl</a>
             </div>
+            <div class="nav-dd-col">
+              <a class="nav-dd-cat" href="products.html#toys">Toys</a>
+              <a class="nav-dd-sub" href="products.html#toys">Coming Soon</a>
+            </div>
           </div>
         </div>
       </li>
@@ -556,7 +579,7 @@
       </button>
       <div class="prod-track-wrap">
         <div class="prod-grid" id="prodTrack">
-      <a href="products.html#collar" class="prod-card">        <div class="prod-img" style="background-image:url('placeholder_collar.svg');background-size:cover;background-position:center;">
+      <a href="products.html#collar" class="prod-card">        <div class="prod-img" style="background-image:url('dog_collar.jpg');background-size:cover;background-position:center;">
           <div class="img-placeholder"><span class="img-icon">📿</span><span class="img-label">PRODUCT IMAGE</span></div>
         </div>
         <div class="prod-body">
@@ -567,7 +590,7 @@
           <span class="prod-card-arrow">→</span>
         </div>
       </a>
-      <a href="products.html#leash" class="prod-card">        <div class="prod-img" style="background-image:url('placeholder_leash.svg');background-size:cover;background-position:center;">
+      <a href="products.html#leash" class="prod-card">        <div class="prod-img" style="background-image:url('dog_leash.jpg');background-size:cover;background-position:center;">
           <div class="img-placeholder"><span class="img-icon">🔗</span><span class="img-label">PRODUCT IMAGE</span></div>
         </div>
         <div class="prod-body">
@@ -578,7 +601,7 @@
           <span class="prod-card-arrow">→</span>
         </div>
       </a>
-      <a href="products.html#harness" class="prod-card">        <div class="prod-img" style="background-image:url('placeholder_harness.svg');background-size:cover;background-position:center;">
+      <a href="products.html#harness" class="prod-card">        <div class="prod-img" style="background-image:url('dog_harness.jpg');background-size:cover;background-position:center;">
           <div class="img-placeholder"><span class="img-icon">🦺</span><span class="img-label">PRODUCT IMAGE</span></div>
         </div>
         <div class="prod-body">
@@ -589,7 +612,7 @@
           <span class="prod-card-arrow">→</span>
         </div>
       </a>
-      <a href="products.html#apparel" class="prod-card">        <div class="prod-img" style="background-image:url('placeholder_raincoat.svg');background-size:cover;background-position:center;">
+      <a href="products.html#apparel" class="prod-card">        <div class="prod-img" style="background-image:url('dog_apparel.jpg');background-size:cover;background-position:center;">
           <div class="img-placeholder"><span class="img-icon">🌧️</span><span class="img-label">PRODUCT IMAGE</span></div>
         </div>
         <div class="prod-body">
@@ -600,13 +623,24 @@
           <span class="prod-card-arrow">→</span>
         </div>
       </a>
-      <a href="products.html#accessory" class="prod-card">        <div class="prod-img" style="background-image:url('placeholder_accessory.svg');background-size:cover;background-position:center;">
+      <a href="products.html#accessory" class="prod-card">        <div class="prod-img" style="background-image:url('dog_accessory.jpg');background-size:cover;background-position:center;">
           <div class="img-placeholder"><span class="img-icon">🎒</span><span class="img-label">PRODUCT IMAGE</span></div>
         </div>
         <div class="prod-body">
           <div class="prod-num">05</div>
           <div class="prod-name" data-i18n="prod_accessory">Accessories</div>
           <p class="prod-desc" data-i18n="desc_accessory">산책 필수템을 깔끔하게 수납하는 Pocket LAB 파우치</p>
+          <span class="prod-soon" data-i18n="coming_soon">COMING SOON</span>
+          <span class="prod-card-arrow">→</span>
+        </div>
+      </a>
+      <a href="products.html#toys" class="prod-card">        <div class="prod-img" style="background-image:url('dog_toys.jpg');background-size:cover;background-position:center;">
+          <div class="img-placeholder"><span class="img-icon">🎾</span><span class="img-label">PRODUCT IMAGE</span></div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-num">06</div>
+          <div class="prod-name" data-i18n="prod_toys">Toys</div>
+          <p class="prod-desc" data-i18n="desc_toys">함께 뛰고 물고 당기며 노는 시간을 위한 장난감</p>
           <span class="prod-soon" data-i18n="coming_soon">COMING SOON</span>
           <span class="prod-card-arrow">→</span>
         </div>
@@ -782,8 +816,8 @@
         story_ch3_body:"투랩(TWOLAB)은 대자연이 선물한 따뜻하고 견고한 어스 톤의 색채 위에, 도심의 안전함과 야생의 강인함을 담아 자연과 인간, 반려견이 함께하는 아웃도어 라이프스타일을 제안합니다. 당신과 반려견이 함께할 모든 위대한 여정을 완벽하게 서포트합니다.",
         prod_heading:"함께하는<br>모든 순간을 위해",
         prod_sub:"도시의 빌딩 숲부터 대자연의 트레일까지,<br>반려견과 함께하는 모든 여정에<br>최적화된 TWOLAB의 프리미엄 기어를 만나보세요.",
-        prod_collar:"Collars", prod_leash:"Leashes", prod_harness:"Harnesses", prod_raincoat:"Apparel", prod_accessory:"Accessories",
-        desc_collar:"트레일에서도 안심할 수 있는 견고한 소재와 안전한 버클 설계", desc_accessory:"산책 필수템을 깔끔하게 수납하는 Pocket LAB 파우치",
+        prod_collar:"Collars", prod_leash:"Leashes", prod_harness:"Harnesses", prod_raincoat:"Apparel", prod_accessory:"Accessories", prod_toys:"Toys",
+        desc_collar:"트레일에서도 안심할 수 있는 견고한 소재와 안전한 버클 설계", desc_accessory:"산책 필수템을 깔끔하게 수납하는 Pocket LAB 파우치", desc_toys:"함께 뛰고 물고 당기며 노는 시간을 위한 장난감",
         desc_leash:"다양한 지형과 활동에 맞춘 강도와 길이, 핸들 그립감",
         desc_harness:"장시간 착용에도 편안한 아웃도어 전용 하네스",
         desc_raincoat:"어떤 날씨에도 함께할 수 있는 경량 방수 레인코트",
@@ -812,8 +846,8 @@
         story_ch3_body:"TWOLAB is grounded in the warm, earthy tones drawn straight from nature. We bring together urban safety and wilderness resilience to offer an outdoor lifestyle where people, dogs, and the natural world move as one. Whatever journey you and your dog take on next, TWOLAB is built to be there for every step of it.",
         prod_heading:"Built for the trail.<br>Made for together.",
         prod_sub:"From city streets to mountain trails —<br>premium dog gear built for every journey<br>you and your dog take together.",
-        prod_collar:"Collars", prod_leash:"Leashes", prod_harness:"Harnesses", prod_raincoat:"Apparel", prod_accessory:"Accessories",
-        desc_collar:"Durable materials and a secure buckle built for the trail", desc_accessory:"A compact Pocket LAB pouch for your walk-day essentials",
+        prod_collar:"Collars", prod_leash:"Leashes", prod_harness:"Harnesses", prod_raincoat:"Apparel", prod_accessory:"Accessories", prod_toys:"Toys",
+        desc_collar:"Durable materials and a secure buckle built for the trail", desc_accessory:"A compact Pocket LAB pouch for your walk-day essentials", desc_toys:"Toys built for fetch, tug, and everything in between",
         desc_leash:"Designed for all terrain — strong, flexible, and easy to grip",
         desc_harness:"All-day comfort with an adjustable fit for outdoor adventures",
         desc_raincoat:"A lightweight, waterproof rain jacket for any weather",
@@ -865,22 +899,26 @@
     // Product carousel
     function prodScroll(dir) {
       var track = document.getElementById('prodTrack');
-      if (!track || window.innerWidth > 768) return;
+      if (!track) return;
       var card = track.querySelector('.prod-card');
       if (!card) return;
       track.scrollLeft += dir * (card.offsetWidth + 10);
     }
-    document.addEventListener('DOMContentLoaded', function() {
+    function prodBtnState() {
+      var track = document.getElementById('prodTrack');
       var p = document.getElementById('prodPrev');
-      if (p) p.disabled = true;
+      var n = document.getElementById('prodNext');
+      if (!track) return;
+      var noScroll = track.scrollWidth <= track.clientWidth + 4;
+      if (p) p.disabled = noScroll || track.scrollLeft <= 4;
+      if (n) n.disabled = noScroll || track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+    }
+    document.addEventListener('DOMContentLoaded', function() {
       var track = document.getElementById('prodTrack');
       if (!track) return;
-      track.addEventListener('scroll', function() {
-        var p = document.getElementById('prodPrev');
-        var n = document.getElementById('prodNext');
-        if (p) p.disabled = track.scrollLeft <= 4;
-        if (n) n.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
-      });
+      prodBtnState();
+      track.addEventListener('scroll', prodBtnState);
+      window.addEventListener('resize', prodBtnState);
     });
 
     function setLang(lang) {

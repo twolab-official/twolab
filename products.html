@@ -53,7 +53,27 @@
     .step-line { flex:1; height:0.5px; background:#d4c9b0; }
 
     /* 공통 카드 그리드 */
-    .card-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:8px; }
+    .cg-wrap { position:relative; }
+    .card-grid {
+      display:flex; gap:12px; margin-bottom:8px;
+      overflow-x:auto; scroll-behavior:smooth;
+      scrollbar-width:none; -ms-overflow-style:none;
+      scroll-snap-type:x mandatory;
+    }
+    .card-grid::-webkit-scrollbar { display:none; }
+    /* 카드 크기는 기존 5열과 동일 */
+    .card-grid > .item-card { flex:0 0 calc((100% - 48px) / 5); scroll-snap-align:start; }
+    .cg-btn {
+      position:absolute; top:34%; transform:translateY(-50%);
+      width:40px; height:40px; border-radius:50%;
+      background:rgba(255,255,255,0.96); border:none;
+      display:flex; align-items:center; justify-content:center; cursor:pointer;
+      box-shadow:0 2px 14px rgba(0,0,0,0.16); color:#333; z-index:5;
+      transition:opacity 0.2s;
+    }
+    .cg-btn:disabled { opacity:0; pointer-events:none; }
+    .cg-prev { left:-14px; }
+    .cg-next { right:-14px; }
 
     /* 공통 카드 */
     .item-card {
@@ -120,14 +140,15 @@
     .footer-col a:hover { color:var(--gm-light); }
     .footer-phone { font-family:'Montserrat',sans-serif; font-size:15px; font-weight:700; color:var(--gm-xlight); letter-spacing:1px; margin-bottom:6px; display:block; }
 
-    @media (max-width:900px) { .card-grid { grid-template-columns:repeat(3,1fr); } }
+    @media (max-width:900px) { .card-grid > .item-card { flex:0 0 calc((100% - 24px) / 3); } }
     @media (max-width:768px) {
       nav { padding:0 24px; } .nav-links { display:none; }
       .nav-toggle { display:flex; }
 
       .page-header { padding:100px 24px 48px; } .page-header::after { display:none; }
       .main { padding:36px 24px; }
-      .card-grid { grid-template-columns:repeat(2,1fr); }
+      .card-grid > .item-card { flex:0 0 calc((100% - 12px) / 2); }
+      .cg-btn { display:none; }
       footer { padding:40px 24px 36px; } .footer-inner { grid-template-columns:1fr; gap:36px; }
       .footer-right-cols { grid-template-columns:1fr 1fr; }
     }
@@ -185,7 +206,7 @@
       z-index:99;
     }
     .nav-dd:hover .nav-dropdown, .nav-dropdown:hover { opacity:1; visibility:visible; transform:translateY(0); }
-    .nav-dd-inner { max-width:1400px; margin:0 auto; padding:40px 48px 44px; display:grid; grid-template-columns:repeat(5,1fr); gap:clamp(20px,3vw,56px); }
+    .nav-dd-inner { max-width:1400px; margin:0 auto; padding:40px 48px 44px; display:grid; grid-template-columns:repeat(6,1fr); gap:clamp(16px,2.4vw,44px); }
     .nav-dd-col { display:flex; flex-direction:column; }
     .nav-dd-cat {
       font-family:'Montserrat',sans-serif; font-size:13px !important; font-weight:800 !important;
@@ -318,6 +339,10 @@
               <a class="nav-dd-sub" href="products.html#accessory">Utility Pouch</a>
               <a class="nav-dd-sub" href="products.html#accessory">Packable Dog Bowl</a>
             </div>
+            <div class="nav-dd-col">
+              <a class="nav-dd-cat" href="products.html#toys">Toys</a>
+              <a class="nav-dd-sub" href="products.html#toys">Coming Soon</a>
+            </div>
           </div>
         </div>
       </li>
@@ -371,7 +396,11 @@
         <span class="step-text" data-i18n="step1">카테고리를 선택해주세요</span>
         <div class="step-line"></div>
       </div>
-      <div class="card-grid" id="categoryGrid"></div>
+      <div class="cg-wrap">
+        <div class="card-grid" id="categoryGrid"></div>
+        <button class="cg-btn cg-prev" onclick="cgScroll('categoryGrid',-1)" aria-label="이전"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="cg-btn cg-next" onclick="cgScroll('categoryGrid',1)" aria-label="다음"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
     </div>
 
     <!-- LEVEL 2: 컬렉션 -->
@@ -381,7 +410,11 @@
         <span class="step-text" data-i18n="step2">컬렉션을 선택해주세요</span>
         <div class="step-line"></div>
       </div>
-      <div class="card-grid" id="collectionGrid"></div>
+      <div class="cg-wrap">
+        <div class="card-grid" id="collectionGrid"></div>
+        <button class="cg-btn cg-prev" onclick="cgScroll('collectionGrid',-1)" aria-label="이전"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="cg-btn cg-next" onclick="cgScroll('collectionGrid',1)" aria-label="다음"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
     </div>
 
 
@@ -394,7 +427,11 @@
       </div>
       <div class="level3-inner">
         <div class="col-info" id="typeInfo"></div>
+        <div class="cg-wrap">
         <div class="card-grid" id="typeGrid"></div>
+        <button class="cg-btn cg-prev" onclick="cgScroll('typeGrid',-1)" aria-label="이전"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="cg-btn cg-next" onclick="cgScroll('typeGrid',1)" aria-label="다음"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
       </div>
     </div>
 
@@ -407,7 +444,11 @@
       </div>
       <div class="level3-inner">
         <div class="col-info" id="colInfo"></div>
+        <div class="cg-wrap">
         <div class="card-grid" id="variantGrid"></div>
+        <button class="cg-btn cg-prev" onclick="cgScroll('variantGrid',-1)" aria-label="이전"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="cg-btn cg-next" onclick="cgScroll('variantGrid',1)" aria-label="다음"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
       </div>
     </div>
 
@@ -516,7 +557,8 @@
       apparel:   { ko:'Apparel',   en:'Apparel',   img:'dog_apparel.jpg',  collections:[{ id:'ecrin-lab',  ko:'Écrin Dual Shell LAB',  en:'Écrin Dual Shell LAB',  desc_ko:'All-Season Protection System — 사계절 듀얼 쉘 컬렉션', desc_en:'All-Season Protection System — dual shell collection', img:'dog_apparel_ecrin.jpg' }] },
       accessory: { ko:'Accessories', en:'Accessories', img:'dog_accessory.jpg', collections:[
                    { id:'utility-pouch', ko:'Utility Pouch', en:'Utility Pouch', desc_ko:'산책 필수템을 한 곳에', desc_en:'Everything you need, in one pouch', img:'dog_accessory_pouch.jpg' },
-                   { id:'packable-bowl', ko:'Packable Dog Bowl', en:'Packable Dog Bowl', desc_ko:'접어서 가볍게, 어디서든 급수', desc_en:'Folds flat, ready anywhere', img:'dog_accessory_bowl.jpg' }] }
+                   { id:'packable-bowl', ko:'Packable Dog Bowl', en:'Packable Dog Bowl', desc_ko:'접어서 가볍게, 어디서든 급수', desc_en:'Folds flat, ready anywhere', img:'dog_accessory_bowl.jpg' }] },
+      toys:      { ko:'Toys', en:'Toys', img:'dog_toys.jpg', collections:[] }
     };
 
     var variants = {
@@ -533,7 +575,8 @@
       leash:     { 'aurora-lab': ['misty-green','clay-brown','ash-black'], 'willow-lab': ['dawn-green','stone-beige','smoke-gray'] },
       harness:   { 'willow-lab': ['dawn-green','stone-beige','smoke-gray'] },
       apparel:   { 'ecrin-lab': ['misty-green','clay-brown'] },
-      accessory: { 'utility-pouch': ['dawn-green','stone-beige','smoke-gray'], 'packable-bowl': ['dawn-green','stone-beige','smoke-gray'] }
+      accessory: { 'utility-pouch': ['dawn-green','stone-beige','smoke-gray'], 'packable-bowl': ['dawn-green','stone-beige','smoke-gray'] },
+      toys:      {}
     };
 
     var currentCat = null;
@@ -576,6 +619,7 @@
       document.getElementById('level2b').classList.remove('visible');
       document.getElementById('level3').classList.remove('visible');
       updateBreadcrumb(catId, null);
+      cgInit();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -616,6 +660,7 @@
       document.getElementById('level2b').classList.add('visible');
       document.getElementById('level3').classList.remove('visible');
       updateBreadcrumb(catId, colId);
+      cgInit();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -673,6 +718,7 @@
       document.getElementById('level2b').classList.remove('visible');
       document.getElementById('level3').classList.add('visible');
       updateBreadcrumb(catId, colId);
+      cgInit();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -719,7 +765,7 @@
         page_desc:"도시의 빌딩 숲부터 대자연의 트레일까지,<br>반려견과 함께하는 모든 여정에 최적화된<br>TWOLAB의 프리미엄 기어를 만나보세요.",
         step1:"카테고리를 선택해주세요", step2:"컬렉션을 선택해주세요", step3:"색상을 선택해주세요", step_type:"타입을 선택해주세요",
         bc_all:"전체 카테고리",
-        cat_collar:"Collars", cat_leash:"Leashes", cat_harness:"Harnesses", cat_apparel:"Apparel", cat_accessory:"Accessories",
+        cat_collar:"Collars", cat_leash:"Leashes", cat_harness:"Harnesses", cat_apparel:"Apparel", cat_accessory:"Accessories", cat_toys:"Toys",
         ft_customer:"Customer Service", ft_hours:"평일 AM 11:00 ~ PM 6:00",
         ft_closed:"휴무 : 토,일요일 및 공휴일", ft_company:"Company Info",
         ft_bizname:"상호명 : 투랩 (TWOLAB)", ft_ceo:"대표 : 김효섭",
@@ -733,7 +779,7 @@
         page_desc:"From city streets to mountain trails —<br>premium dog gear built for every journey<br>you and your dog take together.",
         step1:"Select a category", step2:"Select a collection", step3:"Select a colour",
         bc_all:"All Categories",
-        cat_collar:"Collars", cat_leash:"Leashes", cat_harness:"Harnesses", cat_apparel:"Apparel", cat_accessory:"Accessories",
+        cat_collar:"Collars", cat_leash:"Leashes", cat_harness:"Harnesses", cat_apparel:"Apparel", cat_accessory:"Accessories", cat_toys:"Toys",
         ft_customer:"Customer Service", ft_hours:"Weekdays 11:00 AM – 6:00 PM",
         ft_closed:"Closed: Weekends and Public Holidays", ft_company:"Company Info",
         ft_bizname:"Company: TWOLAB", ft_ceo:"CEO: John H. Kim",
@@ -757,11 +803,40 @@
       updateBreadcrumb(currentCat, currentCol);
     }
 
+    function cgScroll(id, dir) {
+      var g = document.getElementById(id);
+      if (!g) return;
+      var c = g.querySelector('.item-card');
+      if (!c) return;
+      g.scrollLeft += dir * (c.offsetWidth + 12);
+    }
+    function cgState(id) {
+      var g = document.getElementById(id);
+      if (!g) return;
+      var w = g.parentNode;
+      var p = w.querySelector('.cg-prev'), n = w.querySelector('.cg-next');
+      var none = g.scrollWidth <= g.clientWidth + 4;
+      if (p) p.disabled = none || g.scrollLeft <= 4;
+      if (n) n.disabled = none || g.scrollLeft >= g.scrollWidth - g.clientWidth - 4;
+    }
+    function cgInit() {
+      ['categoryGrid','collectionGrid','typeGrid','variantGrid'].forEach(function(id) {
+        var g = document.getElementById(id);
+        if (!g) return;
+        cgState(id);
+        if (!g.dataset.cgBound) {
+          g.addEventListener('scroll', function() { cgState(id); });
+          g.dataset.cgBound = '1';
+        }
+      });
+    }
+    window.addEventListener('resize', cgInit);
+
     function renderCategories() {
       var grid = document.getElementById('categoryGrid');
       if (!grid) return;
       grid.innerHTML = '';
-      var catKeys = ['collar','leash','harness','apparel','accessory'];
+      var catKeys = ['collar','leash','harness','apparel','accessory','toys'];
       catKeys.forEach(function(catId) {
         var cat = data[catId];
         var count = cat.collections.length;
@@ -775,10 +850,11 @@
           '<div class="img-badge">COMING SOON</div></div>' +
           '<div class="item-body">' +
           '<div class="item-name">' + (lang === 'ko' ? cat.ko : cat.en) + '</div>' +
-          '<div class="item-count">' + count + ' ' + (count === 1 ? 'Collection' : 'Collections') + '</div>' +
+          '<div class="item-count">' + (count === 0 ? 'Coming Soon' : count + ' ' + (count === 1 ? 'Collection' : 'Collections')) + '</div>' +
           '</div>';
         grid.appendChild(card);
       });
+      cgInit();
     }
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -789,7 +865,7 @@
 
       // Handle direct links from index (e.g. products.html#collar)
       var hash = window.location.hash.replace('#', '');
-      var validCats = ['collar','leash','harness','apparel','accessory'];
+      var validCats = ['collar','leash','harness','apparel','accessory','toys'];
       if (hash && validCats.indexOf(hash) !== -1) {
         try { history.replaceState({level:1}, '', window.location.pathname); } catch(e) {}
         showCollections(hash);
@@ -801,7 +877,7 @@
     // Dropdown links clicked while already on this page
     window.addEventListener('hashchange', function() {
       var h = window.location.hash.replace('#', '');
-      if (['collar','leash','harness','apparel','accessory'].indexOf(h) !== -1) {
+      if (['collar','leash','harness','apparel','accessory','toys'].indexOf(h) !== -1) {
         try { history.replaceState({level:1}, '', window.location.pathname); } catch(e) {}
         showCollections(h);
       }
