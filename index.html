@@ -62,7 +62,16 @@
 
     /* HERO */
     .hero { position:relative; aspect-ratio:16/9; min-height:auto; display:flex; align-items:flex-end; padding:120px 0 80px; overflow:hidden; background:var(--gm-xdark); }
-    .hero-bg { position:absolute; inset:0; background-image:url('hero.png'); background-size:cover; background-position:center center; background-repeat:no-repeat; }
+    .hero-bg { position:absolute; inset:0; background-size:cover; background-position:center center; background-repeat:no-repeat;
+      opacity:0; transition:opacity 1.2s ease-in-out; }
+    .hero-bg.is-active { opacity:1; }
+    .hero-bg:nth-of-type(1) { background-image:url('hero.png'); }
+    .hero-bg:nth-of-type(2) { background-image:url('hero2.png'); }
+    .hero-bg:nth-of-type(3) { background-image:url('hero3.png'); }
+    /* 슬라이드 인디케이터 */
+    .hero-dots { position:absolute; bottom:24px; left:50%; transform:translateX(-50%); display:flex; gap:9px; z-index:3; }
+    .hero-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,0.35); border:none; padding:0; cursor:pointer; transition:background 0.3s, width 0.3s; }
+    .hero-dot.is-active { background:#fff; width:20px; border-radius:4px; }
     .hero-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(42,58,52,0.92) 0%, rgba(42,58,52,0.40) 50%, rgba(42,58,52,0.20) 100%); }
     .hero-content { position:relative; z-index:2; padding:0 48px; max-width:720px; }
     .hero-eyebrow { display:flex; align-items:center; gap:14px; margin-bottom:24px; }
@@ -181,7 +190,11 @@
       .hero-desc { font-size:13px !important; line-height:1.9 !important; max-width:100% !important; }
       .hero-title { font-size:clamp(22px,6vw,32px) !important; }
       .hero { aspect-ratio:unset !important; min-height:100vh !important; }
-      .hero-bg { background-image:url('hero_m.png') !important; background-position:center center !important; }
+      .hero-bg { background-position:center center !important; }
+      .hero-bg:nth-of-type(1) { background-image:url('hero_m.png') !important; }
+      .hero-bg:nth-of-type(2) { background-image:url('hero_m2.png') !important; }
+      .hero-bg:nth-of-type(3) { background-image:url('hero_m3.png') !important; }
+      .hero-dots { bottom:16px; }
       .story { grid-template-columns:1fr; height:auto; }
       .story-left { padding:32px 24px; }
       .story-right { min-height:200px; max-height:220px; }
@@ -526,8 +539,15 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-bg is-active"></div>
+    <div class="hero-bg"></div>
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
+    <div class="hero-dots" id="heroDots">
+      <button class="hero-dot is-active" onclick="heroGo(0)" aria-label="1"></button>
+      <button class="hero-dot" onclick="heroGo(1)" aria-label="2"></button>
+      <button class="hero-dot" onclick="heroGo(2)" aria-label="3"></button>
+    </div>
     <div class="hero-content">
       <h1 class="hero-title fade-up delay-1" data-i18n="hero_title">Urban Nature<br><em>Dog Gear</em></h1>
       <p class="hero-subtitle fade-up delay-1">TWOLAB — Earthy Tones for Urban Trails</p>
@@ -897,6 +917,33 @@
     
 
     // Product carousel
+    // HERO 슬라이드쇼 (3초 간격 크로스페이드)
+    var heroIdx = 0, heroTimer = null;
+    function heroGo(n) {
+      var slides = document.querySelectorAll('.hero-bg');
+      var dots = document.querySelectorAll('.hero-dot');
+      if (!slides.length) return;
+      heroIdx = (n + slides.length) % slides.length;
+      slides.forEach(function(s, i) { s.classList.toggle('is-active', i === heroIdx); });
+      dots.forEach(function(d, i) { d.classList.toggle('is-active', i === heroIdx); });
+      heroStart();
+    }
+    function heroStart() {
+      clearInterval(heroTimer);
+      if (document.querySelectorAll('.hero-bg').length < 2) return;
+      heroTimer = setInterval(function() {
+        var slides = document.querySelectorAll('.hero-bg');
+        var dots = document.querySelectorAll('.hero-dot');
+        heroIdx = (heroIdx + 1) % slides.length;
+        slides.forEach(function(s, i) { s.classList.toggle('is-active', i === heroIdx); });
+        dots.forEach(function(d, i) { d.classList.toggle('is-active', i === heroIdx); });
+      }, 3000);
+    }
+    document.addEventListener('DOMContentLoaded', heroStart);
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) { clearInterval(heroTimer); } else { heroStart(); }
+    });
+
     function prodScroll(dir) {
       var track = document.getElementById('prodTrack');
       if (!track) return;
