@@ -56,6 +56,8 @@
     .faq-item.open .faq-icon { transform:rotate(45deg); }
     .faq-a { max-height:0; overflow:hidden; transition:max-height 0.35s ease; }
     .faq-item.open .faq-a { max-height:300px; }
+    .faq-a-h { display:block; font-weight:600; color:var(--text); margin:4px 0 2px; }
+    .faq-a-h + br { display:none; }
     .faq-a-inner { padding:16px 24px 20px; font-size:13px; color:var(--text-muted); line-height:2; font-weight:300; border-top:0.5px solid #e6e0d4; }
     .wholesale-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:32px; }
     .ws-card { background:white; border:0.5px solid #d4c9b0; border-radius:2px; padding:28px 24px; }
@@ -340,23 +342,17 @@
           <div class="faq-q"><span class="faq-q-text" data-i18n="faq_q1">사이즈는 어떻게 선택하나요?</span><span class="faq-icon">+</span></div>
           <div class="faq-a"><div class="faq-a-inner" data-i18n="faq_a1">— 각 제품 페이지에서 목둘레, 가슴둘레, 등길이 기준의 사이즈 가이드를 확인할 수 있습니다.<br>— 사이즈 선택이 어려우신 경우, 카카오채널 또는 네이버 톡톡으로 문의해 주시면 도와드리겠습니다.</div></div>
         </div>
-
-        </div>
         <div class="faq-item" onclick="toggleFaq(this)">
           <div class="faq-q"><span class="faq-q-text" data-i18n="faq_q3">배송은 얼마나 걸리나요?</span><span class="faq-icon">+</span></div>
-          <div class="faq-a"><div class="faq-a-inner" data-i18n="faq_a3">— 평일 오전 10시 이전 결제 완료된 건에 한해 당일 발송되며, 이후 결제 건은 익일 발송됩니다.<br>— 배송기간은 주문 결제일로부터 영업일 기준 약 2~4일 소요됩니다.<br>— 5만원 이상 구매 시 무료배송, 5만원 미만 주문 건은 택배비 3,000원이 추가됩니다.<br>— 제주도 및 도서산간 지역은 추가 배송료가 부과됩니다. (제주도 4,000원, 기타 지역 별도 안내)<br>— 해외배송은 상품의 무게와 지역(국가)마다 운송비가 다르게 책정됩니다.</div></div>
+          <div class="faq-a"><div class="faq-a-inner" data-i18n="faq_a3">— 배송 업체: 한진택배 / 배송 지역: 전국<br>— 배송 비용: 3,000원 (50,000원 이상 구매 시 무료배송)<br>— 제주도 및 도서산간 지역은 추가 배송비 3,000원이 부과됩니다.<br>— 배송 기간: 주문일로부터 영업일 기준 3일 이내 소요됩니다.<br>— 평일 오전 10시 이전 결제 완료된 건에 한해 당일 발송되며, 이후 결제 건은 익일 발송됩니다.</div></div>
         </div>
         <div class="faq-item" onclick="toggleFaq(this)">
           <div class="faq-q"><span class="faq-q-text" data-i18n="faq_q4">교환 및 반품은 어떻게 하나요?</span><span class="faq-icon">+</span></div>
-          <div class="faq-a"><div class="faq-a-inner" data-i18n="faq_a4">— 교환 및 반품 신청은 상품 수령일로부터 7일 이내에 직접 신청이 가능합니다.<br>— 교환 상품 재발송 및 반품 환불은 해당 물품이 투랩 센터 입고, 검수 후 진행됩니다.<br>— 단순 변심, 사이즈 및 색상 변경으로 인한 교환 상품 발송은 고객님께서 편하신 시간과 택배사를 이용해 직접 보내주셔야 합니다. (수거 접수 불가)<br>— 교환에 따른 추가 배송비(3,000원)는 구매자 부담입니다. (배송오류 및 제품 초기불량의 경우 투랩 부담)</div></div>
+          <div class="faq-a"><div class="faq-a-inner" data-i18n="faq_a4"><span class="faq-a-h">교환 및 반품이 가능한 경우</span>— 제품 수령일로부터 7일 이내이며, 상품의 불량·변형·오염·파손이 없는 경우<br>— 고객님의 단순 변심(색상, 사이즈 등)일 경우 왕복 배송비 6,000원을 부담해 주셔야 합니다.<br>— 반품된 제품이 물류지에 도착해 검수가 완료되면 환불 및 교환 처리가 진행됩니다.<br><br><span class="faq-a-h">교환 및 반품이 불가능한 경우</span>— 제품에 변형이나 오염, 파손이 생긴 경우<br>— 제품 택 및 포장재가 누락되거나 훼손된 경우</div></div>
         </div>
         <div class="faq-item" onclick="toggleFaq(this)">
           <div class="faq-q"><span class="faq-q-text" data-i18n="faq_q5">세탁 및 관리 방법이 어떻게 되나요?</span><span class="faq-icon">+</span></div>
           <div class="faq-a"><div class="faq-a-inner" data-i18n="faq_a5">— 30°C 이하 찬물로 단독 손세탁을 권장합니다.<br>— 표백제 및 섬유유연제 사용은 피해 주세요.<br>— 세탁 후 직사광선을 피해 그늘에서 자연 건조하시면 형태와 색상을 오래 유지할 수 있습니다.</div></div>
-        </div>
-        <div class="faq-item" onclick="toggleFaq(this)">
-          <div class="faq-q"><span class="faq-q-text" data-i18n="faq_q6">A/S가 가능한가요?</span><span class="faq-icon">+</span></div>
-          <div class="faq-a"><div class="faq-a-inner" data-i18n="faq_a6">— 모든 A/S는 구입 후 3년 이내에만 접수가 가능합니다.<br>— 단, 잘려진 웨빙은 A/S가 불가합니다.<br>— A/S 접수 전 카카오채널을 통해 A/S 가능 여부를 먼저 확인해 주세요. (구매일자가 나온 구매내역과 파손 부위 사진 필요)<br>— A/S 기간은 상품이 투랩 입고 후 영업일 기준 15일(약 3주) 소요됩니다.<br>— A/S 비용은 부위나 부품당 최소 4,000원~최대 15,000원이며 배송비(3,000원)는 별도입니다.<br>— A/S를 위한 상품 발송은 고객님께서 편하신 시간과 택배사를 이용해 직접 보내주셔야 합니다. (수거 접수 불가)</div></div>
         </div>
       </div>
     </section>
@@ -479,11 +475,9 @@
         qna_desc:"궁금한 사항이나 필요한 지원을 문의해 주세요.<br>평일 11:00 ~ 18:00에 상담이 가능합니다.<br>문의를 남겨주시면 최대한 빠르게 답변드리겠습니다.", qna_kakao_name:"카카오채널 문의", qna_kakao_desc:"@twolabdogs · 채널 추가 후 메시지 보내기", qna_naver_name:"네이버 톡톡 문의", qna_naver_desc:"네이버 톡톡으로 빠르게 문의하기", qna_email_name:"이메일 문의", qna_email_desc:"support@twolabdogs.com",
         form_submit:"문의 작성하기 →",
         faq_q1:"사이즈는 어떻게 선택하나요?", faq_a1:"— 각 제품 페이지에서 목둘레, 가슴둘레, 등길이 기준의 사이즈 가이드를 확인할 수 있습니다.<br>— 사이즈 선택이 어려우신 경우, 카카오채널 또는 네이버 톡톡으로 문의해 주시면 도와드리겠습니다.",
-        faq_q2:"제품의 소재는 무엇인가요?", faq_a2:"— 반려견 피부에 직접 닿는 부분에는 자극이 적은 프리미엄 소재만을 사용합니다.<br>— 대자연과 함께하는 브랜드로서, 우리가 걷는 자연을 보호하기 위해 친환경 소재(RPET/친환경 고강도 원사)를 적극적으로 도입했습니다.<br>— '내 아이에게 입히는 장비'를 만든다는 마음으로, 유해 물질 없는 안전한 자재와 튼튼한 마감 공정만을 고집합니다.<br>— 단단한 내구성과 부드러운 안락함을 직접 확인해 보세요.",
-        faq_q3:"배송은 얼마나 걸리나요?", faq_a3:"— 평일 오전 10시 이전 결제 완료된 건에 한해 당일 발송되며, 이후 결제 건은 익일 발송됩니다.<br>— 배송기간은 주문 결제일로부터 영업일 기준 약 2~4일 소요됩니다.<br>— 5만원 이상 구매 시 무료배송, 5만원 미만 주문 건은 택배비 3,000원이 추가됩니다.<br>— 제주도 및 도서산간 지역은 추가 배송료가 부과됩니다. (제주도 4,000원, 기타 지역 별도 안내)<br>— 해외배송은 상품의 무게와 지역(국가)마다 운송비가 다르게 책정됩니다.",
-        faq_q4:"교환 및 반품은 어떻게 하나요?", faq_a4:"— 교환 및 반품 신청은 상품 수령일로부터 7일 이내에 직접 신청이 가능합니다.<br>— 교환 상품 재발송 및 반품 환불은 해당 물품이 투랩 센터 입고, 검수 후 진행됩니다.<br>— 단순 변심, 사이즈 및 색상 변경으로 인한 교환 상품 발송은 고객님께서 편하신 시간과 택배사를 이용해 직접 보내주셔야 합니다. (수거 접수 불가)<br>— 교환에 따른 추가 배송비(3,000원)는 구매자 부담입니다. (배송오류 및 제품 초기불량의 경우 투랩 부담)",
+        faq_q3:"배송은 얼마나 걸리나요?", faq_a3:"— 배송 업체: 한진택배 / 배송 지역: 전국<br>— 배송 비용: 3,000원 (50,000원 이상 구매 시 무료배송)<br>— 제주도 및 도서산간 지역은 추가 배송비 3,000원이 부과됩니다.<br>— 배송 기간: 주문일로부터 영업일 기준 3일 이내 소요됩니다.<br>— 평일 오전 10시 이전 결제 완료된 건에 한해 당일 발송되며, 이후 결제 건은 익일 발송됩니다.",
+        faq_q4:"교환 및 반품은 어떻게 하나요?", faq_a4:"<span class=\"faq-a-h\">교환 및 반품이 가능한 경우</span>— 제품 수령일로부터 7일 이내이며, 상품의 불량·변형·오염·파손이 없는 경우<br>— 고객님의 단순 변심(색상, 사이즈 등)일 경우 왕복 배송비 6,000원을 부담해 주셔야 합니다.<br>— 반품된 제품이 물류지에 도착해 검수가 완료되면 환불 및 교환 처리가 진행됩니다.<br><br><span class=\"faq-a-h\">교환 및 반품이 불가능한 경우</span>— 제품에 변형이나 오염, 파손이 생긴 경우<br>— 제품 택 및 포장재가 누락되거나 훼손된 경우",
         faq_q5:"세탁 및 관리 방법이 어떻게 되나요?", faq_a5:"— 30°C 이하 찬물로 단독 손세탁을 권장합니다.<br>— 표백제 및 섬유유연제 사용은 피해 주세요.<br>— 세탁 후 직사광선을 피해 그늘에서 자연 건조하시면 형태와 색상을 오래 유지할 수 있습니다.",
-        faq_q6:"A/S가 가능한가요?", faq_a6:"— 모든 A/S는 구입 후 3년 이내에만 접수가 가능합니다.<br>— 단, 잘려진 웨빙은 A/S가 불가합니다.<br>— A/S 접수 전 카카오채널을 통해 A/S 가능 여부를 먼저 확인해 주세요. (구매일자가 나온 구매내역과 파손 부위 사진 필요)<br>— A/S 기간은 상품이 투랩 입고 후 영업일 기준 15일(약 3주) 소요됩니다.<br>— A/S 비용은 부위나 부품당 최소 4,000원~최대 15,000원이며 배송비(3,000원)는 별도입니다.<br>— A/S를 위한 상품 발송은 고객님께서 편하신 시간과 택배사를 이용해 직접 보내주셔야 합니다. (수거 접수 불가)",
         ws_t1:"온·오프라인 리테일러",
         ws_d1:"펫샵, 아웃도어샵 등 오프라인 리테일러를 위한 도매 공급을 진행합니다. 최소 주문 수량 및 조건은 별도 협의합니다.",
         ws_t2:"브랜드 협업",
@@ -507,11 +501,9 @@
         qna_kakao_name:"KakaoTalk Channel", qna_kakao_desc:"@twolabdogs · Add us and say hello", qna_naver_name:"Naver TalkTalk", qna_naver_desc:"Quick chat via Naver TalkTalk", qna_email_name:"Send an Email", qna_email_desc:"support@twolabdogs.com", qna_desc:"Got a question? We'd love to help.<br>Our team is available Monday through Friday, 11:00 AM to 6:00 PM.<br>Send us a message and we'll get back to you as quickly as we can.",
         form_submit:"Submit an Inquiry →",
         faq_q1:"How do I find the right size for my dog?", faq_a1:"— Each product page includes a size guide based on neck circumference, chest girth, and back length.<br>— If you need help choosing a size, feel free to reach out via KakaoTalk or Naver TalkTalk.",
-        faq_q2:"What are TWOLAB products made from?", faq_a2:"— Only premium, low-irritation materials are used for parts that come into direct contact with your dog's skin.<br>— As a brand rooted in the natural world, we actively incorporate eco-friendly materials including RPET and high-strength recycled yarns.<br>— Every product is made with the mindset of 'gear I'd put on my own dog' — non-toxic materials and solid construction throughout.<br>— Feel the difference: durable, yet gentle.",
-        faq_q3:"When will my order arrive?", faq_a3:"— Orders paid before 10:00 AM on weekdays are dispatched the same day; orders after 10:00 AM ship the next business day.<br>— Delivery takes approximately 2–4 business days from the date of payment.<br>— Free shipping on orders over 50,000 KRW. A 3,000 KRW fee applies for orders under 50,000 KRW.<br>— Additional fees apply for Jeju Island and remote areas. (Jeju: 4,000 KRW; other areas notified separately.)<br>— For international orders, shipping costs vary by weight and destination.",
-        faq_q4:"How do exchanges and returns work?", faq_a4:"— Exchanges and returns can be requested within 7 days of receiving your order.<br>— Exchanges and refunds are processed after the item is received and inspected at the TWOLAB centre.<br>— For exchanges due to change of mind, size, or colour, items must be shipped by the customer using a courier of their choice. (Pickup is not available.)<br>— An additional shipping fee of 3,000 KRW applies for exchanges. Shipping errors and initial defects are covered by TWOLAB.",
+        faq_q3:"When will my order arrive?", faq_a3:"— Courier: Hanjin Express. We ship anywhere in Korea.<br>— Shipping fee: 3,000 KRW, free on orders over 50,000 KRW.<br>— Jeju Island and remote areas: an additional 3,000 KRW applies.<br>— Delivery takes up to 3 business days from the order date.<br>— Orders paid before 10:00 AM on weekdays are dispatched the same day; later orders ship the next business day.",
+        faq_q4:"How do exchanges and returns work?", faq_a4:"<span class=\"faq-a-h\">When an exchange or return is possible</span>— Within 7 days of receiving your order, provided the item is free of defects, deformation, staining, or damage.<br>— For a change of mind (colour, size, and so on), a round-trip shipping fee of 6,000 KRW is payable by the customer.<br>— Refunds and exchanges are processed once the returned item reaches our warehouse and passes inspection.<br><br><span class=\"faq-a-h\">When an exchange or return is not possible</span>— The item has been deformed, stained, or damaged.<br>— Tags or original packaging are missing or damaged.",
         faq_q5:"How do I wash and care for TWOLAB gear?", faq_a5:"— Hand wash only in cold water (30°C or below), separately from other items.<br>— Avoid bleach and fabric softener.<br>— After washing, dry in the shade away from direct sunlight to preserve shape and colour.",
-        faq_q6:"Do you offer repairs or after-sales support?", faq_a6:"— Repairs are available within 3 years of your purchase.<br>— Please note: cut or severed webbing cannot be repaired.<br>— Before sending anything in, reach out via KakaoTalk to confirm whether your item is eligible. (A photo of the damage and proof of purchase are required.)<br>— Once we receive your item, repairs typically take around 15 business days (about 3 weeks).<br>— Repair costs range from 4,000 to 15,000 KRW per component, plus a 3,000 KRW shipping fee.<br>— You'll need to ship the item to us yourself — we're not able to arrange pickup.",
         ws_t1:"On & Offline Retailers",
         ws_d1:"We offer wholesale to pet shops, outdoor retailers, and online store operators. Minimum order quantities and pricing are available upon request.",
         ws_t2:"Brand Collaboration",
