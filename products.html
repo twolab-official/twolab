@@ -140,15 +140,28 @@
     .footer-col a:hover { color:var(--gm-light); }
     .footer-phone { font-family:'Montserrat',sans-serif; font-size:15px; font-weight:700; color:var(--gm-xlight); letter-spacing:1px; margin-bottom:6px; display:block; }
 
-    @media (max-width:900px) { .card-grid > .item-card { flex:0 0 calc((100% - 24px) / 3); } }
+    /* 태블릿: 캐러셀 대신 3열 그리드로 아래로 쌓기 */
+    @media (max-width:1024px) {
+      .card-grid {
+        display:grid; grid-template-columns:repeat(3,1fr); gap:12px;
+        overflow-x:visible; scroll-snap-type:none;
+      }
+      .card-grid > .item-card { flex:none; width:auto; scroll-snap-align:none; }
+      .cg-btn { display:none; }
+    }
     @media (max-width:768px) {
       nav { padding:0 24px; } .nav-links { display:none; }
       .nav-toggle { display:flex; }
 
       .page-header { padding:100px 24px 48px; } .page-header::after { display:none; }
       .main { padding:36px 24px; }
-      .card-grid > .item-card { flex:0 0 calc((100% - 12px) / 2); }
-      .cg-btn { display:none; }
+      /* 모바일: 캐러셀 대신 2열 그리드로 아래로 쌓기 */
+      .card-grid {
+        display:grid !important; grid-template-columns:repeat(2,1fr); gap:12px;
+        overflow-x:visible !important; scroll-snap-type:none !important;
+      }
+      .card-grid > .item-card { flex:none !important; width:auto; scroll-snap-align:none; }
+      .cg-btn { display:none !important; }
       footer { padding:40px 24px 36px; } .footer-inner { grid-template-columns:1fr; gap:36px; }
       .footer-right-cols { grid-template-columns:1fr 1fr; }
     }
