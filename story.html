@@ -21,13 +21,16 @@
   <meta name="twitter:title" content="브랜드 스토리 | TWOLAB 투랩" />
   <meta name="twitter:description" content="시루와 하루, 두 마리 래브라도 리트리버와 함께한 일상에서 시작된 TWOLAB의 이야기. 도시와 자연을 잇는 반려견 기어 브랜드의 미션·비전·가치를 소개합니다." />
 
-  <!-- Google Analytics 4 : 측정 ID G-4N0PB5BT2C -->
+  <!-- Google Analytics 4 : 브랜드 사이트 G-4N0PB5BT2C + 공식몰 G-Z1PXSNZ9N9 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4N0PB5BT2C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-4N0PB5BT2C');
+    // 브랜드 사이트 ↔ 공식몰 방문 흐름을 이어서 보기 위한 교차 도메인 설정
+    gtag('set', 'linker', { domains: ['twolabdogs.com', 'twolabdogs.shop'] });
+    gtag('config', 'G-4N0PB5BT2C');   // 브랜드 사이트 속성
+    gtag('config', 'G-Z1PXSNZ9N9');   // 공식몰 속성 (브랜드 사이트 → 공식몰 유입 경로 연결용)
     // 스토어로 나가는 클릭 기록 (GA4 이벤트: store_click)
     function tlTrack(store, loc) {
       try { gtag('event', 'store_click', { store: store, click_location: loc || 'unknown', transport_type: 'beacon' }); } catch (e) {}
@@ -456,7 +459,7 @@
           </div>
         </div>
       </li>
-      <li><a href="javascript:void(0)" onclick="goToStore('nav')" data-i18n="nav_store">Shop</a></li>
+      <li><a href="https://twolabdogs.shop/" target="_blank" rel="noopener" onclick="tlTrack('twolab_shop','nav')" data-i18n="nav_store">Shop</a></li>
       <li><a href="inquiry.html" data-i18n="nav_inquiry">Support</a></li>
       </ul>
     <div class="lang-btn">

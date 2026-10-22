@@ -21,13 +21,16 @@
   <meta name="twitter:title" content="TWOLAB 투랩 | 프리미엄 강아지 목줄·하네스·리쉬 아웃도어 기어" />
   <meta name="twitter:description" content="두 마리 래브라도와의 산책에서 시작된 프리미엄 반려견 아웃도어 기어 브랜드 TWOLAB(투랩). 반사 웨빙 목줄·리쉬, 립스탑 하네스, 사계절 듀얼 쉘 의류를 만나보세요." />
 
-  <!-- Google Analytics 4 : 측정 ID G-4N0PB5BT2C -->
+  <!-- Google Analytics 4 : 브랜드 사이트 G-4N0PB5BT2C + 공식몰 G-Z1PXSNZ9N9 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4N0PB5BT2C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-4N0PB5BT2C');
+    // 브랜드 사이트 ↔ 공식몰 방문 흐름을 이어서 보기 위한 교차 도메인 설정
+    gtag('set', 'linker', { domains: ['twolabdogs.com', 'twolabdogs.shop'] });
+    gtag('config', 'G-4N0PB5BT2C');   // 브랜드 사이트 속성
+    gtag('config', 'G-Z1PXSNZ9N9');   // 공식몰 속성 (브랜드 사이트 → 공식몰 유입 경로 연결용)
     // 스토어로 나가는 클릭 기록 (GA4 이벤트: store_click)
     function tlTrack(store, loc) {
       try { gtag('event', 'store_click', { store: store, click_location: loc || 'unknown', transport_type: 'beacon' }); } catch (e) {}
@@ -492,20 +495,24 @@
     }
 
     /* HERO CTA */
-    .btn-cta { display:inline-flex; align-items:center; gap:10px; background:var(--cream); color:var(--gm-xdark); font-family:'Noto Sans KR','Montserrat',sans-serif; font-size:15px; font-weight:700; letter-spacing:0.5px; padding:17px 32px; border-radius:2px; text-decoration:none; box-shadow:0 6px 24px rgba(0,0,0,0.22); transition:background 0.2s, transform 0.2s; }
+    .btn-cta { display:inline-flex; align-items:center; justify-content:center; gap:10px; background:var(--cream); color:var(--gm-xdark); font-family:'Montserrat',sans-serif; font-size:13px; font-weight:800; letter-spacing:2.5px; padding:17px 34px; border-radius:2px; text-decoration:none; box-shadow:0 6px 24px rgba(0,0,0,0.22); transition:background 0.2s, transform 0.2s; }
     .btn-cta:hover { background:#fff; transform:translateY(-1px); }
-    .btn-cta .cta-arrow { font-family:'Montserrat',sans-serif; transition:transform 0.2s; }
+    .btn-cta .cta-arrow { transition:transform 0.2s; letter-spacing:0; }
     .btn-cta:hover .cta-arrow { transform:translateX(3px); }
-    .hero-btns .btn-outline { display:inline-flex; align-items:center; padding:17px 28px; color:var(--gm-xlight); border-color:rgba(232,237,235,0.55); }
+    .hero-btns .btn-outline { display:inline-flex; align-items:center; justify-content:center; padding:17px 28px; color:var(--gm-xlight); border-color:rgba(232,237,235,0.55); }
     .hero-trust { display:flex; flex-wrap:wrap; gap:6px 18px; margin-top:20px; font-size:12px; color:rgba(232,237,235,0.78); letter-spacing:0.02em; }
     .hero-trust span { display:inline-flex; align-items:center; gap:6px; }
     .hero-trust span::before { content:''; width:4px; height:4px; border-radius:50%; background:var(--gm-light); }
+
+    /* HERO 높이·문구 위치 */
+    .hero { aspect-ratio:auto !important; height:min(48vw, 100vh); min-height:560px !important; }
+    .hero-content { bottom:auto !important; top:50%; transform:translateY(-42%); }
     @media (max-width:768px) {
-      .hero-btns { gap:10px; }
-      .btn-cta { flex:1 1 100%; justify-content:center; font-size:15px; padding:16px 20px; }
-      .hero-btns .btn-outline { flex:1 1 100%; justify-content:center; padding:14px 20px; }
+      .hero { height:78vh !important; height:78svh !important; min-height:600px !important; }
+      .hero-content { top:auto; transform:none; bottom:112px !important; }
+      .hero-btns { gap:10px; flex-wrap:nowrap; }
+      .btn-cta, .hero-btns .btn-outline { flex:1 1 0; min-width:0; padding:15px 12px; font-size:12px; letter-spacing:1.8px; white-space:nowrap; }
       .hero-trust { font-size:11.5px; gap:4px 14px; margin-top:16px; }
-      .hero-content { bottom:64px !important; }
       .hero-scroll { display:none; }
     }
   </style>
@@ -560,7 +567,7 @@
           </div>
         </div>
       </li>
-      <li><a href="javascript:void(0)" onclick="goToStore('nav')" data-i18n="nav_store">Shop</a></li>
+      <li><a href="https://twolabdogs.shop/" target="_blank" rel="noopener" onclick="tlTrack('twolab_shop','nav')" data-i18n="nav_store">Shop</a></li>
       <li><a href="inquiry.html" data-i18n="nav_inquiry">Support</a></li>
       </ul>
     <div class="lang-btn">
@@ -589,7 +596,7 @@
       <p class="hero-subtitle fade-up delay-1">TWOLAB — Earthy Tones for Urban Trails</p>
       <p class="hero-desc fade-up delay-2" data-i18n="hero_desc">숲의 흙내음부터 도시의 산책길까지.<br>두 마리 래브라도와 함께 테스트한<br>프리미엄 반려견 아웃도어 기어.</p>
       <div class="hero-btns fade-up delay-3">
-        <a href="https://twolabdogs.shop/" target="_blank" rel="noopener" class="btn-cta" onclick="tlTrack('twolab_shop','hero')"><span data-i18n="hero_btn1">공식몰에서 쇼핑하기</span> <span class="cta-arrow" aria-hidden="true">→</span></a>
+        <a href="https://twolabdogs.shop/" target="_blank" rel="noopener" class="btn-cta" onclick="tlTrack('twolab_shop','hero')"><span data-i18n="hero_btn1">SHOP NOW</span> <span class="cta-arrow" aria-hidden="true">→</span></a>
         <a href="story.html" class="btn-outline" data-i18n="hero_btn2">Brand Story</a>
       </div>
       <p class="hero-trust fade-up delay-3" data-i18n="hero_trust"><span>5만원 이상 무료배송</span><span>평일 오전 10시 전 결제 시 당일 발송</span><span>구매 금액 1% 유기견 기부</span></p>
@@ -739,7 +746,7 @@
       </div>
     </div>
     <div class="cta-right">
-      <a href="javascript:void(0)" onclick="goToStore('store_section')" class="store-card">
+      <a href="https://twolabdogs.shop/" target="_blank" rel="noopener" onclick="tlTrack('twolab_shop','store_section')" class="store-card">
         <div>
           <div class="store-label">TWOLAB OFFICIAL STORE</div>
           <div class="store-name" data-i18n="official_name">투랩 공식몰</div>
@@ -860,7 +867,7 @@
         nav_home:"Home", nav_brand:"Story", nav_products:"Products", nav_store:"Shop", nav_inquiry:"Support",
         hero_title:"Urban Nature<br><em>Dog Gear</em>",
         hero_desc:"숲의 흙내음부터 도시의 산책길까지.<br>두 마리 래브라도와 함께 테스트한<br>프리미엄 반려견 아웃도어 기어.",
-        hero_btn1:"공식몰에서 쇼핑하기", hero_btn2:"Brand Story", hero_trust:"<span>5만원 이상 무료배송</span><span>평일 오전 10시 전 결제 시 당일 발송</span><span>구매 금액 1% 유기견 기부</span>",
+        hero_btn1:"SHOP NOW", hero_btn2:"Brand Story", hero_trust:"<span>5만원 이상 무료배송</span><span>평일 오전 10시 전 결제 시 당일 발송</span><span>구매 금액 1% 유기견 기부</span>",
         prod_heading:"함께하는<br>모든 순간을 위해",
         prod_sub:"도시의 빌딩 숲부터 대자연의 트레일까지,<br>반려견과 함께하는 모든 여정에<br>최적화된 TWOLAB의 프리미엄 기어를 만나보세요.",
         prod_collar:"Collars", prod_leash:"Leashes", prod_harness:"Harnesses", prod_raincoat:"Apparel", prod_accessory:"Accessories", prod_toys:"Toys",
@@ -882,7 +889,7 @@
       en: {
         nav_home:"Home", nav_brand:"Story", nav_products:"Products", nav_store:"Shop", nav_inquiry:"Support", hero_title:"Urban Nature<br><em>Dog Gear</em>",
         hero_desc:"From city sidewalks to forest trails.<br>Premium outdoor dog gear,<br>field-tested with two Labradors.",
-        hero_btn1:"Shop the Store", hero_btn2:"Brand Story", hero_trust:"<span>Free shipping over ₩50,000</span><span>Same-day dispatch before 10 AM KST</span><span>1% of every purchase to dog rescue</span>",
+        hero_btn1:"SHOP NOW", hero_btn2:"Brand Story", hero_trust:"<span>Free shipping over ₩50,000</span><span>Same-day dispatch before 10 AM KST</span><span>1% of every purchase to dog rescue</span>",
         prod_heading:"Built for the trail.<br>Made for together.",
         prod_sub:"From city streets to mountain trails —<br>premium dog gear built for every journey<br>you and your dog take together.",
         prod_collar:"Collars", prod_leash:"Leashes", prod_harness:"Harnesses", prod_raincoat:"Apparel", prod_accessory:"Accessories", prod_toys:"Toys",
