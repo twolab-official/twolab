@@ -356,6 +356,22 @@
     @media (max-width:768px) {
       .buy-btn { max-width:none; margin-top:22px; }
     }
+
+    /* 상품 상세 이미지 */
+    .pd { margin-top:72px; }
+    .pd[hidden] { display:none; }
+    .pd-head { display:flex; align-items:center; justify-content:center; gap:16px; margin:0 auto 28px; max-width:860px; }
+    .pd-line { flex:1; height:1px; background:rgba(138,153,146,0.35); }
+    .pd-tag { font-family:'Montserrat','Noto Sans KR',sans-serif; font-size:11px; font-weight:700; letter-spacing:3px; color:var(--gm-dark); }
+    .pd-imgs { max-width:860px; margin:0 auto; }
+    .pd-imgs img { display:block; width:100%; height:auto; }
+    .pd-cta { max-width:860px; margin:36px auto 0; display:flex; justify-content:center; }
+    .pd-cta .buy-btn { margin-top:0; }
+    @media (max-width:768px) {
+      .pd { margin:48px -24px 0; }
+      .pd-head { padding:0 24px; }
+      .pd-cta { padding:0 24px; }
+    }
   </style>
 </head>
 <body>
@@ -510,6 +526,7 @@
         <button class="cg-btn cg-next" onclick="cgScroll('variantGrid',1)" aria-label="다음"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg></button>
       </div>
       </div>
+      <section class="pd" id="productDetail" hidden aria-label="상품 상세"></section>
     </div>
 
   </div>
@@ -661,11 +678,48 @@
     function buyUrl(catId, colId, typeId) { return buyLinks[buyKey(catId, colId, typeId)] || null; }
     function buyClick(key) { tlTrack('twolab_shop', 'product:' + key); }
 
+
+    // ===== 상품 상세 이미지 =====
+    // 상품별 상세페이지 이미지를 위에서 아래 순서대로 적어 두면, 해당 상품을 고를 때 구매 버튼 아래에 나열됩니다.
+    var detailImages = {
+      'collar-willow-lab': {
+        dir: 'detail/collar-willow-lab/',
+        files: ['01.jpg','02.jpg','03.jpg','04.jpg','05.jpg','06.jpg','07.jpg'],
+        alt: [
+          'TWOLAB 윌로우 랩 목줄 Willow LAB Collar — 자연의 결을 따라, 함께 나아가다',
+          '컬러 Dawn Green, Stone Beige, Smoke Gray · 립스탑 쉘, 스웨이드 라이닝, 24.7g(S) · 알루미늄 D링과 퀵 릴리즈 버클',
+          '착용 예시 래브라도 리트리버 26kg M, 시바이누 8kg S · Willow LAB 라인업',
+          '사이즈 차트 S 28-35cm 20mm 24.7g, M 35-44cm 25mm 40.0g, L 44-59cm 25mm 44.5g',
+          'Bred for the Outdoors, Crafted for Daily Life — 야외 착용 사진',
+          '구매 금액의 1% 유기견 기부 · 소재: 나일론 립스탑, 마이크로 폴리에스터 스웨이드, 알루미늄, 아세탈 · 제조국 대한민국 · 손세탁 후 그늘 건조',
+          '안내사항 · 고객상담센터 070-8744-4316 · 한진택배 3,000원(5만원 이상 무료배송) · 교환/반품 안내'
+        ]
+      }
+    };
+    function renderDetail(catId, colId, typeId) {
+      var box = document.getElementById('productDetail');
+      if (!box) return;
+      var key = buyKey(catId, colId, typeId);
+      var d = detailImages[key] || detailImages[catId + '-' + colId];
+      if (!d) { box.hidden = true; box.innerHTML = ''; return; }
+      var url = buyUrl(catId, colId, typeId);
+      var html = '<div class="pd-head"><span class="pd-line"></span><span class="pd-tag">' + (lang === 'ko' ? '상품 상세' : 'PRODUCT DETAILS') + '</span><span class="pd-line"></span></div><div class="pd-imgs">';
+      d.files.forEach(function(f, n) {
+        html += '<img src="' + d.dir + f + '" width="860" height="1146" alt="' + (d.alt[n] || '') + '"' + (n > 0 ? ' loading="lazy"' : '') + ' decoding="async">';
+      });
+      html += '</div>';
+      if (url) {
+        html += '<div class="pd-cta"><a class="buy-btn" href="' + url + '" target="_blank" rel="noopener" onclick="buyClick(\'' + key + ':detail\')"><span>' + (lang === 'ko' ? '구매하기' : 'BUY NOW') + '</span><span class="buy-arrow" aria-hidden="true">→</span></a></div>';
+      }
+      box.innerHTML = html; box.hidden = false;
+    }
+
     var currentCat = null;
     var currentCol = null;
     var currentType = null;
 
     function showCollections(catId, fromPop) {
+      var _pd = document.getElementById('productDetail'); if (_pd) { _pd.hidden = true; _pd.innerHTML = ''; }
       currentCat = catId;
       try { if (!fromPop) history.pushState({level:2, catId:catId}, '', '#' + catId); } catch(e) {}
       var cat = data[catId];
@@ -706,6 +760,7 @@
     }
 
     function showTypes(catId, colId, fromPop) {
+      var _pd = document.getElementById('productDetail'); if (_pd) { _pd.hidden = true; _pd.innerHTML = ''; }
       currentCat = catId; currentCol = colId;
       var cat = data[catId];
       var col = cat.collections.find(function(c) { return c.id === colId; });
@@ -808,6 +863,7 @@
       document.getElementById('level2').classList.remove('visible');
       document.getElementById('level2b').classList.remove('visible');
       document.getElementById('level3').classList.add('visible');
+      renderDetail(catId, colId, typeId);
       updateBreadcrumb(catId, colId);
       cgInit();
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -836,6 +892,7 @@
     }
 
     function goLevel1(fromPop) {
+      var _pd = document.getElementById('productDetail'); if (_pd) { _pd.hidden = true; _pd.innerHTML = ''; }
       document.getElementById('level1').classList.add('visible');
       document.getElementById('level2').classList.remove('visible');
       document.getElementById('level2b').classList.remove('visible');
@@ -846,6 +903,7 @@
     }
 
     function goLevel2(catId) {
+      var _pd = document.getElementById('productDetail'); if (_pd) { _pd.hidden = true; _pd.innerHTML = ''; }
       showCollections(catId);
     }
 
