@@ -679,28 +679,27 @@
       'accessory-packable-bowl':    SHOP + '/product/list.html?cate_no=54'
     };
     // ===== 가격 =====
-    // 원화 판매가(숫자)만 적으면 됩니다. 영문 페이지는 아래 고정 환율로 USD 환산해 표시합니다.
-    // 사이즈별로 가격이 다르면 가장 낮은 가격을 적고 from:true 로 두면 '39,000원~' 처럼 표시됩니다.
-    // 가격을 null 로 두면 가격 줄이 표시되지 않습니다.
+    // 원화 판매가(숫자)만 적으면 됩니다. 사이즈와 관계없이 같은 가격입니다.
+    // 영문 페이지는 아래 고정 환율로 USD 환산해 표시합니다. 가격이 정해지지 않은 상품은 null → '- 원' / '- USD'
     var USD_RATE = 1083; // 1 USD = 1,083원 (고정)
     var prices = {
-      'collar-aurora-lab':           { krw: 0, from: false },
-      'collar-willow-lab':           { krw: 0, from: false },
-      'leash-aurora-lab-standard':   { krw: 0, from: false },
-      'leash-aurora-lab-adjustable': { krw: 0, from: false },
-      'leash-willow-lab-standard':   { krw: 0, from: false },
-      'leash-willow-lab-adjustable': { krw: 0, from: false },
-      'harness-willow-lab':          { krw: 0, from: false },
-      'apparel-ecrin-lab':           { krw: 0, from: false },
-      'accessory-utility-pouch':     { krw: 0, from: false },
-      'accessory-packable-bowl':     { krw: 0, from: false }
+      'collar-aurora-lab':           null,
+      'collar-willow-lab':           null,
+      'leash-aurora-lab-standard':   null,
+      'leash-aurora-lab-adjustable': null,
+      'leash-willow-lab-standard':   null,
+      'leash-willow-lab-adjustable': null,
+      'harness-willow-lab':          null,
+      'apparel-ecrin-lab':           null,
+      'accessory-utility-pouch':     null,
+      'accessory-packable-bowl':     null
     };
     function priceText(key) {
-      var p = prices[key];
-      if (!p || p.krw === null || p.krw === undefined) return '';
-      if (lang === 'ko') return p.krw.toLocaleString('ko-KR') + '원' + (p.from ? '~' : '');
-      var usd = (p.krw / USD_RATE).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      return (p.from ? 'From ' : '') + usd + ' USD';
+      var krw = prices[key];
+      if (krw === undefined) return '';
+      if (krw === null) return lang === 'ko' ? '- 원' : '- USD';
+      if (lang === 'ko') return krw.toLocaleString('ko-KR') + '원';
+      return (krw / USD_RATE).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' USD';
     }
     function buyKey(catId, colId, typeId) { return catId + '-' + colId + (typeId ? '-' + typeId : ''); }
     function buyUrl(catId, colId, typeId) { return buyLinks[buyKey(catId, colId, typeId)] || null; }
