@@ -56,6 +56,9 @@
     .nav-links { display:flex; align-items:center; gap:55px; list-style:none; }
     .nav-links a { font-family:'Montserrat',sans-serif; font-size:16px; font-weight:700; letter-spacing:2px; color:var(--gm-light); text-decoration:none; transition:color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color:var(--gm-xlight); }
+    .nav-cart { display:flex; align-items:center; justify-content:center; width:38px; height:38px; margin-left:auto; color:var(--gm-light); border-radius:50%; transition:color 0.2s, background 0.2s; }
+    .nav-cart:hover { color:var(--gm-xlight); background:rgba(138,153,146,0.14); }
+    .nav-cart svg { width:21px; height:21px; }
     .lang-btn { display:flex; align-items:center; gap:2px; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; letter-spacing:1.5px; margin-left:12px; }
     .lang-btn span { padding:6px 10px; cursor:pointer; color:rgba(196,206,202,0.6); border:0.5px solid rgba(138,153,146,0.2); border-radius:2px; transition:all 0.2s; }
     .lang-btn span:hover { color:var(--gm-xlight); border-color:rgba(138,153,146,0.5); }
@@ -297,9 +300,11 @@
           </div>
         </div>
       </li>
-      <li><a href="https://twolabdogs.shop/" target="_blank" rel="noopener" onclick="tlTrack('twolab_shop','nav')" data-i18n="nav_store">Shop</a></li>
       <li><a href="inquiry.html" class="active" data-i18n="nav_inquiry">Support</a></li>
       </ul>
+    <a href="https://twolabdogs.shop/" target="_blank" rel="noopener" class="nav-cart" aria-label="TWOLAB 공식몰" title="TWOLAB 공식몰" onclick="tlTrack('twolab_shop','nav')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+    </a>
     <div class="lang-btn">
       <span id="btn-ko" class="active" onclick="setLang('ko')">KO</span>
       <span class="divider">/</span>

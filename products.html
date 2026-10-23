@@ -58,6 +58,9 @@
     .nav-links { display:flex; align-items:center; gap:55px; list-style:none; }
     .nav-links a { font-family:'Montserrat',sans-serif; font-size:16px; font-weight:700; letter-spacing:2px; color:var(--gm-light); text-decoration:none; transition:color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color:var(--gm-xlight); }
+    .nav-cart { display:flex; align-items:center; justify-content:center; width:38px; height:38px; margin-left:auto; color:var(--gm-light); border-radius:50%; transition:color 0.2s, background 0.2s; }
+    .nav-cart:hover { color:var(--gm-xlight); background:rgba(138,153,146,0.14); }
+    .nav-cart svg { width:21px; height:21px; }
     .lang-btn { display:flex; align-items:center; gap:2px; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; letter-spacing:1.5px; margin-left:12px; }
     .lang-btn span { padding:6px 10px; cursor:pointer; color:rgba(196,206,202,0.6); border:0.5px solid rgba(138,153,146,0.2); border-radius:2px; transition:all 0.2s; }
     .lang-btn span:hover { color:var(--gm-xlight); border-color:rgba(138,153,146,0.5); }
@@ -340,6 +343,20 @@
       .nav-dd-sub { display:none !important; }
       .nav-dd-note { display:none; }
     }
+
+    /* 구매 버튼 */
+    .buy-btn { display:flex; align-items:center; justify-content:center; gap:10px; margin-top:28px; width:100%; max-width:320px; background:var(--gm-xdark); color:var(--cream); font-family:'Montserrat','Noto Sans KR',sans-serif; font-size:13px; font-weight:800; letter-spacing:2px; padding:16px 24px; border-radius:2px; text-decoration:none; transition:background 0.2s, transform 0.2s; }
+    .buy-btn:hover { background:var(--gm-dark); transform:translateY(-1px); }
+    .buy-btn .buy-arrow { letter-spacing:0; transition:transform 0.2s; }
+    .buy-btn:hover .buy-arrow { transform:translateX(3px); }
+    .buy-note { margin-top:10px; font-size:12px; color:var(--gm-dark); line-height:1.6; }
+    .buy-perks { margin-top:4px; font-size:11.5px; color:var(--gm); line-height:1.6; }
+    a.item-card { display:block; color:inherit; text-decoration:none; }
+    .item-buy { display:inline-block; font-family:'Montserrat','Noto Sans KR',sans-serif; font-size:10px; font-weight:700; letter-spacing:1.5px; color:var(--gm-xdark); border-bottom:1px solid var(--gm); padding-bottom:2px; margin-top:8px; }
+    .item-card:hover .item-buy { color:var(--gm-dark); }
+    @media (max-width:768px) {
+      .buy-btn { max-width:none; margin-top:22px; }
+    }
   </style>
 </head>
 <body>
@@ -391,9 +408,11 @@
           </div>
         </div>
       </li>
-      <li><a href="https://twolabdogs.shop/" target="_blank" rel="noopener" onclick="tlTrack('twolab_shop','nav')" data-i18n="nav_store">Shop</a></li>
       <li><a href="inquiry.html" data-i18n="nav_inquiry">Support</a></li>
       </ul>
+    <a href="https://twolabdogs.shop/" target="_blank" rel="noopener" class="nav-cart" aria-label="TWOLAB 공식몰" title="TWOLAB 공식몰" onclick="tlTrack('twolab_shop','nav')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+    </a>
     <div class="lang-btn">
       <span id="btn-ko" class="active" onclick="setLang('ko')">KO</span>
       <span class="divider">/</span>
@@ -625,6 +644,27 @@
       toys:      {}
     };
 
+
+    // ===== 공식몰 구매 링크 =====
+    // 공식몰에 상품을 등록한 뒤, 아래 주소를 상품 페이지 주소로 바꾸면 됩니다.
+    // (예: 'collar-willow-lab': 'https://twolabdogs.shop/product/detail.html?product_no=12')
+    var SHOP = 'https://twolabdogs.shop';
+    var buyLinks = {
+      'collar-aurora-lab':          SHOP + '/product/list.html?cate_no=29',
+      'collar-willow-lab':          SHOP + '/product/list.html?cate_no=29',
+      'leash-aurora-lab-standard':  SHOP + '/product/list.html?cate_no=31',
+      'leash-aurora-lab-adjustable':SHOP + '/product/list.html?cate_no=31',
+      'leash-willow-lab-standard':  SHOP + '/product/list.html?cate_no=31',
+      'leash-willow-lab-adjustable':SHOP + '/product/list.html?cate_no=31',
+      'harness-willow-lab':         SHOP + '/product/list.html?cate_no=30',
+      'apparel-ecrin-lab':          SHOP + '/product/list.html?cate_no=25',
+      'accessory-utility-pouch':    SHOP + '/product/list.html?cate_no=54',
+      'accessory-packable-bowl':    SHOP + '/product/list.html?cate_no=54'
+    };
+    function buyKey(catId, colId, typeId) { return catId + '-' + colId + (typeId ? '-' + typeId : ''); }
+    function buyUrl(catId, colId, typeId) { return buyLinks[buyKey(catId, colId, typeId)] || null; }
+    function buyClick(key) { tlTrack('twolab_shop', 'product:' + key); }
+
     var currentCat = null;
     var currentCol = null;
     var currentType = null;
@@ -743,19 +783,28 @@
         '<div class="col-info-tag">' + (typeObj ? (lang === 'ko' ? typeObj.desc_ko : typeObj.desc_en) : (lang === 'ko' ? col.desc_ko : col.desc_en)) + '</div>' +
         '<div class="col-info-divider"></div>' +
         '<div class="col-info-desc">' + (lang === 'ko' ? (desc.ko || '') : (desc.en || '')) + '</div>';
+      var bKey = buyKey(catId, colId, typeId), bUrl = buyUrl(catId, colId, typeId);
+      if (bUrl) {
+        info.innerHTML +=
+          '<a class="buy-btn" href="' + bUrl + '" target="_blank" rel="noopener" onclick="buyClick(\'' + bKey + '\')">' +
+            '<span>' + (lang === 'ko' ? '구매하기' : 'BUY NOW') + '</span><span class="buy-arrow" aria-hidden="true">→</span></a>' +
+          '<div class="buy-note">' + (lang === 'ko' ? 'TWOLAB 공식몰에서 색상·사이즈를 선택할 수 있어요' : 'Choose colour & size at the TWOLAB store') + '</div>' +
+          '<div class="buy-perks">' + (lang === 'ko' ? '5만원 이상 무료배송 · 구매 금액 1% 유기견 기부' : 'Free shipping over ₩50,000 · 1% to dog rescue') + '</div>';
+      }
 
       var vids = (variantsByCat[catId] && variantsByCat[catId][colId]) || [];
       vids.forEach(function(vid) {
         var v = variants[vid];
-        var card = document.createElement('div');
+        var card = document.createElement(bUrl ? 'a' : 'div');
         card.className = 'item-card';
+        if (bUrl) { card.href = bUrl; card.target = '_blank'; card.rel = 'noopener'; card.setAttribute('onclick', "buyClick('" + bKey + ":" + vid + "')"); }
         card.innerHTML = '<div class="item-img" style="background-color:' + v.color + ';background-image:url(\'' + variantImg(catId, colId, typeId, vid) + '\');">' +
           '</div>' +
           '<div class="item-body">' +
           '<div class="item-sub">' + (lang === 'ko' ? v.ko : v.en) + '</div>' +
           '<div class="item-name">' + (lang === 'ko' ? cat.ko : cat.en) + '</div>' +
           '<div class="item-desc">' + (lang === 'ko' ? col.ko : col.en) + '</div>' +
-          '<div class="item-soon">COMING SOON</div></div>';
+          (bUrl ? '<div class="item-buy">' + (lang === 'ko' ? '구매하기 →' : 'SHOP →') + '</div>' : '<div class="item-soon">COMING SOON</div>') + '</div>';
         grid.appendChild(card);
       });
 
