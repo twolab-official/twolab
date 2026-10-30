@@ -347,7 +347,12 @@
     .price { display:flex; align-items:baseline; gap:12px; margin-top:28px; }
     .price-label { font-family:'Montserrat','Noto Sans KR',sans-serif; font-size:10px; font-weight:700; letter-spacing:2px; color:var(--gm); text-transform:uppercase; }
     .price-value { font-family:'Montserrat','Noto Sans KR',sans-serif; font-size:24px; font-weight:700; letter-spacing:0.5px; color:var(--gm-xdark); }
-    .price + .buy-btn { margin-top:14px; }
+    .buy-group { display:flex; flex-direction:column; gap:10px; margin-top:28px; width:100%; max-width:320px; }
+    .price + .buy-group { margin-top:14px; }
+    .buy-group .buy-btn { margin-top:0; max-width:none; }
+    .buy-btn.buy-naver { background:#fff; color:var(--gm-xdark); border:1px solid rgba(42,58,52,0.25); font-family:'Noto Sans KR','Montserrat',sans-serif; letter-spacing:0.5px; }
+    .buy-btn.buy-naver:hover { background:#fff; border-color:#03C75A; }
+    .naver-mark { display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; border-radius:3px; background:#03C75A; color:#fff; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:900; letter-spacing:0; }
     .buy-btn { display:flex; align-items:center; justify-content:center; gap:10px; margin-top:28px; width:100%; max-width:320px; background:var(--gm-xdark); color:var(--cream); font-family:'Montserrat','Noto Sans KR',sans-serif; font-size:13px; font-weight:800; letter-spacing:2px; padding:16px 24px; border-radius:2px; text-decoration:none; transition:background 0.2s, transform 0.2s; }
     .buy-btn:hover { background:var(--gm-dark); transform:translateY(-1px); }
     .buy-btn .buy-arrow { letter-spacing:0; transition:transform 0.2s; }
@@ -358,7 +363,7 @@
     .item-buy { display:inline-block; font-family:'Montserrat','Noto Sans KR',sans-serif; font-size:10px; font-weight:700; letter-spacing:1.5px; color:var(--gm-xdark); border-bottom:1px solid var(--gm); padding-bottom:2px; margin-top:8px; }
     .item-card:hover .item-buy { color:var(--gm-dark); }
     @media (max-width:768px) {
-      .buy-btn { max-width:none; margin-top:22px; }
+      .buy-group { max-width:none; margin-top:22px; }
     }
 
     /* 상품 상세 이미지 */
@@ -370,7 +375,7 @@
     .pd-imgs { max-width:860px; margin:0 auto; }
     .pd-imgs img { display:block; width:100%; height:auto; }
     .pd-cta { max-width:860px; margin:36px auto 0; display:flex; justify-content:center; }
-    .pd-cta .buy-btn { margin-top:0; }
+    .pd-cta .buy-group { margin-top:0; }
     @media (max-width:768px) {
       .pd { margin:48px -24px 0; }
       .pd-head { padding:0 24px; }
@@ -729,6 +734,23 @@
       'accessory-packable-bowl:stone-beige': 'https://twolablog.cafe24.com/surl/O/34',
       'accessory-packable-bowl:smoke-gray':  'https://twolablog.cafe24.com/surl/O/35'
     };
+    // ===== 네이버 스마트스토어 구매 링크 =====
+    // 상품별 스마트스토어 상품 주소를 넣으면 그 상품으로, 없으면 스토어 첫 화면으로 연결됩니다.
+    var NAVER_STORE = 'https://smartstore.naver.com/twolab';
+    var naverLinks = {
+      // 'collar-aurora-lab': 'https://smartstore.naver.com/twolab/products/000000'
+    };
+    function naverUrl(key) { return naverLinks[key] || NAVER_STORE; }
+    function naverClick(key) { tlTrack('naver_smartstore', 'product:' + key); }
+    function buyButtons(key, shopUrl, where) {
+      var ko = lang === 'ko';
+      return '<div class="buy-group">' +
+        '<a class="buy-btn" href="' + shopUrl + '" target="_blank" rel="noopener" onclick="buyClick(\'' + key + (where ? ':' + where : '') + '\')">' +
+          '<span>' + (ko ? '공식몰에서 구매하기' : 'BUY AT TWOLAB STORE') + '</span><span class="buy-arrow" aria-hidden="true">→</span></a>' +
+        '<a class="buy-btn buy-naver" href="' + naverUrl(key) + '" target="_blank" rel="noopener" onclick="naverClick(\'' + key + (where ? ':' + where : '') + '\')">' +
+          '<span class="naver-mark" aria-hidden="true">N</span><span>' + (ko ? '네이버 스마트스토어' : 'NAVER SMART STORE') + '</span><span class="buy-arrow" aria-hidden="true">→</span></a>' +
+      '</div>';
+    }
     function buyKey(catId, colId, typeId) { return catId + '-' + colId + (typeId ? '-' + typeId : ''); }
     function buyUrl(catId, colId, typeId) { return buyLinks[buyKey(catId, colId, typeId)] || null; }
     function buyClick(key) { tlTrack('twolab_shop', 'product:' + key); }
@@ -853,7 +875,7 @@
       });
       html += '</div>';
       if (url) {
-        html += '<div class="pd-cta"><a class="buy-btn" href="' + url + '" target="_blank" rel="noopener" onclick="buyClick(\'' + key + ':detail\')"><span>' + (lang === 'ko' ? '구매하기' : 'BUY NOW') + '</span><span class="buy-arrow" aria-hidden="true">→</span></a></div>';
+        html += '<div class="pd-cta">' + buyButtons(key, url, 'detail') + '</div>';
       }
       box.innerHTML = html; box.hidden = false;
     }
@@ -985,9 +1007,8 @@
       }
       if (bUrl) {
         info.innerHTML +=
-          '<a class="buy-btn" href="' + bUrl + '" target="_blank" rel="noopener" onclick="buyClick(\'' + bKey + '\')">' +
-            '<span>' + (lang === 'ko' ? '구매하기' : 'BUY NOW') + '</span><span class="buy-arrow" aria-hidden="true">→</span></a>' +
-          '<div class="buy-note">' + (lang === 'ko' ? 'TWOLAB 공식몰에서 색상·사이즈를 선택할 수 있어요' : 'Choose colour & size at the TWOLAB store') + '</div>' +
+          buyButtons(bKey, bUrl, '') +
+          '<div class="buy-note">' + (lang === 'ko' ? '색상·사이즈는 구매 페이지에서 선택할 수 있어요' : 'Choose colour & size on the store page') + '</div>' +
           '<div class="buy-perks">' + (lang === 'ko' ? '5만원 이상 무료배송 · 구매 금액 1% 유기견 기부' : 'Free shipping in Korea over ₩50,000 · 1% to dog rescue') + '</div>';
       }
 
