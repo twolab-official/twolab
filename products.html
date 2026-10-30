@@ -737,8 +737,14 @@
     // ===== 네이버 스마트스토어 구매 링크 =====
     // 상품별 스마트스토어 상품 주소를 넣으면 그 상품으로, 없으면 스토어 첫 화면으로 연결됩니다.
     var NAVER_STORE = 'https://smartstore.naver.com/twolab';
+    var NV = 'https://smartstore.naver.com/twolab/category/';
     var naverLinks = {
-      // 'collar-aurora-lab': 'https://smartstore.naver.com/twolab/products/000000'
+      'collar-aurora-lab':           NV + '41764b1f07974be98e9332a9576b0388?cp=1',
+      'collar-willow-lab':           NV + '107c6ce385044a768994e915b6898fba?cp=1',
+      'leash-aurora-lab-standard':   NV + 'b6c45b41e43441b69f0859f94b714c41?cp=1',
+      'leash-aurora-lab-adjustable': NV + 'b6c45b41e43441b69f0859f94b714c41?cp=1',
+      'leash-willow-lab-standard':   NV + 'dc6a2d3b629f4eac9a93f9fbfb171865?cp=1',
+      'leash-willow-lab-adjustable': NV + 'dc6a2d3b629f4eac9a93f9fbfb171865?cp=1'
     };
     function naverUrl(key) { return naverLinks[key] || NAVER_STORE; }
     function naverClick(key) { tlTrack('naver_smartstore', 'product:' + key); }
@@ -747,8 +753,8 @@
       return '<div class="buy-group">' +
         '<a class="buy-btn" href="' + shopUrl + '" target="_blank" rel="noopener" onclick="buyClick(\'' + key + (where ? ':' + where : '') + '\')">' +
           '<span>' + (ko ? '공식몰에서 구매하기' : 'BUY AT TWOLAB STORE') + '</span><span class="buy-arrow" aria-hidden="true">→</span></a>' +
-        '<a class="buy-btn buy-naver" href="' + naverUrl(key) + '" target="_blank" rel="noopener" onclick="naverClick(\'' + key + (where ? ':' + where : '') + '\')">' +
-          '<span class="naver-mark" aria-hidden="true">N</span><span>' + (ko ? '네이버 스마트스토어' : 'NAVER SMART STORE') + '</span><span class="buy-arrow" aria-hidden="true">→</span></a>' +
+        (!ko ? '' : '<a class="buy-btn buy-naver" href="' + naverUrl(key) + '" target="_blank" rel="noopener" onclick="naverClick(\'' + key + (where ? ':' + where : '') + '\')">' +
+          '<span class="naver-mark" aria-hidden="true">N</span><span>네이버 스마트스토어</span><span class="buy-arrow" aria-hidden="true">→</span></a>') +
       '</div>';
     }
     function buyKey(catId, colId, typeId) { return catId + '-' + colId + (typeId ? '-' + typeId : ''); }
