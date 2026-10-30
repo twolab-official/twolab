@@ -27,7 +27,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     // 브랜드 사이트 ↔ 공식몰 방문 흐름을 이어서 보기 위한 교차 도메인 설정
-    gtag('set', 'linker', { domains: ['twolabdogs.com', 'twolabdogs.shop'] });
+    gtag('set', 'linker', { domains: ['twolabdogs.com', 'twolabdogs.shop', 'twolablog.cafe24.com'] });
     gtag('config', 'G-4N0PB5BT2C');   // 브랜드 사이트 속성
     gtag('config', 'G-Z1PXSNZ9N9');   // 공식몰 속성 (브랜드 사이트 → 공식몰 유입 경로 연결용)
     // 스토어로 나가는 클릭 기록 (GA4 이벤트: store_click)
@@ -701,6 +701,13 @@
       if (lang === 'ko') return krw.toLocaleString('ko-KR') + '원';
       return (krw / USD_RATE).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' USD';
     }
+    // ===== 색상별 구매 링크 =====
+    // 색상 카드를 누르면 해당 색상의 공식몰 상품으로 바로 이동합니다. (상품 키 + ':' + 색상)
+    var variantLinks = {
+      'collar-aurora-lab:misty-green': 'https://twolablog.cafe24.com/surl/O/11',
+      'collar-aurora-lab:clay-brown':  'https://twolablog.cafe24.com/surl/O/12',
+      'collar-aurora-lab:ash-black':   'https://twolablog.cafe24.com/surl/O/13'
+    };
     function buyKey(catId, colId, typeId) { return catId + '-' + colId + (typeId ? '-' + typeId : ''); }
     function buyUrl(catId, colId, typeId) { return buyLinks[buyKey(catId, colId, typeId)] || null; }
     function buyClick(key) { tlTrack('twolab_shop', 'product:' + key); }
@@ -966,16 +973,17 @@
       var vids = (variantsByCat[catId] && variantsByCat[catId][colId]) || [];
       vids.forEach(function(vid) {
         var v = variants[vid];
-        var card = document.createElement(bUrl ? 'a' : 'div');
+        var card = document.createElement((variantLinks[bKey + ':' + vid] || bUrl) ? 'a' : 'div');
         card.className = 'item-card';
-        if (bUrl) { card.href = bUrl; card.target = '_blank'; card.rel = 'noopener'; card.setAttribute('onclick', "buyClick('" + bKey + ":" + vid + "')"); }
+        var vUrl = variantLinks[bKey + ':' + vid] || bUrl;
+        if (vUrl) { card.href = vUrl; card.target = '_blank'; card.rel = 'noopener'; card.setAttribute('onclick', "buyClick('" + bKey + ":" + vid + "')"); }
         card.innerHTML = '<div class="item-img" style="background-color:' + v.color + ';background-image:url(\'' + variantImg(catId, colId, typeId, vid) + '\');">' +
           '</div>' +
           '<div class="item-body">' +
           '<div class="item-sub">' + (lang === 'ko' ? v.ko : v.en) + '</div>' +
           '<div class="item-name">' + (lang === 'ko' ? cat.ko : cat.en) + '</div>' +
           '<div class="item-desc">' + (lang === 'ko' ? col.ko : col.en) + '</div>' +
-          (bUrl ? '<div class="item-buy">' + (lang === 'ko' ? '구매하기 →' : 'SHOP →') + '</div>' : '<div class="item-soon">COMING SOON</div>') + '</div>';
+          ((variantLinks[bKey + ':' + vid] || bUrl) ? '<div class="item-buy">' + (lang === 'ko' ? '구매하기 →' : 'SHOP →') + '</div>' : '<div class="item-soon">COMING SOON</div>') + '</div>';
         grid.appendChild(card);
       });
 
