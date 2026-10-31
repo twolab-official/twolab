@@ -184,6 +184,11 @@
     .footer-right-cols { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
     .footer-brand { display:flex; flex-direction:column; align-items:flex-start; gap:8px; }
     .footer-logo { font-family:'Montserrat',sans-serif; font-weight:800; font-size:22px; letter-spacing:4px; color:var(--gm-xlight); line-height:1.1; }
+    .footer-legal { margin-top:36px; padding-top:18px; border-top:0.5px solid rgba(196,206,202,0.12); display:flex; align-items:center; gap:12px; font-size:12px; }
+    .footer-legal a { color:rgba(196,206,202,0.7); text-decoration:none; transition:color 0.2s; }
+    .footer-legal a:hover { color:var(--gm-xlight); }
+    .footer-legal .footer-privacy { color:var(--gm-xlight); font-weight:700; }
+    .footer-legal-sep { color:rgba(196,206,202,0.25); }
     .footer-copy { font-size:11px; color:rgba(196,206,202,0.4); font-family:'Montserrat',sans-serif; line-height:1.6; }
     .footer-col-title { font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; color:var(--gm-xlight); margin-bottom:14px; display:block; }
     .footer-col p, .footer-col a { font-size:12px; color:rgba(196,206,202,0.7); line-height:1.9; font-weight:300; text-decoration:none; display:block; transition:color 0.2s; }
@@ -594,6 +599,11 @@
         <div class="footer-social"><a href="https://instagram.com/twolabdogs" target="_blank" class="footer-social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://facebook.com/twolabdogs" target="_blank" class="footer-social-icon" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="http://pf.kakao.com/_BliXX" target="_blank" class="footer-social-icon" aria-label="KakaoTalk"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.477 3 2 7.03 2 12c0 3.09 1.73 5.81 4.37 7.43l-.97 3.64 4.24-2.12c.75.13 1.52.2 2.36.2 5.523 0 10-4.03 10-9S17.523 3 12 3zM7 13.5H5.5v-4H7v4zm3.5 0H9v-4h1.5v4zm3.5 0h-1.5V11h-1v2.5H11v-4h3l.5 1.5L15 11v2.5z"/></svg></a><a href="https://x.com/twolabdogs" target="_blank" class="footer-social-icon" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.264 5.632 5.9-5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="https://threads.net/@twolabdogs" target="_blank" class="footer-social-icon" aria-label="Threads"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg></a><a href="https://www.youtube.com/@twolablog" target="_blank" class="footer-social-icon" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="4"/><polygon points="10,9 16,12 10,15" fill="currentColor" stroke="none"/></svg></a><a href="https://www.tiktok.com/@twolablog" target="_blank" class="footer-social-icon" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a></div>
       </div>
     </div>
+    <div class="footer-legal">
+      <a href="https://twolabdogs.shop/member/mall_agreement.html" target="_blank" rel="noopener" data-i18n="ft_terms">이용약관</a>
+      <span class="footer-legal-sep" aria-hidden="true">|</span>
+      <a href="https://twolabdogs.shop/member/privacy.html" target="_blank" rel="noopener" class="footer-privacy" data-i18n="ft_privacy">개인정보처리방침</a>
+    </div>
   </footer>
 
   <script>
@@ -651,7 +661,7 @@
         ft_closed:"휴무 : 토,일요일 및 공휴일", ft_company:"Company Info",
         ft_bizname:"상호명 : 투랩 (TWOLAB)", ft_ceo:"대표 : 김효섭", ft_addr:"주소 : (23546) 인천광역시 검단구 고산후로 95번길 32, 501-7 (당하동, 명진프라자)",
         ft_biz:"사업자등록번호 : 746-05-03753", ft_ecom:"통신판매업신고번호 : 2026-인천서구-2140",
-        ft_board:"Support", ft_qna:"Q&A", ft_faq:"FAQ", ft_wholesale:"Wholesale", footer_phone:"070-8744-4316"
+        ft_board:"Support", ft_qna:"Q&A", ft_faq:"FAQ", ft_wholesale:"Wholesale", ft_terms:"이용약관", ft_privacy:"개인정보처리방침", footer_phone:"070-8744-4316"
       },
       en: {
         nav_home:"Home", nav_brand:"Story", story_page_desc:"A brand born from everyday life with two Labrador Retrievers", story_page_title:"Every Great Journey<br>Begins with Two Labradors.", s_body1:"TWOLAB was born out of everyday life with two Labrador Retrievers — Siroo and Haroo.<br><br>Not in a studio.<br>Not in a factory.<br><br>But on daily walks, muddy trails,<br>and quiet moments shared in between.", s_body2:"Living with them taught us something simple: great dog gear shouldn't make you choose between thoughtful design and dependable performance. It should just belong — wherever life takes you.<br><br>So we make products inspired by nature\'s colours, built with carefully selected materials, and refined through real-world testing with real dogs.<br><br>Not just for the big adventure.<br><br>For every ordinary day you spend together.", s_body3:"What we make isn\'t equipment. It\'s an experience — for every walk you share.", mvv_mission:"We make dog gear that earns its place on every walk — carefully built for the moments between city streets and open trails.", mvv_vision:"To be the most trusted name in modern dog gear — for people who actually live the outdoor life with their dogs.", mvv_v1_name:"Urban Nature", mvv_v1_desc:"Gear that moves between the city and the wild without missing a beat.", mvv_v2_name:"Honest Design", mvv_v2_desc:"Built to work, not just to look good.", mvv_v3_name:"Built to Last", mvv_v3_desc:"Made to go the distance, season after season.", nav_products:"Products", nav_store:"Shop", nav_inquiry:"Support",
@@ -659,7 +669,7 @@
         ft_closed:"Closed: Weekends and Public Holidays", ft_company:"Company Info",
         ft_bizname:"Company: TWOLAB", ft_ceo:"CEO: John H. Kim", ft_addr:"Address: 501-7, 32, Gosanhu-ro 95beon-gil, Geomdan-gu, Incheon, The Republic of Korea (23546)",
         ft_biz:"Business Registration No.: 746-05-03753", ft_ecom:"E-Commerce Registration No.: 2026-Incheon Seo-gu-2140",
-        ft_board:"Support", ft_qna:"Q&A", ft_faq:"FAQ", ft_wholesale:"Wholesale", footer_phone:"+82-70-8744-4316"
+        ft_board:"Support", ft_qna:"Q&A", ft_faq:"FAQ", ft_wholesale:"Wholesale", ft_terms:"Terms of Use", ft_privacy:"Privacy Policy", footer_phone:"+82-70-8744-4316"
       }
     };
 
