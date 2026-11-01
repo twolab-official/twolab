@@ -392,6 +392,10 @@
     .all-items li a:hover { color:var(--gm-dark); }
     .all-items li span { font-family:'Montserrat','Noto Sans KR',sans-serif; font-size:13px; color:var(--gm-dark); white-space:nowrap; }
     .all-items-guide { display:inline-block; margin-top:22px; font-size:13px; font-weight:700; color:var(--gm-xdark); border-bottom:1px solid var(--gm); padding-bottom:2px; text-decoration:none; }
+    .ai-en { display:none; }
+    body[data-lang="en"] .ai-ko { display:none; }
+    body[data-lang="en"] h2 .ai-en, body[data-lang="en"] a.ai-en { display:inline-block; }
+    body[data-lang="en"] ul.ai-en { display:grid; }
     .pd-page { display:block; text-align:center; margin:-12px auto 24px; font-size:13px; font-weight:700; color:var(--gm-xdark); }
     @media (max-width:768px) { .all-items { padding:44px 24px 52px; } .all-items ul { grid-template-columns:1fr; } }
   </style>
@@ -556,8 +560,8 @@
   <section class="all-items" aria-labelledby="allItemsTitle">
     <div class="all-items-inner">
       <span class="page-tag">ALL PRODUCTS</span>
-      <h2 id="allItemsTitle">전체 상품 한눈에 보기</h2>
-      <ul>
+      <h2 id="allItemsTitle"><span class="ai-ko">전체 상품 한눈에 보기</span><span class="ai-en" lang="en">All products at a glance</span></h2>
+      <ul class="ai-ko">
         <li><a href="/product/collar-aurora-lab.html">Aurora LAB 반사 강아지 목줄<span>39,000원</span></a></li>
         <li><a href="/product/collar-willow-lab.html">Willow LAB 립스탑 강아지 목줄<span>36,000원</span></a></li>
         <li><a href="/product/leash-aurora-lab-standard.html">Aurora LAB 반사 리드줄 스탠다드 155cm<span>53,000원</span></a></li>
@@ -567,7 +571,18 @@
         <li><a href="/product/accessory-utility-pouch.html">유틸리티 파우치 · 배변봉투 홀더<span>18,000원</span></a></li>
         <li><a href="/product/accessory-packable-bowl.html">패커블 강아지 물그릇 1.1L<span>26,000원</span></a></li>
       </ul>
-      <a class="all-items-guide" href="/guide/dog-collar-size.html">강아지 목줄 사이즈 재는 법 →</a>
+      <ul class="ai-en" lang="en">
+        <li><a href="/product/collar-aurora-lab-en.html">Aurora LAB Reflective Dog Collar<span>32.97 USD</span></a></li>
+        <li><a href="/product/collar-willow-lab-en.html">Willow LAB Ripstop Dog Collar<span>30.43 USD</span></a></li>
+        <li><a href="/product/leash-aurora-lab-standard-en.html">Aurora LAB Reflective Leash, Standard 155 cm<span>44.80 USD</span></a></li>
+        <li><a href="/product/leash-aurora-lab-adjustable-en.html">Aurora LAB Reflective Leash, Adjustable 106–183 cm<span>47.34 USD</span></a></li>
+        <li><a href="/product/leash-willow-lab-standard-en.html">Willow LAB Ripstop Leash, Standard 155 cm<span>41.42 USD</span></a></li>
+        <li><a href="/product/leash-willow-lab-adjustable-en.html">Willow LAB Ripstop Leash, Adjustable 106–183 cm<span>43.96 USD</span></a></li>
+        <li><a href="/product/accessory-utility-pouch-en.html">Utility Pouch & Poop Bag Holder<span>15.22 USD</span></a></li>
+        <li><a href="/product/accessory-packable-bowl-en.html">Packable Dog Bowl, 1.1 L<span>21.98 USD</span></a></li>
+      </ul>
+      <a class="all-items-guide ai-ko" href="/guide/dog-collar-size.html">강아지 목줄 사이즈 재는 법 →</a>
+      <a class="all-items-guide ai-en" href="/guide/dog-collar-size-en.html" lang="en">How to measure your dog for a collar →</a>
     </div>
   </section>
 
@@ -914,10 +929,13 @@
       var d = detailImages[key] || detailImages[catId + '-' + colId];
       if (!d) { box.hidden = true; box.innerHTML = ''; return; }
       var url = buyUrl(catId, colId, typeId);
-      var html = '<div class="pd-head"><span class="pd-line"></span><span class="pd-tag">' + (lang === 'ko' ? '상품 상세' : 'PRODUCT DETAILS') + '</span><span class="pd-line"></span></div>' +
-        '<a class="pd-page" href="/product/' + (detailImages[key] ? key : catId + '-' + colId) + '.html">' + (lang === 'ko' ? '사이즈 · 소재 정보 자세히 보기 →' : 'Size &amp; material details →') + '</a><div class="pd-imgs">';
+      var pageKey = detailImages[key] ? key : catId + '-' + colId;
+      var en = lang === 'en';
+      var html = '<div class="pd-head"><span class="pd-line"></span><span class="pd-tag">' + (en ? 'PRODUCT DETAILS' : '상품 상세') + '</span><span class="pd-line"></span></div>' +
+        '<a class="pd-page" href="/product/' + pageKey + (en ? '-en' : '') + '.html">' + (en ? 'Size &amp; material details →' : '사이즈 · 소재 정보 자세히 보기 →') + '</a><div class="pd-imgs">';
       d.files.forEach(function(f, n) {
-        html += '<img src="' + d.dir + f + '" width="860" height="1146" alt="' + (d.alt[n] || '') + '"' + (n > 0 ? ' loading="lazy"' : '') + ' decoding="async">';
+        // English mode uses the English versions of the detail images (detail/<product>/en/)
+        html += '<img src="' + d.dir + (en ? 'en/' : '') + f + '" width="860" height="1146" alt="' + (d.alt[n] || '') + '"' + (n > 0 ? ' loading="lazy"' : '') + ' decoding="async">';
       });
       html += '</div>';
       if (url) {
@@ -1154,6 +1172,7 @@
 
     function setLang(l) {
       lang = l;
+      document.body.setAttribute('data-lang', l);
       localStorage.setItem('twolab_lang', l);
       var els = document.querySelectorAll('[data-i18n]');
       for (var i = 0; i < els.length; i++) {
