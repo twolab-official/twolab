@@ -572,14 +572,14 @@
         <li><a href="/product/accessory-packable-bowl.html">패커블 강아지 물그릇 1.1L<span>26,000원</span></a></li>
       </ul>
       <ul class="ai-en" lang="en">
-        <li><a href="/product/collar-aurora-lab-en.html">Aurora LAB Reflective Dog Collar<span>32 USD</span></a></li>
-        <li><a href="/product/collar-willow-lab-en.html">Willow LAB Lightweight Dog Collar<span>30 USD</span></a></li>
-        <li><a href="/product/leash-aurora-lab-standard-en.html">Aurora LAB Reflective Leash, Standard 155 cm<span>44 USD</span></a></li>
-        <li><a href="/product/leash-aurora-lab-adjustable-en.html">Aurora LAB Reflective Leash, Adjustable 106–183 cm<span>46 USD</span></a></li>
-        <li><a href="/product/leash-willow-lab-standard-en.html">Willow LAB Lightweight Leash, Standard 155 cm<span>40 USD</span></a></li>
-        <li><a href="/product/leash-willow-lab-adjustable-en.html">Willow LAB Lightweight Leash, Adjustable 106–183 cm<span>43 USD</span></a></li>
-        <li><a href="/product/accessory-utility-pouch-en.html">Utility Pouch & Poop Bag Holder<span>15 USD</span></a></li>
-        <li><a href="/product/accessory-packable-bowl-en.html">Packable Dog Bowl, 1.1 L<span>21 USD</span></a></li>
+        <li><a href="/product/collar-aurora-lab-en.html">Aurora LAB Reflective Dog Collar<span>31.99 USD</span></a></li>
+        <li><a href="/product/collar-willow-lab-en.html">Willow LAB Lightweight Dog Collar<span>29.99 USD</span></a></li>
+        <li><a href="/product/leash-aurora-lab-standard-en.html">Aurora LAB Reflective Leash, Standard 155 cm<span>43.99 USD</span></a></li>
+        <li><a href="/product/leash-aurora-lab-adjustable-en.html">Aurora LAB Reflective Leash, Adjustable 106–183 cm<span>45.99 USD</span></a></li>
+        <li><a href="/product/leash-willow-lab-standard-en.html">Willow LAB Lightweight Leash, Standard 155 cm<span>39.99 USD</span></a></li>
+        <li><a href="/product/leash-willow-lab-adjustable-en.html">Willow LAB Lightweight Leash, Adjustable 106–183 cm<span>42.99 USD</span></a></li>
+        <li><a href="/product/accessory-utility-pouch-en.html">Utility Pouch & Poop Bag Holder<span>14.99 USD</span></a></li>
+        <li><a href="/product/accessory-packable-bowl-en.html">Packable Dog Bowl, 1.1 L<span>20.99 USD</span></a></li>
       </ul>
       <a class="all-items-guide ai-ko" href="/guide/dog-collar-size.html">강아지 목줄 사이즈 재는 법 →</a>
       <a class="all-items-guide ai-en" href="/guide/dog-collar-size-en.html" lang="en">How to measure your dog for a collar →</a>
@@ -738,7 +738,7 @@
     // ===== 가격 =====
     // 원화 판매가(숫자)만 적으면 됩니다. 사이즈와 관계없이 같은 가격입니다.
     // 영문 페이지는 아래 고정 환율로 USD 환산해 표시합니다. 가격이 정해지지 않은 상품은 null → '- 원' / '- USD'
-    var USD_RATE = 1200; // 1 USD = 1,200원 (고정), 소수점 이하 버림
+    var USD_RATE = 1200; // 1 USD = 1,200원 (고정), 소수점 이하 버림 후 1센트 낮춰 .99로 표시
     var prices = {
       'collar-aurora-lab':           39000,
       'collar-willow-lab':           36000,
@@ -756,7 +756,7 @@
       if (krw === undefined) return '';
       if (krw === null) return lang === 'ko' ? '- 원' : '- USD';
       if (lang === 'ko') return krw.toLocaleString('ko-KR') + '원';
-      return Math.floor(krw / USD_RATE).toLocaleString('en-US') + ' USD';
+      return (Math.floor(krw / USD_RATE) - 0.01).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' USD';
     }
     // ===== 색상별 구매 링크 =====
     // 색상 카드를 누르면 해당 색상의 공식몰 상품으로 바로 이동합니다. (상품 키 + ':' + 색상)
