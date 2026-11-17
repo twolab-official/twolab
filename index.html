@@ -519,7 +519,8 @@
       .hero-trust { font-size:11.5px; gap:4px 14px; margin-top:16px; }
       .hero-scroll { display:none; }
     }
-  </style>
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+</style>
 </head>
 <body>
 
@@ -595,9 +596,9 @@
       <button class="hero-dot" onclick="heroGo(2)" aria-label="3"></button>
     </div>
     <div class="hero-content">
-      <h1 class="hero-title fade-up delay-1" data-i18n="hero_title">TWOLAB</h1>
+      <h1 class="hero-title fade-up delay-1" data-i18n="hero_title">TWOLAB<span class="sr-only"> 투랩</span></h1>
       <p class="hero-subtitle fade-up delay-1">Urban Nature Dog Gear</p>
-      <p class="hero-desc fade-up delay-2" data-i18n="hero_desc">숲의 흙내음부터 도시의 산책길까지.<br>두 마리 래브라도와 함께 테스트한<br>프리미엄 반려견 아웃도어 기어.</p>
+      <p class="hero-desc fade-up delay-2" data-i18n="hero_desc">숲의 흙내음부터 도시의 산책길까지.<br>두 마리 래브라도와 함께 테스트한<br>프리미엄 반려견 아웃도어 기어, 투랩.</p>
       <div class="hero-btns fade-up delay-3">
         <a href="https://twolabdogs.shop/" target="_blank" rel="noopener" class="btn-cta" onclick="tlTrack('twolab_shop','hero')"><span data-i18n="hero_btn1">SHOP NOW</span> <span class="cta-arrow" aria-hidden="true">→</span></a>
         <a href="story.html" class="btn-outline" data-i18n="hero_btn2">Brand Story</a>
@@ -622,7 +623,7 @@
       </div>
       <div class="donation-divider"></div>
       <div class="donation-note" data-i18n="don_note">
-        TWOLAB은 모든 구매 금액의 1%를<br>유기견 구조 및 보호 활동을 지원하는 단체에 기부합니다.
+        투랩(TWOLAB)은 모든 구매 금액의 1%를<br>유기견 구조 및 보호 활동을 지원하는 단체에 기부합니다.
       </div>
     </div>
   </section>
@@ -874,8 +875,8 @@
     var translations = {
       ko: {
         nav_home:"Home", nav_brand:"Story", nav_products:"Products", nav_store:"Shop", nav_inquiry:"Support",
-        hero_title:"TWOLAB",
-        hero_desc:"숲의 흙내음부터 도시의 산책길까지.<br>두 마리 래브라도와 함께 테스트한<br>프리미엄 반려견 아웃도어 기어.",
+        hero_title:"TWOLAB<span class="sr-only"> 투랩</span>",
+        hero_desc:"숲의 흙내음부터 도시의 산책길까지.<br>두 마리 래브라도와 함께 테스트한<br>프리미엄 반려견 아웃도어 기어, 투랩.",
         hero_btn1:"SHOP NOW", hero_btn2:"Brand Story", hero_trust:"<span>5만원 이상 무료배송</span><span>평일 오전 10시 전 결제 시 당일 발송</span><span>구매 금액 1% 유기견 기부</span>",
         prod_heading:"함께하는<br>모든 순간을 위해",
         prod_sub:"도시의 빌딩 숲부터 대자연의 트레일까지,<br>반려견과 함께하는 모든 여정에<br>최적화된 TWOLAB의 프리미엄 기어를 만나보세요.",
@@ -891,7 +892,7 @@
         ft_customer:"Customer Service", ft_hours:"평일 AM 11:00 ~ PM 6:00",
         ft_closed:"휴무 : 토,일요일 및 공휴일", ft_company:"Company Info",
         ft_bizname:"상호명 : 투랩 (TWOLAB)", ft_ceo:"대표 : 김효섭",
-        don_amount:"Giving Back", don_desc:"우리의 산책이 더 많은 삶을 이어갈 수 있도록.", don_note:"TWOLAB은 모든 구매 금액의 1%를<br>유기견 구조 및 보호 활동을 지원하는 단체에 기부합니다.", ft_addr:"주소 : (23546) 인천광역시 검단구 고산후로 95번길 32, 5층 1-7호 (당하동, 명진프라자)",
+        don_amount:"Giving Back", don_desc:"우리의 산책이 더 많은 삶을 이어갈 수 있도록.", don_note:"투랩(TWOLAB)은 모든 구매 금액의 1%를<br>유기견 구조 및 보호 활동을 지원하는 단체에 기부합니다.", ft_addr:"주소 : (23546) 인천광역시 검단구 고산후로 95번길 32, 5층 1-7호 (당하동, 명진프라자)",
         ft_biz:"사업자등록번호 : 746-05-03753", ft_ecom:"통신판매업신고번호 : 2026-인천서구-2140",
         ft_board:"Support", ft_qna:"Q&A", ft_faq:"FAQ", ft_wholesale:"Wholesale", ft_policy:"Policy", ft_terms:"이용약관", ft_privacy:"개인정보처리방침", footer_phone:"070-8744-4316"
       },
