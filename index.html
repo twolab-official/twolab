@@ -81,7 +81,7 @@
     .lang-btn { display:flex; align-items:center; gap:2px; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; letter-spacing:1.5px; margin-left:12px; }
     .lang-btn span { padding:6px 10px; cursor:pointer; color:rgba(196,206,202,0.6); border:0.5px solid rgba(138,153,146,0.2); border-radius:2px; transition:all 0.2s; }
     .lang-btn span:hover { color:var(--gm-xlight); border-color:rgba(138,153,146,0.5); }
-    .lang-btn span.active { color:var(--gm-xdark); background:var(--gm); border-color:var(--gm); }
+    .lang-btn span.active { color:var(--gm-xdark2); background:var(--gm); border-color:var(--gm); }
     .lang-btn .divider { color:rgba(138,153,146,0.2); font-size:10px; border:none; padding:0 2px; cursor:default; }
     .lang-btn .divider:hover { color:rgba(138,153,146,0.2); border-color:transparent; background:transparent; }
     .nav-toggle { display:none; flex-direction:column; gap:5px; cursor:pointer; }
@@ -93,12 +93,13 @@
       opacity:0; transition:opacity 1.2s ease-in-out; }
     .hero-bg.is-active { opacity:1; }
     .hero-bg:nth-of-type(1) { background-image:url('hero.webp'); }
-    .hero-bg:nth-of-type(2) { background-image:url('hero2.webp'); }
-    .hero-bg:nth-of-type(3) { background-image:url('hero3.webp'); }
+    .hero.ready .hero-bg:nth-of-type(2) { background-image:url('hero2.webp'); }
+    .hero.ready .hero-bg:nth-of-type(3) { background-image:url('hero3.webp'); }
     /* 슬라이드 인디케이터 */
-    .hero-dots { position:absolute; bottom:24px; left:50%; transform:translateX(-50%); display:flex; gap:9px; z-index:3; }
-    .hero-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,0.35); border:none; padding:0; cursor:pointer; transition:background 0.3s, width 0.3s; }
-    .hero-dot.is-active { background:#fff; width:20px; border-radius:4px; }
+    .hero-dots { position:absolute; bottom:16px; left:50%; transform:translateX(-50%); display:flex; gap:0; z-index:3; }
+    .hero-dot { position:relative; width:24px; height:24px; padding:0; border:none; background:none; cursor:pointer; }
+    .hero-dot::before { content:''; position:absolute; left:50%; top:50%; width:7px; height:7px; transform:translate(-50%,-50%); border-radius:50%; background:rgba(255,255,255,0.35); transition:background 0.3s, width 0.3s; }
+    .hero-dot.is-active::before { background:#fff; width:20px; border-radius:4px; }
     .hero-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(42,58,52,0.92) 0%, rgba(42,58,52,0.40) 50%, rgba(42,58,52,0.20) 100%); }
     .hero-content { position:absolute; left:0; width:100%; z-index:2; padding:0 48px; max-width:720px;
       bottom:max(80px, calc(100% - 100vh + 112px)); }
@@ -187,10 +188,10 @@
     .store-card:hover .store-name { color:var(--gm-xdark); }
     .store-card:hover .store-sub { color:var(--gm-xdark); }
     .store-card:hover .store-arrow { color:var(--gm-xdark); }
-    .store-label { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:600; letter-spacing:2px; color:var(--gm); margin-bottom:6px; }
+    .store-label { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:600; letter-spacing:2px; color:#a3aea9; margin-bottom:6px; }
     .store-card:hover .store-label { color:var(--gm-xdark); }
     .store-name { font-family:'Montserrat',sans-serif; font-size:14px; font-weight:700; letter-spacing:1px; color:var(--gm-xlight); transition:color 0.2s; }
-    .store-sub { font-size:12px; color:var(--gm); margin-top:4px; font-weight:300; transition:color 0.2s; }
+    .store-sub { font-size:12px; color:#a3aea9; margin-top:4px; font-weight:300; transition:color 0.2s; }
     .store-arrow { font-size:20px; color:var(--gm); transition:color 0.2s; }
 
     /* FOOTER */
@@ -200,9 +201,9 @@
     .footer-brand { display:flex; flex-direction:column; align-items:flex-start; gap:8px; }
     .footer-logo { font-family:'Montserrat',sans-serif; font-weight:800; font-size:22px; letter-spacing:4px; color:var(--gm-xlight); line-height:1.1; }
     .footer-legal-col .footer-privacy { color:var(--gm-xlight); font-weight:700; }
-    .footer-copy { font-size:11px; color:rgba(196,206,202,0.4); font-family:'Montserrat',sans-serif; line-height:1.6; }
+    .footer-copy { font-size:11px; color:rgba(196,206,202,0.75); font-family:'Montserrat',sans-serif; line-height:1.6; }
     .footer-col-title { font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; color:var(--gm-xlight); margin-bottom:14px; display:block; }
-    .footer-col p, .footer-col a { font-size:12px; color:rgba(196,206,202,0.7); line-height:1.9; font-weight:300; text-decoration:none; display:block; transition:color 0.2s; }
+    .footer-col p, .footer-col a { font-size:12px; color:rgba(196,206,202,0.7); line-height:1.9; font-weight:300; text-decoration:none; display:block; padding:1px 0; transition:color 0.2s; }
     .footer-col a:hover { color:var(--gm-light); }
     .footer-phone { font-family:'Montserrat',sans-serif; font-size:15px; font-weight:700; color:var(--gm-xlight); letter-spacing:1px; margin-bottom:6px; display:block; }
 
@@ -220,9 +221,9 @@
       .hero { aspect-ratio:unset !important; min-height:100vh !important; }
       .hero-bg { background-position:center center !important; }
       .hero-bg:nth-of-type(1) { background-image:url('hero_m.webp') !important; }
-      .hero-bg:nth-of-type(2) { background-image:url('hero_m2.webp') !important; }
-      .hero-bg:nth-of-type(3) { background-image:url('hero_m3.webp') !important; }
-      .hero-dots { bottom:16px; }
+      .hero.ready .hero-bg:nth-of-type(2) { background-image:url('hero_m2.webp') !important; }
+      .hero.ready .hero-bg:nth-of-type(3) { background-image:url('hero_m3.webp') !important; }
+      .hero-dots { bottom:8px; }
       .story { grid-template-columns:1fr; height:auto; }
       .story-left { padding:32px 24px; }
       .story-right { min-height:200px; max-height:220px; }
@@ -258,9 +259,9 @@
     .donation-dog-img { width:80px; height:80px; object-fit:contain; flex-shrink:0; }
     .donation-text { }
     .donation-amount { font-family:'Montserrat',sans-serif; font-size:18px; font-weight:700; letter-spacing:1px; color:var(--gm-dark); }
-    .donation-desc { font-size:13px; color:#C09878; margin-top:4px; line-height:1.6; font-weight:500; }
+    .donation-desc { font-size:13px; color:#816650; margin-top:4px; line-height:1.6; font-weight:500; }
     .donation-divider { width:1px; height:48px; background:rgba(138,153,146,0.25); }
-    .donation-note { font-size:12px; color:#C09878; line-height:1.8; max-width:320px; text-align:center; letter-spacing:0.02em; }
+    .donation-note { font-size:12px; color:#816650; line-height:1.8; max-width:320px; text-align:center; letter-spacing:0.02em; }
     @media(max-width:600px) {
       .donation { padding:36px 24px; }
       .donation-inner { gap:32px; }
@@ -587,6 +588,7 @@
   </nav>
 
   <!-- HERO -->
+  <main>
   <section class="hero">
     <div class="hero-bg is-active"></div>
     <div class="hero-bg"></div>
@@ -649,7 +651,7 @@
       </button>
       <div class="prod-track-wrap">
         <div class="prod-grid" id="prodTrack">
-      <a href="products.html#collar" class="prod-card">        <div class="prod-img" style="background-image:url('dog_collar.jpg');background-size:cover;background-position:center;">
+      <a href="products.html#collar" class="prod-card">        <div class="prod-img" data-bg="dog_collar.jpg" style="background-size:cover;background-position:center;">
         </div>
         <div class="prod-body">
           <div class="prod-num">01</div>
@@ -659,7 +661,7 @@
           <span class="prod-card-arrow">→</span>
         </div>
       </a>
-      <a href="products.html#leash" class="prod-card">        <div class="prod-img" style="background-image:url('dog_leash.jpg');background-size:cover;background-position:center;">
+      <a href="products.html#leash" class="prod-card">        <div class="prod-img" data-bg="dog_leash.jpg" style="background-size:cover;background-position:center;">
         </div>
         <div class="prod-body">
           <div class="prod-num">02</div>
@@ -669,7 +671,7 @@
           <span class="prod-card-arrow">→</span>
         </div>
       </a>
-      <a href="products.html#harness" class="prod-card">        <div class="prod-img" style="background-image:url('dog_harness.jpg');background-size:cover;background-position:center;">
+      <a href="products.html#harness" class="prod-card">        <div class="prod-img" data-bg="dog_harness.jpg" style="background-size:cover;background-position:center;">
         </div>
         <div class="prod-body">
           <div class="prod-num">03</div>
@@ -679,7 +681,7 @@
           <span class="prod-card-arrow">→</span>
         </div>
       </a>
-      <a href="products.html#apparel" class="prod-card">        <div class="prod-img" style="background-image:url('dog_apparel.jpg');background-size:cover;background-position:center;">
+      <a href="products.html#apparel" class="prod-card">        <div class="prod-img" data-bg="dog_apparel.jpg" style="background-size:cover;background-position:center;">
         </div>
         <div class="prod-body">
           <div class="prod-num">04</div>
@@ -689,7 +691,7 @@
           <span class="prod-card-arrow">→</span>
         </div>
       </a>
-      <a href="products.html#accessory" class="prod-card">        <div class="prod-img" style="background-image:url('dog_accessory.jpg');background-size:cover;background-position:center;">
+      <a href="products.html#accessory" class="prod-card">        <div class="prod-img" data-bg="dog_accessory.jpg" style="background-size:cover;background-position:center;">
         </div>
         <div class="prod-body">
           <div class="prod-num">05</div>
@@ -699,7 +701,7 @@
           <span class="prod-card-arrow">→</span>
         </div>
       </a>
-      <a href="products.html#toys" class="prod-card">        <div class="prod-img" style="background-image:url('dog_toys.jpg');background-size:cover;background-position:center;">
+      <a href="products.html#toys" class="prod-card">        <div class="prod-img" data-bg="dog_toys.jpg" style="background-size:cover;background-position:center;">
         </div>
         <div class="prod-body">
           <div class="prod-num">06</div>
@@ -729,7 +731,7 @@
     <div>
       <div class="section-label">
         <div class="section-line" style="background:var(--gm)"></div>
-        <span class="section-tag" style="color:var(--gm)" data-i18n="cta_tag">SHOP ONLINE</span>
+        <span class="section-tag" style="color:#97a49e" data-i18n="cta_tag">SHOP ONLINE</span>
       </div>
       <h2 class="cta-heading" data-i18n="cta_heading">온라인 스토어에서<br><em>지금 만나보세요</em></h2>
       <p class="cta-desc" data-i18n="cta_desc">도시의 빌딩 숲부터 대자연의 트레일까지,<br>반려견과 함께하는 모든 여정에 최적화된<br>TWOLAB의 프리미엄 기어를 만나보세요.</p>
@@ -760,15 +762,15 @@
         </div>
         <span class="store-arrow">→</span>
       </a>
-      <div class="store-card" style="cursor:default;opacity:0.75;">
+      <div class="store-card" style="cursor:default;">
         <div>
           <div class="store-label">AMAZON</div>
           <div class="store-name" data-i18n="amazon_name">아마존</div>
           <div class="store-sub" data-i18n="amazon_sub">오픈 준비 중</div>
         </div>
-        <span style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;color:var(--gm);white-space:nowrap;">COMING SOON</span>
+        <span style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;color:#a3aea9;white-space:nowrap;">COMING SOON</span>
       </div>
-      <a href="javascript:void(0)" onclick="goToNaver('store_section')" class="store-card">
+      <a href="https://smartstore.naver.com/twolab" onclick="goToNaver('store_section'); return false;" class="store-card">
         <div>
           <div class="store-label">NAVER SMART STORE</div>
           <div class="store-name" data-i18n="store_name">네이버 구매하기</div>
@@ -786,6 +788,8 @@
       </a>
     </div>
   </section>
+
+  </main>
 
   <footer>
     <div class="footer-inner">
@@ -1023,6 +1027,12 @@
     document.addEventListener("DOMContentLoaded", function() {
       var saved = localStorage.getItem("twolab_lang") || "ko";
       setLang(saved);
+    });
+  
+    /* 첫 화면(LCP) 이미지가 먼저 다 받아지도록, 나머지 배너·제품 이미지는 페이지 로드 후에 불러옴 */
+    window.addEventListener('load', function () {
+      var hero = document.querySelector('.hero'); if (hero) hero.classList.add('ready');
+      document.querySelectorAll('[data-bg]').forEach(function (el) { el.style.backgroundImage = "url('" + el.getAttribute('data-bg') + "')"; });
     });
   </script>
 </body>
