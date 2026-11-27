@@ -22,7 +22,6 @@
   <meta name="twitter:description" content="시루와 하루, 두 마리 래브라도 리트리버와 함께한 일상에서 시작된 TWOLAB의 이야기. 도시와 자연을 잇는 반려견 기어 브랜드의 미션·비전·가치를 소개합니다." />
 
   <!-- Google Analytics 4 : 브랜드 사이트 G-4N0PB5BT2C + 공식몰 G-Z1PXSNZ9N9 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4N0PB5BT2C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -31,6 +30,18 @@
     gtag('set', 'linker', { domains: ['twolabdogs.com', 'twolabdogs.shop', 'twolablog.cafe24.com'] });
     gtag('config', 'G-4N0PB5BT2C');   // 브랜드 사이트 속성
     gtag('config', 'G-Z1PXSNZ9N9');   // 공식몰 속성 (브랜드 사이트 → 공식몰 유입 경로 연결용)
+    // 첫 화면이 다 뜬 뒤(사용자의 첫 스크롤·터치·클릭 또는 로딩 후 4초) GA 스크립트를 불러옴: 위의 설정·이벤트는 dataLayer에 쌓였다가 그대로 전송됨
+    (function () {
+      var done = false;
+      function loadGA() {
+        if (done) return; done = true;
+        var s = document.createElement('script'); s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-4N0PB5BT2C';
+        document.head.appendChild(s);
+      }
+      ['scroll', 'pointerdown', 'touchstart', 'keydown'].forEach(function (e) { window.addEventListener(e, loadGA, { once: true, passive: true }); });
+      window.addEventListener('load', function () { setTimeout(loadGA, 4000); });
+    })();
     // 스토어로 나가는 클릭 기록 (GA4 이벤트: store_click)
     function tlTrack(store, loc) {
       try { gtag('event', 'store_click', { store: store, click_location: loc || 'unknown', transport_type: 'beacon' }); } catch (e) {}
@@ -415,11 +426,27 @@
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://twolabdogs.com/#org", "name": "TWOLAB", "alternateName": "투랩", "url": "https://twolabdogs.com/"}, {"@type": "AboutPage", "@id": "https://twolabdogs.com/story.html#webpage", "url": "https://twolabdogs.com/story.html", "name": "브랜드 스토리 | TWOLAB 투랩", "inLanguage": "ko-KR", "isPartOf": {"@id": "https://twolabdogs.com/#website"}, "about": {"@id": "https://twolabdogs.com/#org"}, "publisher": {"@id": "https://twolabdogs.com/#org"}}]}
   </script>
+  <style>
+    /* 접근성 보정: 글자 대비 4.5:1 이상 + 터치 영역 24px 이상 (톤은 유지하고 명도만 조정) */
+    .pp-eyebrow, .price-label, .pp-label, .pp-dl dt, .step-num, .story-closing-tag, .page-tag { color:#636e69 !important; }
+    .item-count, .ga-toc b { color:#6c7772 !important; }
+    .step-text, .story-body { color:#626e67 !important; }
+    .donation-desc, .donation-note, .story-emphasis { color:#816650 !important; }
+    .page-eyebrow .page-tag, .ga-meta, .ws-email-label { color:#97a49e !important; }
+    .page-desc { color:#98a39f !important; }
+    .sec-tab { color:#899490 !important; }
+    .mvv-label, .mvv-value-desc { color:#d1d7d4 !important; }
+    .mvv-text { color:#cfd7d4 !important; }
+    .lang-btn span.active, .ga-lang b, .ws-email-btn { color:#1e2c27 !important; }
+    .lang-btn span:not(.active):not(.divider) { color:#a3aca8; }
+    .footer-copy { color:rgba(196,206,202,0.75) !important; }
+    .footer-col a { padding-top:1px; padding-bottom:1px; }
+  </style>
 </head>
 <body>
 
   <nav>
-    <a href="index.html" class="nav-logo"><img src="twolab_logo.png" alt="TWOLAB™ Urban Nature Dog Gear" class="nav-logo-img"></a>
+    <a href="index.html" class="nav-logo"><img src="twolab_logo.png" width="601" height="149" alt="TWOLAB™ Urban Nature Dog Gear" class="nav-logo-img"></a>
     <ul class="nav-links" id="navLinks">
       <li class="m-bar">
         <button class="m-btn m-back" onclick="navBack()" aria-label="Back">
@@ -489,7 +516,7 @@
         <div class="section-line"></div>
         <span class="section-tag">BRAND STORY</span>
       </div>
-      <div class="story-headline">Every Great Journey Begins<br><span style="color:#C09878">with Two Labradors.</span></div>
+      <div class="story-headline">Every Great Journey Begins<br><span style="color:#816650">with Two Labradors.</span></div>
       <p class="story-body" data-i18n="s_body1">투랩(TWOLAB)은 두 마리의 래브라도 리트리버 — 시루와 하루 — 와 함께한 일상에서 시작되었습니다.<br><br>스튜디오에서가 아닙니다.<br>공장에서도 아닙니다.<br><br>매일의 산책, 진흙 묻은 트레일,<br>그리고 조용히 함께 나눈 수많은 순간들 속에서.</p>
       <p class="story-body" data-i18n="s_body2">그들과 함께하는 삶은 우리에게 가르쳐 주었습니다. 좋은 반려견 기어란, 디자인과 성능 중 하나를 선택하도록 강요해서는 안 된다는 것을. 삶이 이끄는 어디에서든, 자연스럽게 어울려야 한다는 것을.<br><br>그래서 우리는 자연에서 영감을 받은 컬러, 엄선된 소재, 그리고 실제 생활에서의 테스트를 통해 다듬어진 제품을 만듭니다.<br><br>모험만을 위한 것이 아닙니다.<br>함께하는 모든 하루를 위한 것입니다.</p>
       <p class="story-body story-emphasis" data-i18n="s_body3">우리가 만드는 것은 장비가 아니라, 함께 걷는 시간을 위한 경험입니다.</p>
@@ -503,15 +530,15 @@
         <div class="story-slider-track" id="storyTrack">
           <div class="story-slide">
             <div class="story-img-overlay"></div>
-            <div class="story-img-badge"><img src="twolab_logo.png" alt="TWOLAB™ Urban Nature Dog Gear" class="badge-logo"></div>
+            <div class="story-img-badge"><img src="twolab_logo.png" width="601" height="149" alt="TWOLAB™ Urban Nature Dog Gear" class="badge-logo"></div>
           </div>
           <div class="story-slide">
             <div class="story-img-overlay"></div>
-            <div class="story-img-badge"><img src="twolab_logo.png" alt="TWOLAB™ Urban Nature Dog Gear" class="badge-logo"></div>
+            <div class="story-img-badge"><img src="twolab_logo.png" width="601" height="149" alt="TWOLAB™ Urban Nature Dog Gear" class="badge-logo"></div>
           </div>
           <div class="story-slide">
             <div class="story-img-overlay"></div>
-            <div class="story-img-badge"><img src="twolab_logo.png" alt="TWOLAB™ Urban Nature Dog Gear" class="badge-logo"></div>
+            <div class="story-img-badge"><img src="twolab_logo.png" width="601" height="149" alt="TWOLAB™ Urban Nature Dog Gear" class="badge-logo"></div>
           </div>
         </div>
         <div class="slider-arrow slider-arrow-prev" onclick="prevSlide()">
@@ -601,7 +628,7 @@
         </div>
       </div>
       <div class="footer-brand">
-        <img src="twolab_logo.png" alt="TWOLAB™" class="footer-logo-img">
+        <img src="twolab_logo.png" width="601" height="149" alt="TWOLAB™" class="footer-logo-img">
         <span class="footer-copy">Copyright © TWOLAB.<br>All rights reserved.</span>
         <div class="footer-social"><a href="https://instagram.com/twolabdogs" target="_blank" class="footer-social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://facebook.com/twolabdogs" target="_blank" class="footer-social-icon" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="http://pf.kakao.com/_BliXX" target="_blank" class="footer-social-icon" aria-label="KakaoTalk"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.477 3 2 7.03 2 12c0 3.09 1.73 5.81 4.37 7.43l-.97 3.64 4.24-2.12c.75.13 1.52.2 2.36.2 5.523 0 10-4.03 10-9S17.523 3 12 3zM7 13.5H5.5v-4H7v4zm3.5 0H9v-4h1.5v4zm3.5 0h-1.5V11h-1v2.5H11v-4h3l.5 1.5L15 11v2.5z"/></svg></a><a href="https://x.com/twolabdogs" target="_blank" class="footer-social-icon" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.264 5.632 5.9-5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="https://threads.net/@twolabdogs" target="_blank" class="footer-social-icon" aria-label="Threads"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg></a><a href="https://www.youtube.com/@twolablog" target="_blank" class="footer-social-icon" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="4"/><polygon points="10,9 16,12 10,15" fill="currentColor" stroke="none"/></svg></a><a href="https://www.tiktok.com/@twolablog" target="_blank" class="footer-social-icon" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a></div>
       </div>

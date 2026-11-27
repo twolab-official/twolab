@@ -25,7 +25,6 @@
   <meta name="twitter:description" content="155cm 고정 길이에 전면 반사 웨빙을 적용한 TWOLAB(투랩) Aurora LAB 강아지 리드줄. 퀵 도그 파킹, 듀얼 컨트롤 핸들, 오토락 스위블 카라비너." />
 
   <!-- Google Analytics 4 : 브랜드 사이트 G-4N0PB5BT2C + 공식몰 G-Z1PXSNZ9N9 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4N0PB5BT2C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -34,6 +33,18 @@
     gtag('set', 'linker', { domains: ['twolabdogs.com', 'twolabdogs.shop', 'twolablog.cafe24.com'] });
     gtag('config', 'G-4N0PB5BT2C');   // 브랜드 사이트 속성
     gtag('config', 'G-Z1PXSNZ9N9');   // 공식몰 속성 (브랜드 사이트 → 공식몰 유입 경로 연결용)
+    // 첫 화면이 다 뜬 뒤(사용자의 첫 스크롤·터치·클릭 또는 로딩 후 4초) GA 스크립트를 불러옴: 위의 설정·이벤트는 dataLayer에 쌓였다가 그대로 전송됨
+    (function () {
+      var done = false;
+      function loadGA() {
+        if (done) return; done = true;
+        var s = document.createElement('script'); s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-4N0PB5BT2C';
+        document.head.appendChild(s);
+      }
+      ['scroll', 'pointerdown', 'touchstart', 'keydown'].forEach(function (e) { window.addEventListener(e, loadGA, { once: true, passive: true }); });
+      window.addEventListener('load', function () { setTimeout(loadGA, 4000); });
+    })();
     // 스토어로 나가는 클릭 기록 (GA4 이벤트: store_click)
     function tlTrack(store, loc) {
       try { gtag('event', 'store_click', { store: store, click_location: loc || 'unknown', transport_type: 'beacon' }); } catch (e) {}
@@ -494,10 +505,26 @@
     .ga .pp-rel { margin-top:18px; }
     @media (max-width:900px) { .ga-head { padding:100px 24px 40px; } .ga { font-size:15px; } }
   </style>
+  <style>
+    /* 접근성 보정: 글자 대비 4.5:1 이상 + 터치 영역 24px 이상 (톤은 유지하고 명도만 조정) */
+    .pp-eyebrow, .price-label, .pp-label, .pp-dl dt, .step-num, .story-closing-tag, .page-tag { color:#636e69 !important; }
+    .item-count, .ga-toc b { color:#6c7772 !important; }
+    .step-text, .story-body { color:#626e67 !important; }
+    .donation-desc, .donation-note, .story-emphasis { color:#816650 !important; }
+    .page-eyebrow .page-tag, .ga-meta, .ws-email-label { color:#97a49e !important; }
+    .page-desc { color:#98a39f !important; }
+    .sec-tab { color:#899490 !important; }
+    .mvv-label, .mvv-value-desc { color:#d1d7d4 !important; }
+    .mvv-text { color:#cfd7d4 !important; }
+    .lang-btn span.active, .ga-lang b, .ws-email-btn { color:#1e2c27 !important; }
+    .lang-btn span:not(.active):not(.divider) { color:#a3aca8; }
+    .footer-copy { color:rgba(196,206,202,0.75) !important; }
+    .footer-col a { padding-top:1px; padding-bottom:1px; }
+  </style>
 </head>
 <body>
   <nav>
-    <a href="/" class="nav-logo"><img src="/twolab_logo.png" alt="TWOLAB™ Urban Nature Dog Gear" class="nav-logo-img"></a>
+    <a href="/" class="nav-logo"><img src="/twolab_logo.png" width="601" height="149" alt="TWOLAB™ Urban Nature Dog Gear" class="nav-logo-img"></a>
     <ul class="nav-links" id="navLinks">
       <li class="m-bar">
         <button class="m-btn m-back" onclick="navBack()" aria-label="Back">
@@ -575,7 +602,7 @@
           <a class="buy-btn" id="ppShop" href="https://twolablog.cafe24.com/surl/O/14" target="_blank" rel="noopener" onclick="tlTrack('twolab_shop','product-page:leash-aurora-lab-standard')"><span>공식몰에서 구매하기</span><span class="buy-arrow" aria-hidden="true">→</span></a>
           <a class="buy-btn buy-naver" href="https://smartstore.naver.com/twolab/category/b6c45b41e43441b69f0859f94b714c41?cp=1" target="_blank" rel="noopener" onclick="tlTrack('naver_smartstore','product-page:leash-aurora-lab-standard')"><span class="naver-mark" aria-hidden="true">N</span><span>네이버 스마트스토어</span><span class="buy-arrow" aria-hidden="true">→</span></a>
         </div>
-        <p class="pp-ship">한진택배 3,000원 · 5만 원 이상 무료배송 · 평일 오전 10시 이전 결제 시 당일 발송<br>수령 후 7일 이내 교환·반품 가능 (<a href="/inquiry.html#faq">자세히 보기</a>) · 구매 금액의 1%는 유기견 구조·보호 단체에 기부됩니다.</p>
+        <p class="pp-ship">한진택배 3,000원 · 5만 원 이상 무료배송 · 평일 오전 10시 이전 결제 시 당일 발송<br>수령 후 7일 이내 교환·반품 가능 (<a href="/inquiry.html#faq">교환·반품 안내 보기</a>) · 구매 금액의 1%는 유기견 구조·보호 단체에 기부됩니다.</p>
       </div>
     </section>
 
@@ -664,7 +691,7 @@
         </div>
       </div>
       <div class="footer-brand">
-        <img src="/twolab_logo.png" alt="TWOLAB™" class="footer-logo-img">
+        <img src="/twolab_logo.png" width="601" height="149" alt="TWOLAB™" class="footer-logo-img">
         <span class="footer-copy">Copyright © TWOLAB.<br>All rights reserved.</span>
         <div class="footer-social"><a href="https://instagram.com/twolabdogs" target="_blank" class="footer-social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://facebook.com/twolabdogs" target="_blank" class="footer-social-icon" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="http://pf.kakao.com/_BliXX" target="_blank" class="footer-social-icon" aria-label="KakaoTalk"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.477 3 2 7.03 2 12c0 3.09 1.73 5.81 4.37 7.43l-.97 3.64 4.24-2.12c.75.13 1.52.2 2.36.2 5.523 0 10-4.03 10-9S17.523 3 12 3zM7 13.5H5.5v-4H7v4zm3.5 0H9v-4h1.5v4zm3.5 0h-1.5V11h-1v2.5H11v-4h3l.5 1.5L15 11v2.5z"/></svg></a><a href="https://x.com/twolabdogs" target="_blank" class="footer-social-icon" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.264 5.632 5.9-5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="https://threads.net/@twolabdogs" target="_blank" class="footer-social-icon" aria-label="Threads"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg></a><a href="https://www.youtube.com/@twolablog" target="_blank" class="footer-social-icon" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="4"/><polygon points="10,9 16,12 10,15" fill="currentColor" stroke="none"/></svg></a><a href="https://www.tiktok.com/@twolablog" target="_blank" class="footer-social-icon" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a></div>
       </div>
